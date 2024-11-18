@@ -22,6 +22,9 @@
 		D1B6D1DF2CE9A7A30078BBA0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1B6D1DD2CE9A7A30078BBA0 /* LaunchScreen.storyboard */; };
 		D1B6D1E82CE9A8070078BBA0 /* UIColor_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B6D1E72CE9A8070078BBA0 /* UIColor_Extension.swift */; };
 		D1B6D1EA2CE9A8710078BBA0 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B6D1E92CE9A8700078BBA0 /* AppColors.swift */; };
+		D1C97B3A2CEAF292007BB9A9 /* CustomBarBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C97B392CEAF292007BB9A9 /* CustomBarBar.swift */; };
+		D1C97B3C2CEAF2C6007BB9A9 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C97B3B2CEAF2C6007BB9A9 /* CustomTabBarController.swift */; };
+		D1C97B3E2CEAF2EB007BB9A9 /* FavouriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C97B3D2CEAF2EB007BB9A9 /* FavouriteButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,9 @@
 		D1B6D1E02CE9A7A30078BBA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1B6D1E72CE9A8070078BBA0 /* UIColor_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor_Extension.swift; sourceTree = "<group>"; };
 		D1B6D1E92CE9A8700078BBA0 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		D1C97B392CEAF292007BB9A9 /* CustomBarBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBarBar.swift; sourceTree = "<group>"; };
+		D1C97B3B2CEAF2C6007BB9A9 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		D1C97B3D2CEAF2EB007BB9A9 /* FavouriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +93,7 @@
 		D1B6D1CE2CE9A7A00078BBA0 /* EventHubApp */ = {
 			isa = PBXGroup;
 			children = (
+				D1C97B382CEAF213007BB9A9 /* TabBar */,
 				D1B6D1E62CE9A7E70078BBA0 /* Extensions */,
 				D1B6D1EB2CE9AE1A0078BBA0 /* Resources */,
 				D1B6D1EC2CE9AE370078BBA0 /* Supporting */,
@@ -132,6 +139,16 @@
 				D1B6D1D32CE9A7A00078BBA0 /* ViewController.swift */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		D1C97B382CEAF213007BB9A9 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				D1C97B392CEAF292007BB9A9 /* CustomBarBar.swift */,
+				D1C97B3B2CEAF2C6007BB9A9 /* CustomTabBarController.swift */,
+				D1C97B3D2CEAF2EB007BB9A9 /* FavouriteButton.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,11 +229,14 @@
 			files = (
 				D1B6D1D42CE9A7A00078BBA0 /* ViewController.swift in Sources */,
 				D1B6D1D02CE9A7A00078BBA0 /* AppDelegate.swift in Sources */,
+				D1C97B3A2CEAF292007BB9A9 /* CustomBarBar.swift in Sources */,
 				D1B6D1DA2CE9A7A00078BBA0 /* EventHubApp.xcdatamodeld in Sources */,
 				D1A2467B2CEA7782007DA613 /* UIFont_Extension.swift in Sources */,
+				D1C97B3E2CEAF2EB007BB9A9 /* FavouriteButton.swift in Sources */,
 				D1B6D1EA2CE9A8710078BBA0 /* AppColors.swift in Sources */,
 				D1B6D1D22CE9A7A00078BBA0 /* SceneDelegate.swift in Sources */,
 				D1B6D1E82CE9A8070078BBA0 /* UIColor_Extension.swift in Sources */,
+				D1C97B3C2CEAF2C6007BB9A9 /* CustomTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
