@@ -4,11 +4,14 @@
 
 ## User settings
 xcuserdata/
+*.xcuserstate
+
 
 ## Obj-C/Swift specific
 *.hmap
 
 ## App packaging
+*.DS_Store
 *.ipa
 *.dSYM.zip
 *.dSYM
