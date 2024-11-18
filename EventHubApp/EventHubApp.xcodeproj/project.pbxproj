@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D10CC5E62CEAD7B5005E14D0 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10CC5E52CEAD7B5005E14D0 /* CustomTabBar.swift */; };
+		D10CC5E82CEAD954005E14D0 /* FavouriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10CC5E72CEAD954005E14D0 /* FavouriteButton.swift */; };
+		D10CC5EA2CEADBF7005E14D0 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10CC5E92CEADBF7005E14D0 /* CustomTabBarController.swift */; };
 		D1B6D1D02CE9A7A00078BBA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B6D1CF2CE9A7A00078BBA0 /* AppDelegate.swift */; };
 		D1B6D1D22CE9A7A00078BBA0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B6D1D12CE9A7A00078BBA0 /* SceneDelegate.swift */; };
 		D1B6D1D42CE9A7A00078BBA0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B6D1D32CE9A7A00078BBA0 /* ViewController.swift */; };
@@ -18,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D10CC5E52CEAD7B5005E14D0 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		D10CC5E72CEAD954005E14D0 /* FavouriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteButton.swift; sourceTree = "<group>"; };
+		D10CC5E92CEADBF7005E14D0 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		D1B6D1CC2CE9A7A00078BBA0 /* EventHubApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventHubApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1B6D1CF2CE9A7A00078BBA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1B6D1D12CE9A7A00078BBA0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +47,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D10CC5E42CEAD77C005E14D0 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				D10CC5E52CEAD7B5005E14D0 /* CustomTabBar.swift */,
+				D10CC5E72CEAD954005E14D0 /* FavouriteButton.swift */,
+				D10CC5E92CEADBF7005E14D0 /* CustomTabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 		D1B6D1C32CE9A7A00078BBA0 = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +76,7 @@
 		D1B6D1CE2CE9A7A00078BBA0 /* EventHubApp */ = {
 			isa = PBXGroup;
 			children = (
+				D10CC5E42CEAD77C005E14D0 /* TabBar */,
 				D1B6D1E62CE9A7E70078BBA0 /* Extensions */,
 				D1B6D1EB2CE9AE1A0078BBA0 /* Resources */,
 				D1B6D1EC2CE9AE370078BBA0 /* Supporting */,
@@ -176,11 +193,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1B6D1D42CE9A7A00078BBA0 /* ViewController.swift in Sources */,
+				D10CC5E82CEAD954005E14D0 /* FavouriteButton.swift in Sources */,
 				D1B6D1D02CE9A7A00078BBA0 /* AppDelegate.swift in Sources */,
+				D10CC5E62CEAD7B5005E14D0 /* CustomTabBar.swift in Sources */,
 				D1B6D1DA2CE9A7A00078BBA0 /* EventHubApp.xcdatamodeld in Sources */,
 				D1B6D1EA2CE9A8710078BBA0 /* AppColors.swift in Sources */,
 				D1B6D1D22CE9A7A00078BBA0 /* SceneDelegate.swift in Sources */,
 				D1B6D1E82CE9A8070078BBA0 /* UIColor_Extension.swift in Sources */,
+				D10CC5EA2CEADBF7005E14D0 /* CustomTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
