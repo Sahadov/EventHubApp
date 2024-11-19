@@ -70,8 +70,8 @@ private extension AuthTextField {
 
         if togglePassword {
             let toggleButton = UIButton()
-            toggleButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
-            toggleButton.setImage(UIImage(systemName: "eye"), for: .selected)
+            toggleButton.setImage(UIImage(named: "hiddenPassword"), for: .normal)
+            toggleButton.setImage(UIImage(systemName: "eye.fill"), for: .selected)
             toggleButton.tintColor = .gray
             self.isSecureTextEntry = true
             

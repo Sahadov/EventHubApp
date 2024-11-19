@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TextLabel: UITextField {
+final class TextLabel: UILabel {
     
     init(text: String, alignment: NSTextAlignment = .left, fontSize: CGFloat, fontWeight: UIFont.AirbnbFont, textColor: UIColor = AppColors.black) {
         super.init(frame: .zero)
@@ -26,7 +26,7 @@ final class TextLabel: UITextField {
 
 extension TextLabel {
     private func configure() {
-        isUserInteractionEnabled = false
+//        isUserInteractionEnabled = false
     }
 }
 

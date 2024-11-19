@@ -19,7 +19,7 @@ class SignInViewController: UIViewController {
     
     private let titleLabel = TextLabel(text: "Sign in", fontSize: 24, fontWeight: .medium)
     
-    private let emailTF = AuthTextField(placeholder: "abc@email.com", keyboardType: .emailAddress, imageString: "emailAuth", togglePassword: false)
+    private let emailTF = AuthTextField(placeholder: "abc@email.com", keyboardType: .emailAddress, imageString: "emailAuth")
     private let passwordTF = AuthTextField(placeholder: "Your password", keyboardType: .default, imageString: "emailAuth", togglePassword: true)
     
     
@@ -30,7 +30,7 @@ class SignInViewController: UIViewController {
     
     private let rememberMeSwitch: UISwitch = {
         let customSwitch = UISwitch()
-        customSwitch.onTintColor = .lightGray
+        customSwitch.onTintColor = AppColors.blue
         customSwitch.thumbTintColor = .white
         customSwitch.isOn = true
         return customSwitch
@@ -57,8 +57,7 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = AppColors.backgroundBlack
-        
+        view.backgroundColor = UIColor(red: 240/255, green: 235/255, blue: 235/255, alpha: 1)
         
         setupViews()
         setConstraints()
@@ -66,7 +65,8 @@ class SignInViewController: UIViewController {
     
     
     @objc func forgotPasswordTapped() {
-        print("forgotPasswordTapped")
+//        let vc = ResetPasswordViewController()
+//        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func signInTapped() {
@@ -74,9 +74,13 @@ class SignInViewController: UIViewController {
     }
     
     @objc func signUpTapped() {
-        print("signUpTapped")
+        let vc = SignUpViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }
 
 extension SignInViewController {
@@ -107,6 +111,11 @@ extension SignInViewController {
         signUpSecondLabel.isUserInteractionEnabled = true
         let tapGesture2 = UITapGestureRecognizer(target: self, action: #selector(signUpTapped))
         signUpSecondLabel.addGestureRecognizer(tapGesture2)
+        
+        let tapGesture3 = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture3)
+        
+        signInButton.addTarget(self, action: #selector(signInTapped), for: .touchUpInside)
     }
     
     private func setConstraints() {
@@ -154,13 +163,6 @@ extension SignInViewController {
         NSLayoutConstraint.activate([
             forgotPasswordLabel.centerYAnchor.constraint(equalTo: rememberMeSwitch.centerYAnchor),
             forgotPasswordLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30)
-        ])
-        
-        NSLayoutConstraint.activate([
-            signInButton.topAnchor.constraint(equalTo: rememberMeLabel.bottomAnchor, constant: 30),
-            signInButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 52),
-            signInButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -52),
-            signInButton.heightAnchor.constraint(equalToConstant: 58)
         ])
         
         NSLayoutConstraint.activate([

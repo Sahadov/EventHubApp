@@ -12,6 +12,7 @@
 		5743AEFD2CECEB64007462E1 /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5743AEF82CECEB64007462E1 /* AuthTextField.swift */; };
 		5743AEFE2CECEB64007462E1 /* TextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5743AEF92CECEB64007462E1 /* TextLabel.swift */; };
 		5743AF012CECEB7F007462E1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5743AF002CECEB7F007462E1 /* SignUpViewController.swift */; };
+		5743AF032CECF031007462E1 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5743AF022CECF031007462E1 /* BackButton.swift */; };
 		57ADDDC02CEC8A2D0045C074 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ADDDBF2CEC8A2D0045C074 /* SignInViewController.swift */; };
 		D1A246742CEA6D91007DA613 /* AirbnbCereal_W_Bk.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A2466E2CEA6D90007DA613 /* AirbnbCereal_W_Bk.otf */; };
 		D1A246752CEA6D91007DA613 /* AirbnbCereal_W_XBd.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A2466F2CEA6D90007DA613 /* AirbnbCereal_W_XBd.otf */; };
@@ -39,6 +40,7 @@
 		5743AEF82CECEB64007462E1 /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 		5743AEF92CECEB64007462E1 /* TextLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabel.swift; sourceTree = "<group>"; };
 		5743AF002CECEB7F007462E1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		5743AF022CECF031007462E1 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		57ADDDBF2CEC8A2D0045C074 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		D1A2466E2CEA6D90007DA613 /* AirbnbCereal_W_Bk.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Bk.otf; sourceTree = "<group>"; };
 		D1A2466F2CEA6D90007DA613 /* AirbnbCereal_W_XBd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_XBd.otf; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				5743AEF72CECEB64007462E1 /* AuthGoogleButton.swift */,
 				5743AEF82CECEB64007462E1 /* AuthTextField.swift */,
 				5743AEF92CECEB64007462E1 /* TextLabel.swift */,
+				5743AF022CECF031007462E1 /* BackButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				57ADDDC02CEC8A2D0045C074 /* SignInViewController.swift in Sources */,
 				D1B6D1DA2CE9A7A00078BBA0 /* EventHubApp.xcdatamodeld in Sources */,
 				D1A2467B2CEA7782007DA613 /* UIFont_Extension.swift in Sources */,
+				5743AF032CECF031007462E1 /* BackButton.swift in Sources */,
 				D1C97B3E2CEAF2EB007BB9A9 /* FavouriteButton.swift in Sources */,
 				D1B6D1EA2CE9A8710078BBA0 /* AppColors.swift in Sources */,
 				D1B6D1D22CE9A7A00078BBA0 /* SceneDelegate.swift in Sources */,
