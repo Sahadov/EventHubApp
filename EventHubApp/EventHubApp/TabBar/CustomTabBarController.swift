@@ -30,11 +30,19 @@ class CustomTabBarController: UITabBarController {
         thirdVC.tabBarItem.title = "Map"
         thirdVC.tabBarItem.image = UIImage(named: "mapTabBar")
         
-        let fourthVC = ViewController()
+        let fourthVC = ProfileViewController()
         fourthVC.tabBarItem.title = "Profile"
         fourthVC.tabBarItem.image = UIImage(named: "profileTabBar")
         
-        setViewControllers([firstVC, secondVC, thirdVC, fourthVC], animated: true)
+        setViewControllers(
+            [
+                firstVC,
+                secondVC,
+                thirdVC,
+                UINavigationController(rootViewController: fourthVC)
+            ],
+            animated: true
+        )
     }
     
 }
