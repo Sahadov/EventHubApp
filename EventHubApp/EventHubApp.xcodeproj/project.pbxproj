@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5743AEFB2CECEB64007462E1 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5743AEF62CECEB64007462E1 /* ActionButton.swift */; };
+		5743AEFC2CECEB64007462E1 /* AuthGoogleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5743AEF72CECEB64007462E1 /* AuthGoogleButton.swift */; };
+		5743AEFD2CECEB64007462E1 /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5743AEF82CECEB64007462E1 /* AuthTextField.swift */; };
+		5743AEFE2CECEB64007462E1 /* TextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5743AEF92CECEB64007462E1 /* TextLabel.swift */; };
+		5743AF012CECEB7F007462E1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5743AF002CECEB7F007462E1 /* SignUpViewController.swift */; };
+		57ADDDC02CEC8A2D0045C074 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ADDDBF2CEC8A2D0045C074 /* SignInViewController.swift */; };
 		D1A246742CEA6D91007DA613 /* AirbnbCereal_W_Bk.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A2466E2CEA6D90007DA613 /* AirbnbCereal_W_Bk.otf */; };
 		D1A246752CEA6D91007DA613 /* AirbnbCereal_W_XBd.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A2466F2CEA6D90007DA613 /* AirbnbCereal_W_XBd.otf */; };
 		D1A246762CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A246702CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf */; };
@@ -28,6 +34,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5743AEF62CECEB64007462E1 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		5743AEF72CECEB64007462E1 /* AuthGoogleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthGoogleButton.swift; sourceTree = "<group>"; };
+		5743AEF82CECEB64007462E1 /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
+		5743AEF92CECEB64007462E1 /* TextLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabel.swift; sourceTree = "<group>"; };
+		5743AF002CECEB7F007462E1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		57ADDDBF2CEC8A2D0045C074 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		D1A2466E2CEA6D90007DA613 /* AirbnbCereal_W_Bk.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Bk.otf; sourceTree = "<group>"; };
 		D1A2466F2CEA6D90007DA613 /* AirbnbCereal_W_XBd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_XBd.otf; sourceTree = "<group>"; };
 		D1A246702CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Lt.otf; sourceTree = "<group>"; };
@@ -61,6 +73,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5743AEFA2CECEB64007462E1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5743AEF62CECEB64007462E1 /* ActionButton.swift */,
+				5743AEF72CECEB64007462E1 /* AuthGoogleButton.swift */,
+				5743AEF82CECEB64007462E1 /* AuthTextField.swift */,
+				5743AEF92CECEB64007462E1 /* TextLabel.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		57ADDDBD2CEC8A0D0045C074 /* AuthScreens */ = {
+			isa = PBXGroup;
+			children = (
+				5743AEFA2CECEB64007462E1 /* Views */,
+				57ADDDBF2CEC8A2D0045C074 /* SignInViewController.swift */,
+				5743AF002CECEB7F007462E1 /* SignUpViewController.swift */,
+			);
+			path = AuthScreens;
+			sourceTree = "<group>";
+		};
 		D1A2466D2CEA6D7C007DA613 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +126,7 @@
 		D1B6D1CE2CE9A7A00078BBA0 /* EventHubApp */ = {
 			isa = PBXGroup;
 			children = (
+				57ADDDBD2CEC8A0D0045C074 /* AuthScreens */,
 				D1C97B382CEAF213007BB9A9 /* TabBar */,
 				D1B6D1E62CE9A7E70078BBA0 /* Extensions */,
 				D1B6D1EB2CE9AE1A0078BBA0 /* Resources */,
@@ -230,13 +264,19 @@
 				D1B6D1D42CE9A7A00078BBA0 /* ViewController.swift in Sources */,
 				D1B6D1D02CE9A7A00078BBA0 /* AppDelegate.swift in Sources */,
 				D1C97B3A2CEAF292007BB9A9 /* CustomBarBar.swift in Sources */,
+				57ADDDC02CEC8A2D0045C074 /* SignInViewController.swift in Sources */,
 				D1B6D1DA2CE9A7A00078BBA0 /* EventHubApp.xcdatamodeld in Sources */,
 				D1A2467B2CEA7782007DA613 /* UIFont_Extension.swift in Sources */,
 				D1C97B3E2CEAF2EB007BB9A9 /* FavouriteButton.swift in Sources */,
 				D1B6D1EA2CE9A8710078BBA0 /* AppColors.swift in Sources */,
 				D1B6D1D22CE9A7A00078BBA0 /* SceneDelegate.swift in Sources */,
 				D1B6D1E82CE9A8070078BBA0 /* UIColor_Extension.swift in Sources */,
+				5743AF012CECEB7F007462E1 /* SignUpViewController.swift in Sources */,
 				D1C97B3C2CEAF2C6007BB9A9 /* CustomTabBarController.swift in Sources */,
+				5743AEFB2CECEB64007462E1 /* ActionButton.swift in Sources */,
+				5743AEFC2CECEB64007462E1 /* AuthGoogleButton.swift in Sources */,
+				5743AEFD2CECEB64007462E1 /* AuthTextField.swift in Sources */,
+				5743AEFE2CECEB64007462E1 /* TextLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,7 +415,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GNG4B9AY27;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EventHubApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -406,7 +446,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GNG4B9AY27;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EventHubApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
