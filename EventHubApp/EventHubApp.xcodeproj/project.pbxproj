@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		45E43CF12CECDFAD00D6AA00 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E43CF02CECDFAD00D6AA00 /* ProfileViewController.swift */; };
 		D1A246742CEA6D91007DA613 /* AirbnbCereal_W_Bk.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A2466E2CEA6D90007DA613 /* AirbnbCereal_W_Bk.otf */; };
 		D1A246752CEA6D91007DA613 /* AirbnbCereal_W_XBd.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A2466F2CEA6D90007DA613 /* AirbnbCereal_W_XBd.otf */; };
 		D1A246762CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A246702CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		45E43CF02CECDFAD00D6AA00 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D1A2466E2CEA6D90007DA613 /* AirbnbCereal_W_Bk.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Bk.otf; sourceTree = "<group>"; };
 		D1A2466F2CEA6D90007DA613 /* AirbnbCereal_W_XBd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_XBd.otf; sourceTree = "<group>"; };
 		D1A246702CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Lt.otf; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				D1B6D1D32CE9A7A00078BBA0 /* ViewController.swift */,
+				45E43CF02CECDFAD00D6AA00 /* ProfileViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				D1B6D1DA2CE9A7A00078BBA0 /* EventHubApp.xcdatamodeld in Sources */,
 				D1A2467B2CEA7782007DA613 /* UIFont_Extension.swift in Sources */,
 				D1C97B3E2CEAF2EB007BB9A9 /* FavouriteButton.swift in Sources */,
+				45E43CF12CECDFAD00D6AA00 /* ProfileViewController.swift in Sources */,
 				D1B6D1EA2CE9A8710078BBA0 /* AppColors.swift in Sources */,
 				D1B6D1D22CE9A7A00078BBA0 /* SceneDelegate.swift in Sources */,
 				D1B6D1E82CE9A8070078BBA0 /* UIColor_Extension.swift in Sources */,
