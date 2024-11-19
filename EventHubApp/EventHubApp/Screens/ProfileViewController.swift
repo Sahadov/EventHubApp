@@ -18,6 +18,10 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        for family in UIFont.familyNames.sorted() {
+          let names = UIFont.fontNames(forFamilyName: family)
+          print(family, names)
+        }
     }
 }
 // MARK: - Setup Views
@@ -52,7 +56,7 @@ private extension ProfileViewController {
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.text = "Ashfak Sayem"
         nameLabel.textAlignment = .center
-        nameLabel.font = .airbnbFont(ofSize: 24, weight: .normal)
+        nameLabel.font = .airbnbFont(ofSize: 24, weight: .book)
         NSLayoutConstraint.activate([
             nameLabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
             nameLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
@@ -97,7 +101,7 @@ private extension ProfileViewController {
         view.addSubview(aboutTextLabel)
         aboutTextLabel.translatesAutoresizingMaskIntoConstraints = false
         aboutTextLabel.numberOfLines = 0
-        aboutTextLabel.font = .airbnbFont(ofSize: 16, weight: .normal)
+        aboutTextLabel.font = .airbnbFont(ofSize: 16, weight: .book)
         aboutTextLabel.text = "Enjoy your favorite dishe and a lovely your friends and family and have a great time. Food from local food trucks will be available for purchase. Read More"
         NSLayoutConstraint.activate([
             aboutTextLabel.topAnchor.constraint(equalTo: aboutTitleLabel.bottomAnchor, constant: 50),
