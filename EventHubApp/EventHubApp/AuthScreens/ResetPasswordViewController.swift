@@ -13,7 +13,7 @@ class ResetPasswordViewController: UIViewController {
     private let titleLabel = TextLabel(text: "Reset Password", fontSize: 24, fontWeight: .medium)
     private let manualLabel = TextLabel(text: "Please enter your email address to request a password reset", fontSize: 15, fontWeight: .normal)
     private let emailTF = AuthTextField(placeholder: "abc@email.com", keyboardType: .emailAddress, imageString: "emailAuth")
-    private let sendUpButton = ActionButton(title: "SEND")
+    private let resetPasswordButton = ActionButton(title: "SEND")
 
     
     override func viewDidLoad() {
@@ -26,8 +26,9 @@ class ResetPasswordViewController: UIViewController {
         setConstraints()
     }
     
-    @objc func signUpTapped() {
-        print("signUpTapped")
+    @objc func resetPasswordTapped() {
+        let vc = RepeatResetPasswordViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     @objc func navigationBackButtonTapped() {
@@ -41,7 +42,7 @@ class ResetPasswordViewController: UIViewController {
 
 extension ResetPasswordViewController {
     private func setupViews() {
-        [emailTF, manualLabel, sendUpButton].forEach { localView in
+        [emailTF, manualLabel, resetPasswordButton].forEach { localView in
             view.addSubview(localView)
             localView.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -51,7 +52,7 @@ extension ResetPasswordViewController {
     
     private func configure() {
         manualLabel.numberOfLines = 2
-        sendUpButton.addTarget(self, action: #selector(signUpTapped), for: .touchUpInside)
+        resetPasswordButton.addTarget(self, action: #selector(resetPasswordTapped), for: .touchUpInside)
         navigationBackButton.addTarget(self, action: #selector(navigationBackButtonTapped), for: .touchUpInside)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -73,10 +74,10 @@ extension ResetPasswordViewController {
         ])
 
         NSLayoutConstraint.activate([
-            sendUpButton.topAnchor.constraint(equalTo: emailTF.bottomAnchor, constant: 40),
-            sendUpButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 52),
-            sendUpButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -52),
-            sendUpButton.heightAnchor.constraint(equalToConstant: 58)
+            resetPasswordButton.topAnchor.constraint(equalTo: emailTF.bottomAnchor, constant: 40),
+            resetPasswordButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 52),
+            resetPasswordButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -52),
+            resetPasswordButton.heightAnchor.constraint(equalToConstant: 58)
         ])
     }
 }
