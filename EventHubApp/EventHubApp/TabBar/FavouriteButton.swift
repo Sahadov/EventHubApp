@@ -29,7 +29,7 @@ final class FavouriteButton: UIButton {
     
     //MARK: Actions
     @objc func buttonTapped() {
-       onTap?()
+        onTap?()
     }
 }
 

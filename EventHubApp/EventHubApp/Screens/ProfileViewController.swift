@@ -34,6 +34,7 @@ private extension ProfileViewController {
         setupAboutTitleLabel()
         setupAboutTextView()
         setupLogoutButton()
+        view.backgroundColor = .white
     }
     
     func setupAvatarImageView() {
@@ -128,7 +129,7 @@ private extension ProfileViewController {
     }
 }
 
-@available(iOS 17.0, *)
-#Preview {
-    UINavigationController(rootViewController: ProfileViewController())
-}
+//@available(iOS 17.0, *)
+//#Preview {
+//    UINavigationController(rootViewController: ProfileViewController())
+//}
