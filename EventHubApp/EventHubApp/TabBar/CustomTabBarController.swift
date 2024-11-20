@@ -18,54 +18,37 @@ class CustomTabBarController: UITabBarController {
         super.viewDidLoad()
         setValue(customTabBar, forKey: "tabBar")
         setupTabItems()
-
-//        customTabBar.onFavouriteButtonTap = { [weak self] in
-//            self?.navigateToFavourites()
-//        }
-        
-
     }
 
     private func setupTabItems(){
-        let firstVC = ViewController()
-        firstVC.tabBarItem.title = "Explore"
-        firstVC.tabBarItem.image = UIImage(named: "compassTabBar")
+        let exploreVC = ViewController()
+        exploreVC.tabBarItem.title = "Explore"
+        exploreVC.tabBarItem.image = UIImage(named: "compassTabBar")
 
-        let secondVC = ViewController()
-        secondVC.tabBarItem.title = "Events"
-        secondVC.tabBarItem.image = UIImage(named: "calendarTabBar")
+        let eventsVC = ViewController()
+        eventsVC.tabBarItem.title = "Events"
+        eventsVC.tabBarItem.image = UIImage(named: "calendarTabBar")
 
-        let thirdVC = ViewController()
-        thirdVC.tabBarItem.title = "Map"
-        thirdVC.tabBarItem.image = UIImage(named: "mapTabBar")
+        let mapVC = ViewController()
+        mapVC.tabBarItem.title = "Map"
+        mapVC.tabBarItem.image = UIImage(named: "mapTabBar")
 
-        let fourthVC = ProfileViewController()
-        fourthVC.tabBarItem.title = "Profile"
-        fourthVC.tabBarItem.image = UIImage(named: "profileTabBar")
+        let profileVC = ProfileViewController()
+        profileVC.tabBarItem.title = "Profile"
+        profileVC.tabBarItem.image = UIImage(named: "profileTabBar")
         
         let favouritesVC = FavouritesViewController(viewOtput: FavouritesPresenter())
     
         setViewControllers(
             [
-                firstVC,
-                secondVC,
+                exploreVC,
+                eventsVC,
                 favouritesVC,
-                thirdVC,
-                UINavigationController(rootViewController: fourthVC)
+                mapVC,
+                UINavigationController(rootViewController: profileVC)
             ],
             animated: true
         )
-    }
-
-    private func navigateToFavourites() {
-        let favouriteVC = FavouritesViewController(viewOtput: FavouritesPresenter())
-        favouriteVC.title = "Favourites"
-
-        if let navigationController = self.selectedViewController as? UINavigationController {
-            navigationController.pushViewController(favouriteVC, animated: true)
-        } else {
-            self.present(favouriteVC, animated: true, completion: nil)
-        }
     }
 
 }
