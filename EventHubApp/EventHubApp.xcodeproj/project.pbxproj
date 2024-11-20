@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		45A088112CEEA66A002D8A76 /* APIRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A088102CEEA66A002D8A76 /* APIRoute.swift */; };
+		45A088132CEEA998002D8A76 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A088122CEEA998002D8A76 /* APIError.swift */; };
+		45A088152CEEA9B5002D8A76 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A088142CEEA9B5002D8A76 /* APIClient.swift */; };
 		45E43CF12CECDFAD00D6AA00 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E43CF02CECDFAD00D6AA00 /* ProfileViewController.swift */; };
 		D1334A382CED61A900B424A1 /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1334A372CED61A900B424A1 /* FavouritesViewController.swift */; };
 		D1334A3A2CED61C500B424A1 /* FavouritesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1334A392CED61C500B424A1 /* FavouritesPresenter.swift */; };
@@ -31,6 +34,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		45A088102CEEA66A002D8A76 /* APIRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRoute.swift; sourceTree = "<group>"; };
+		45A088122CEEA998002D8A76 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		45A088142CEEA9B5002D8A76 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		45E43CF02CECDFAD00D6AA00 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D1334A372CED61A900B424A1 /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
 		D1334A392CED61C500B424A1 /* FavouritesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesPresenter.swift; sourceTree = "<group>"; };
@@ -115,6 +121,9 @@
 				D1B6D1ED2CE9AE720078BBA0 /* Screens */,
 				D1B6D1E02CE9A7A30078BBA0 /* Info.plist */,
 				D1B6D1D82CE9A7A00078BBA0 /* EventHubApp.xcdatamodeld */,
+				45A088102CEEA66A002D8A76 /* APIRoute.swift */,
+				45A088122CEEA998002D8A76 /* APIError.swift */,
+				45A088142CEEA9B5002D8A76 /* APIClient.swift */,
 			);
 			path = EventHubApp;
 			sourceTree = "<group>";
@@ -247,13 +256,16 @@
 				D1334A382CED61A900B424A1 /* FavouritesViewController.swift in Sources */,
 				D1B6D1D42CE9A7A00078BBA0 /* ViewController.swift in Sources */,
 				D1B6D1D02CE9A7A00078BBA0 /* AppDelegate.swift in Sources */,
+				45A088152CEEA9B5002D8A76 /* APIClient.swift in Sources */,
 				D1C97B3A2CEAF292007BB9A9 /* CustomBarBar.swift in Sources */,
 				D1B6D1DA2CE9A7A00078BBA0 /* EventHubApp.xcdatamodeld in Sources */,
 				D1A2467B2CEA7782007DA613 /* UIFont_Extension.swift in Sources */,
 				D1C97B3E2CEAF2EB007BB9A9 /* FavouriteButton.swift in Sources */,
 				45E43CF12CECDFAD00D6AA00 /* ProfileViewController.swift in Sources */,
+				45A088132CEEA998002D8A76 /* APIError.swift in Sources */,
 				D1B6D1EA2CE9A8710078BBA0 /* AppColors.swift in Sources */,
 				D1B6D1D22CE9A7A00078BBA0 /* SceneDelegate.swift in Sources */,
+				45A088112CEEA66A002D8A76 /* APIRoute.swift in Sources */,
 				D1B6D1E82CE9A8070078BBA0 /* UIColor_Extension.swift in Sources */,
 				D1C97B3C2CEAF2C6007BB9A9 /* CustomTabBarController.swift in Sources */,
 				D1334A3A2CED61C500B424A1 /* FavouritesPresenter.swift in Sources */,
