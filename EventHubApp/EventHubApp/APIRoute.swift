@@ -8,7 +8,7 @@
 import Foundation
 
 enum APIRoute {
-    case getNews
+    case getNews(NewsRequest)
     
     var baseUrl: String {
         "https://kudago.com/public-api/v1.4/"
@@ -17,7 +17,7 @@ enum APIRoute {
     var fullUrl: String {
         switch self {
         case .getNews:
-            return baseUrl + "news/?lang=&fields=&expand=&order_by=&text_format=&ids=&location=&actual_only=true"
+            return baseUrl + "news"
         }
     }
     
@@ -25,10 +25,28 @@ enum APIRoute {
         "GET"
     }
     
+    var queryItems: [URLQueryItem] {
+        switch self {
+        case .getNews(let request):
+            return [
+                URLQueryItem(name: "lang", value: request.lang),
+                URLQueryItem(name: "fields", value: request.fields),
+                URLQueryItem(name: "expand", value: request.expand),
+                URLQueryItem(name: "order_by", value: request.orderBy),
+                URLQueryItem(name: "text_format", value: request.textFormat),
+                URLQueryItem(name: "ids", value: request.ids),
+                URLQueryItem(name: "location", value: request.location),
+                URLQueryItem(name: "actual_only", value: request.actualOnly.description)
+            ]
+        }
+    }
+    
     var request: URLRequest? {
-        guard let url = URL(string: fullUrl) else { return nil }
+        guard let url = URL(string: fullUrl),
+              var components = URLComponents(url: url, resolvingAgainstBaseURL: true) else { return nil }
+        components.queryItems = queryItems
+        var request = URLRequest(url: components.url ?? url)
         print(url)
-        var request = URLRequest(url: url)
         request.httpMethod = httpMethod
         request.timeoutInterval = 10
         return request
@@ -46,4 +64,15 @@ struct EventResponse: Codable {
 struct NewsResult: Codable {
     let id, publicationDate: Int
     let title, slug: String
+}
+
+struct NewsRequest {
+    var lang = ""
+    var fields = ""
+    var expand = ""
+    var orderBy = ""
+    var textFormat = ""
+    var ids = ""
+    var location = ""
+    var actualOnly = "true"
 }
