@@ -10,6 +10,7 @@
 		45A088112CEEA66A002D8A76 /* APIRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A088102CEEA66A002D8A76 /* APIRoute.swift */; };
 		45A088132CEEA998002D8A76 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A088122CEEA998002D8A76 /* APIError.swift */; };
 		45A088152CEEA9B5002D8A76 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A088142CEEA9B5002D8A76 /* APIClient.swift */; };
+		45A088172CEED9B3002D8A76 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A088162CEED9B3002D8A76 /* Store.swift */; };
 		45E43CF12CECDFAD00D6AA00 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E43CF02CECDFAD00D6AA00 /* ProfileViewController.swift */; };
 		D1334A382CED61A900B424A1 /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1334A372CED61A900B424A1 /* FavouritesViewController.swift */; };
 		D1334A3A2CED61C500B424A1 /* FavouritesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1334A392CED61C500B424A1 /* FavouritesPresenter.swift */; };
@@ -37,6 +38,7 @@
 		45A088102CEEA66A002D8A76 /* APIRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRoute.swift; sourceTree = "<group>"; };
 		45A088122CEEA998002D8A76 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		45A088142CEEA9B5002D8A76 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		45A088162CEED9B3002D8A76 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		45E43CF02CECDFAD00D6AA00 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D1334A372CED61A900B424A1 /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
 		D1334A392CED61C500B424A1 /* FavouritesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesPresenter.swift; sourceTree = "<group>"; };
@@ -73,6 +75,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45A088182CEEDA10002D8A76 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				45E43CF02CECDFAD00D6AA00 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		45A088192CEEDA2C002D8A76 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				45A088102CEEA66A002D8A76 /* APIRoute.swift */,
+				45A088122CEEA998002D8A76 /* APIError.swift */,
+				45A088142CEEA9B5002D8A76 /* APIClient.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		D1334A362CED611E00B424A1 /* FavouritesScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,9 +141,7 @@
 				D1B6D1ED2CE9AE720078BBA0 /* Screens */,
 				D1B6D1E02CE9A7A30078BBA0 /* Info.plist */,
 				D1B6D1D82CE9A7A00078BBA0 /* EventHubApp.xcdatamodeld */,
-				45A088102CEEA66A002D8A76 /* APIRoute.swift */,
-				45A088122CEEA998002D8A76 /* APIError.swift */,
-				45A088142CEEA9B5002D8A76 /* APIClient.swift */,
+				45A088192CEEDA2C002D8A76 /* API */,
 			);
 			path = EventHubApp;
 			sourceTree = "<group>";
@@ -150,6 +168,7 @@
 		D1B6D1EC2CE9AE370078BBA0 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
+				45A088162CEED9B3002D8A76 /* Store.swift */,
 				D1B6D1D12CE9A7A00078BBA0 /* SceneDelegate.swift */,
 				D1B6D1CF2CE9A7A00078BBA0 /* AppDelegate.swift */,
 				D1B6D1DD2CE9A7A30078BBA0 /* LaunchScreen.storyboard */,
@@ -162,7 +181,7 @@
 			children = (
 				D1334A362CED611E00B424A1 /* FavouritesScreen */,
 				D1B6D1D32CE9A7A00078BBA0 /* ViewController.swift */,
-				45E43CF02CECDFAD00D6AA00 /* ProfileViewController.swift */,
+				45A088182CEEDA10002D8A76 /* Profile */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -263,6 +282,7 @@
 				D1C97B3E2CEAF2EB007BB9A9 /* FavouriteButton.swift in Sources */,
 				45E43CF12CECDFAD00D6AA00 /* ProfileViewController.swift in Sources */,
 				45A088132CEEA998002D8A76 /* APIError.swift in Sources */,
+				45A088172CEED9B3002D8A76 /* Store.swift in Sources */,
 				D1B6D1EA2CE9A8710078BBA0 /* AppColors.swift in Sources */,
 				D1B6D1D22CE9A7A00078BBA0 /* SceneDelegate.swift in Sources */,
 				45A088112CEEA66A002D8A76 /* APIRoute.swift in Sources */,
