@@ -10,12 +10,12 @@ import UIKit
 extension UIFont {
     
     enum AirbnbFont: String {
-        case semibold = "AirbnbCereal_W_Bd"
-        case normal = "AirbnbCereal_W_Bk"
-        case bold = "AirbnbCereal_W_Blk"
-        case light = "AirbnbCereal_W_Lt"
-        case extrabold = "AirbnbCereal_W_Xbd"
-        case medium = "AirbnbCereal_W_Md"
+        case bold = "AirbnbCerealWBd"
+        case book = "AirbnbCerealWBk"
+        case black = "AirbnbCerealWBlk"
+        case light = "AirbnbCerealWLt"
+        case extrabold = "AirbnbCerealWXBd"
+        case medium = "AirbnbCerealWMd"
     }
     
     class func airbnbFont(ofSize fontSize: CGFloat, weight: AirbnbFont) -> UIFont {

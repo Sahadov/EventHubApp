@@ -7,35 +7,52 @@
 
 import UIKit
 
+
+
+
 class CustomTabBarController: UITabBarController {
-    
+
     private let customTabBar = CustomTabBar()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setValue(customTabBar, forKey: "tabBar")
         setupTabItems()
     }
-    
+
     private func setupTabItems(){
-        let firstVC = ViewController()
-        firstVC.tabBarItem.title = "Explore"
-        firstVC.tabBarItem.image = UIImage(named: "compassTabBar")
+        let exploreVC = ViewController()
+        exploreVC.tabBarItem.title = "Explore"
+        exploreVC.tabBarItem.image = UIImage(named: "compassTabBar")
+
+        let eventsVC = ViewController()
+        eventsVC.tabBarItem.title = "Events"
+        eventsVC.tabBarItem.image = UIImage(named: "calendarTabBar")
+
+        let mapVC = ViewController()
+        mapVC.tabBarItem.title = "Map"
+        mapVC.tabBarItem.image = UIImage(named: "mapTabBar")
+
+        let profileVC = ProfileViewController()
+        profileVC.tabBarItem.title = "Profile"
+        profileVC.tabBarItem.image = UIImage(named: "profileTabBar")
         
-        let secondVC = ViewController()
-        secondVC.tabBarItem.title = "Events"
-        secondVC.tabBarItem.image = UIImage(named: "calendarTabBar")
-        
-        let thirdVC = ViewController()
-        thirdVC.tabBarItem.title = "Map"
-        thirdVC.tabBarItem.image = UIImage(named: "mapTabBar")
-        
-        let fourthVC = ViewController()
-        fourthVC.tabBarItem.title = "Profile"
-        fourthVC.tabBarItem.image = UIImage(named: "profileTabBar")
-        
-        setViewControllers([firstVC, secondVC, thirdVC, fourthVC], animated: true)
-    }
+        let favouritesVC = FavouritesViewController(viewOtput: FavouritesPresenter())
     
+        setViewControllers(
+            [
+                exploreVC,
+                eventsVC,
+                favouritesVC,
+                mapVC,
+                UINavigationController(rootViewController: profileVC)
+            ],
+            animated: true
+        )
+    }
+
 }
+
+
+
 

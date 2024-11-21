@@ -18,5 +18,6 @@ enum AppColors {
     static let purple = UIColor().hex(0x8D4AF1)
     static let yellow = UIColor().hex(0xF9C446)
     static let gray = UIColor().hex(0xE5E5E5)
+    static let primaryBlue = UIColor().hex(0x5669FF)
     static let backgroundBlack = UIColor().hex(0x2D2D3A)
 }
