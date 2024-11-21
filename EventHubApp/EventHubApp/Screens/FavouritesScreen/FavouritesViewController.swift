@@ -7,6 +7,13 @@
 
 import UIKit
 
+
+struct MyEvent {
+    let date: String
+    let title: String
+    let place: String
+}
+
 protocol FavouritesViewInput: AnyObject {
     func onSignInTapped()
     func onSignUpTapped()
@@ -17,17 +24,41 @@ protocol FavouritesViewInput: AnyObject {
 }
 
 class FavouritesViewController: UIViewController {
-
+    
     // MARK: - Properties
     var viewOutput: FavouritesViewOutput!
     
+    
+    let eventsArray = [MyEvent(date: "11 November", title: "The big bang theory", place: "Moscow"),
+                       MyEvent(date: "11 November", title: "The big bang theory", place: "Moscow"),
+                       MyEvent(date: "11 November", title: "The big bang theory", place: "Moscow"),
+                       MyEvent(date: "11 November", title: "The big bang theory", place: "Moscow")]
+        
+    
+        
+
     // MARK: - Views
-    private lazy var titleLabel = UILabel()
+    var collectionView: UICollectionView!
+    
+    let noBookmarksLabel: UILabel = {
+            let title = UILabel()
+            title.translatesAutoresizingMaskIntoConstraints = false
+            title.textAlignment = .center
+            title.numberOfLines = 0
+            title.tintColor = .systemGray6
+            title.text = "You haven't saved any articles yet. Start reading and bookmarking them now."
+            title.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+            return title
+        }()
     
     // MARK: - Initializers
     init(viewOtput: FavouritesViewOutput){
         super.init(nibName: nil, bundle: nil)
         self.viewOutput = viewOtput
+        setupViews()
+        setCollectionView()
+        loadBookmarkdData()
+        setConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -46,6 +77,21 @@ class FavouritesViewController: UIViewController {
     }
     func googlePressed(){
         print("Google pressed")
+    }
+    
+    private func setupViews() {
+        view.backgroundColor = .white
+    }
+        
+    private func loadBookmarkdData() {
+        let isShown = true
+        
+        if isShown {
+            noBookmarksLabel.isHidden = true
+        } else {
+            collectionView.isHidden = true
+        
+            }
     }
 
 }
@@ -85,3 +131,55 @@ extension FavouritesViewController: FavouritesViewInput {
     
 }
 
+private extension FavouritesViewController {
+    func setCollectionView() {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 20
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(FavouriteCell.self, forCellWithReuseIdentifier: "cell")
+        view.addSubview(collectionView)
+        view.addSubview(noBookmarksLabel)
+    }
+}
+
+private extension FavouritesViewController {
+    func setConstraints() {
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 70),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            noBookmarksLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            noBookmarksLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            noBookmarksLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30)
+        ])
+    }
+}
+
+extension FavouritesViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return eventsArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! FavouriteCell
+        cell.configure(with: eventsArray[indexPath.row])
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemWidth = collectionView.frame.width
+        return CGSize(width: itemWidth, height: 96)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let event = eventsArray[indexPath.row]
+//        let articleViewController = ArticleViewController(with: article)
+//        articleViewController.hidesBottomBarWhenPushed = true
+//        navigationController?.pushViewController(articleViewController, animated: true)
+    }
+}
