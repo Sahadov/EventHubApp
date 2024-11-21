@@ -43,10 +43,10 @@ enum APIRoute {
     
     var request: URLRequest? {
         guard let url = URL(string: fullUrl),
-              var components = URLComponents(url: url, resolvingAgainstBaseURL: true) else { return nil }
+              var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
+        else { return nil }
         components.queryItems = queryItems
         var request = URLRequest(url: components.url ?? url)
-        print(url)
         request.httpMethod = httpMethod
         request.timeoutInterval = 10
         return request
