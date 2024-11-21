@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F25FC532CED00CC00281DFB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F25FC522CED00C800281DFB /* NetworkManager.swift */; };
+		0F25FC5A2CEF080600281DFB /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F25FC592CEF07FE00281DFB /* NetworkError.swift */; };
+		0F25FC5C2CEF088800281DFB /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F25FC5B2CEF088200281DFB /* APIEndpoint.swift */; };
+		0F25FC612CEF9C9200281DFB /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F25FC602CEF9C7F00281DFB /* LocationModel.swift */; };
+		0F25FC642CEFA16100281DFB /* EventCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F25FC632CEFA15600281DFB /* EventCategoryModel.swift */; };
+		0F25FC662CEFA4D500281DFB /* EventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F25FC652CEFA4D200281DFB /* EventsModel.swift */; };
+		0F25FC6C2CEFA75E00281DFB /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F25FC6B2CEFA75A00281DFB /* SearchModel.swift */; };
 		D1A246742CEA6D91007DA613 /* AirbnbCereal_W_Bk.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A2466E2CEA6D90007DA613 /* AirbnbCereal_W_Bk.otf */; };
 		D1A246752CEA6D91007DA613 /* AirbnbCereal_W_XBd.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A2466F2CEA6D90007DA613 /* AirbnbCereal_W_XBd.otf */; };
 		D1A246762CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A246702CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf */; };
@@ -28,6 +35,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F25FC522CED00C800281DFB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		0F25FC592CEF07FE00281DFB /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		0F25FC5B2CEF088200281DFB /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
+		0F25FC602CEF9C7F00281DFB /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		0F25FC632CEFA15600281DFB /* EventCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCategoryModel.swift; sourceTree = "<group>"; };
+		0F25FC652CEFA4D200281DFB /* EventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsModel.swift; sourceTree = "<group>"; };
+		0F25FC6B2CEFA75A00281DFB /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		D1A2466E2CEA6D90007DA613 /* AirbnbCereal_W_Bk.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Bk.otf; sourceTree = "<group>"; };
 		D1A2466F2CEA6D90007DA613 /* AirbnbCereal_W_XBd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_XBd.otf; sourceTree = "<group>"; };
 		D1A246702CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Lt.otf; sourceTree = "<group>"; };
@@ -61,6 +75,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F25FC4D2CEB7A1E00281DFB /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				0F25FC592CEF07FE00281DFB /* NetworkError.swift */,
+				0F25FC5B2CEF088200281DFB /* APIEndpoint.swift */,
+				0F25FC522CED00C800281DFB /* NetworkManager.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		0F25FC622CEF9C9600281DFB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0F25FC602CEF9C7F00281DFB /* LocationModel.swift */,
+				0F25FC632CEFA15600281DFB /* EventCategoryModel.swift */,
+				0F25FC652CEFA4D200281DFB /* EventsModel.swift */,
+				0F25FC6B2CEFA75A00281DFB /* SearchModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		D1A2466D2CEA6D7C007DA613 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +131,8 @@
 				D1C97B382CEAF213007BB9A9 /* TabBar */,
 				D1B6D1E62CE9A7E70078BBA0 /* Extensions */,
 				D1B6D1EB2CE9AE1A0078BBA0 /* Resources */,
+				0F25FC4D2CEB7A1E00281DFB /* Service */,
+				0F25FC622CEF9C9600281DFB /* Models */,
 				D1B6D1EC2CE9AE370078BBA0 /* Supporting */,
 				D1B6D1ED2CE9AE720078BBA0 /* Screens */,
 				D1B6D1E02CE9A7A30078BBA0 /* Info.plist */,
@@ -229,11 +266,18 @@
 			files = (
 				D1B6D1D42CE9A7A00078BBA0 /* ViewController.swift in Sources */,
 				D1B6D1D02CE9A7A00078BBA0 /* AppDelegate.swift in Sources */,
+				0F25FC662CEFA4D500281DFB /* EventsModel.swift in Sources */,
+				0F25FC532CED00CC00281DFB /* NetworkManager.swift in Sources */,
 				D1C97B3A2CEAF292007BB9A9 /* CustomBarBar.swift in Sources */,
 				D1B6D1DA2CE9A7A00078BBA0 /* EventHubApp.xcdatamodeld in Sources */,
 				D1A2467B2CEA7782007DA613 /* UIFont_Extension.swift in Sources */,
+				0F25FC642CEFA16100281DFB /* EventCategoryModel.swift in Sources */,
+				0F25FC612CEF9C9200281DFB /* LocationModel.swift in Sources */,
+				0F25FC5C2CEF088800281DFB /* APIEndpoint.swift in Sources */,
+				0F25FC6C2CEFA75E00281DFB /* SearchModel.swift in Sources */,
 				D1C97B3E2CEAF2EB007BB9A9 /* FavouriteButton.swift in Sources */,
 				D1B6D1EA2CE9A8710078BBA0 /* AppColors.swift in Sources */,
+				0F25FC5A2CEF080600281DFB /* NetworkError.swift in Sources */,
 				D1B6D1D22CE9A7A00078BBA0 /* SceneDelegate.swift in Sources */,
 				D1B6D1E82CE9A8070078BBA0 /* UIColor_Extension.swift in Sources */,
 				D1C97B3C2CEAF2C6007BB9A9 /* CustomTabBarController.swift in Sources */,
