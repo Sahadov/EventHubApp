@@ -52,6 +52,7 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		0BFD0BDD2CEB4B2700921CC2 /* Onboarding */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Onboarding; sourceTree = "<group>"; };
+		0BFD0C5A2CF503DA00921CC2 /* SearchBar */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = SearchBar; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +98,7 @@
 		D1B6D1CE2CE9A7A00078BBA0 /* EventHubApp */ = {
 			isa = PBXGroup;
 			children = (
+				0BFD0C5A2CF503DA00921CC2 /* SearchBar */,
 				0BFD0BDD2CEB4B2700921CC2 /* Onboarding */,
 				D1C97B382CEAF213007BB9A9 /* TabBar */,
 				D1B6D1E62CE9A7E70078BBA0 /* Extensions */,
@@ -173,6 +175,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				0BFD0BDD2CEB4B2700921CC2 /* Onboarding */,
+				0BFD0C5A2CF503DA00921CC2 /* SearchBar */,
 			);
 			name = EventHubApp;
 			productName = EventHubApp;
