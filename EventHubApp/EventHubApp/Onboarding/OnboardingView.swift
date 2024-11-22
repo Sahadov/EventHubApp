@@ -5,7 +5,6 @@
 //  Created by Andrew Linkov on 18.11.2024.
 //
 import UIKit
-import SwiftUI
 
 //MARK: - Protocols
 protocol OnboardingView: UIView {
@@ -26,7 +25,6 @@ class OnboardingViewImpl: UIView, OnboardingView {
     
     internal let downView: UIView = {
         let image = UIView()
-        image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
         image.backgroundColor = AppColors.blue
@@ -45,7 +43,6 @@ class OnboardingViewImpl: UIView, OnboardingView {
     
     internal let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 2
         label.font = .systemFont(ofSize: 16)
         label.textColor = .lightGray
         label.numberOfLines = 0
@@ -61,7 +58,6 @@ class OnboardingViewImpl: UIView, OnboardingView {
         super.init(frame: frame)
         setupView()
         setupConstraints()
-        backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {
@@ -110,10 +106,8 @@ class OnboardingViewImpl: UIView, OnboardingView {
             
             descriptionLabel.topAnchor.constraint(equalTo: pageLabel.bottomAnchor, constant: 15),
             descriptionLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            descriptionLabel.heightAnchor.constraint(equalToConstant: 50),
-            descriptionLabel.widthAnchor.constraint(equalToConstant: 295),
-            
-
+            descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
         ])
     }
 }
