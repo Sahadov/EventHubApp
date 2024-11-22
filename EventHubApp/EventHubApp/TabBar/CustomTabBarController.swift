@@ -10,16 +10,30 @@ import UIKit
 
 
 
-class CustomTabBarController: UITabBarController {
+class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
 
     private let customTabBar = CustomTabBar()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setValue(customTabBar, forKey: "tabBar")
+        delegate = self // Set the tab bar controller delegate
+
         setupTabItems()
     }
-
+    
+    // MARK: - UITabBarControllerDelegate
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        print("aaaaa")
+        if viewController is FavouritesViewController {
+            print("ddddddd")
+            customTabBar.favouriteButton.updateBackgroundColor(to: AppColors.orange)
+        } else {
+            customTabBar.favouriteButton.updateBackgroundColor(to: AppColors.blue)
+            print("cccccc")
+        }
+    }
+    
     private func setupTabItems(){
         let exploreVC = ViewController()
         exploreVC.tabBarItem.title = "Explore"
@@ -38,6 +52,7 @@ class CustomTabBarController: UITabBarController {
         profileVC.tabBarItem.image = UIImage(named: "profileTabBar")
         
         let favouritesVC = FavouritesViewController(viewOtput: FavouritesPresenter())
+        //favouritesVC.tabBarItem = UITabBarItem(title: "Favourites", image: UIImage(named: "bookmarkTabBar"), tag: 2)
     
         setViewControllers(
             [

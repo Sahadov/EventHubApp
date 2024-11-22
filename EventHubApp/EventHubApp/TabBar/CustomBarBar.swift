@@ -88,4 +88,3 @@ extension CustomTabBar {
         return path
     }
 }
-

@@ -150,8 +150,8 @@ private extension FavouritesViewController {
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 70),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             noBookmarksLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             noBookmarksLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             noBookmarksLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30)
@@ -172,8 +172,10 @@ extension FavouritesViewController: UICollectionViewDataSource, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemWidth = collectionView.frame.width
-        return CGSize(width: itemWidth, height: 96)
+        let padding: CGFloat = 40 // Total padding: left + right
+        let availableWidth = collectionView.frame.width - padding
+        let cellWidth = availableWidth
+        return CGSize(width: cellWidth, height: 96)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -181,5 +183,14 @@ extension FavouritesViewController: UICollectionViewDataSource, UICollectionView
 //        let articleViewController = ArticleViewController(with: article)
 //        articleViewController.hidesBottomBarWhenPushed = true
 //        navigationController?.pushViewController(articleViewController, animated: true)
+    }
+
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+            return UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20) // Add padding for the section
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+            return 20 // Spacing between columns
     }
 }
