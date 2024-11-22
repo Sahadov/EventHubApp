@@ -78,25 +78,25 @@ class FavouriteCell: UICollectionViewCell {
     
     func setConstraints(){
         NSLayoutConstraint.activate([
-            eventImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            eventImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            eventImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            eventImageView.widthAnchor.constraint(equalToConstant: 85),
+            eventImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            eventImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            eventImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+            eventImageView.widthAnchor.constraint(equalToConstant: 80),
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: eventImageView.trailingAnchor, constant: 10),
+            titleLabel.leadingAnchor.constraint(equalTo: eventImageView.trailingAnchor, constant: 15),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
-            dateLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
-            dateLabel.leadingAnchor.constraint(equalTo: eventImageView.trailingAnchor, constant: 10),
-            locationImageView.leadingAnchor.constraint(equalTo: eventImageView.trailingAnchor, constant: 10),
-            locationImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
+            dateLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 13),
+            dateLabel.leadingAnchor.constraint(equalTo: eventImageView.trailingAnchor, constant: 15),
+            locationImageView.leadingAnchor.constraint(equalTo: eventImageView.trailingAnchor, constant: 15),
+            locationImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -13),
             locationImageView.heightAnchor.constraint(equalToConstant: 18),
             locationImageView.widthAnchor.constraint(equalToConstant: 18),
             locationLabel.leadingAnchor.constraint(equalTo: locationImageView.trailingAnchor, constant: 3),
-            locationLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -3),
+            locationLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
             bookmarkImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            bookmarkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
+            bookmarkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             bookmarkImageView.heightAnchor.constraint(equalToConstant: 20),
-            bookmarkImageView.widthAnchor.constraint(equalToConstant: 20),
+            bookmarkImageView.widthAnchor.constraint(equalToConstant: 22),
         ])
     }
     

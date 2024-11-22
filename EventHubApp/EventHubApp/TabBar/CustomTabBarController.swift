@@ -48,8 +48,7 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
         profileVC.tabBarItem.title = "Profile"
         profileVC.tabBarItem.image = UIImage(named: "profileTabBar")
         
-        let favouritesVC = FavouritesViewController(viewOtput: FavouritesPresenter())
-        //favouritesVC.tabBarItem = UITabBarItem(title: "Favourites", image: UIImage(named: "bookmarkTabBar"), tag: 2)
+        let favouritesVC = FavouritesViewController(viewOutput: FavouritesPresenter())
     
         setViewControllers(
             [
