@@ -24,13 +24,10 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     // MARK: - UITabBarControllerDelegate
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        print("aaaaa")
         if viewController is FavouritesViewController {
-            print("ddddddd")
             customTabBar.favouriteButton.updateBackgroundColor(to: AppColors.orange)
         } else {
             customTabBar.favouriteButton.updateBackgroundColor(to: AppColors.blue)
-            print("cccccc")
         }
     }
     
