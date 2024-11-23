@@ -7,9 +7,13 @@
 
 import UIKit
 import FirebaseAuth
+import Kingfisher
 
 final class ProfileViewController: UIViewController {
     public var callback: Callback?
+    private let store = ProfileStore()
+    private var bag = Bag()
+    
     private let avatarImageView = UIImageView()
     private let nameLabel = UILabel()
     private let editButton = UIButton()
@@ -20,9 +24,19 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        for family in UIFont.familyNames.sorted() {
-          let names = UIFont.fontNames(forFamilyName: family)
-          print(family, names)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        store.sendAction(.fetch)
+    }
+    
+    private func showUserInfo(_ person: Person?) {
+        if let person {
+            nameLabel.text = person.username
+            aboutTextLabel.text = person.about
+            let url = URL(string: person.avatarLink)
+            avatarImageView.kf.setImage(with: url)
         }
     }
 }
@@ -37,6 +51,19 @@ private extension ProfileViewController {
         setupAboutTextView()
         setupLogoutButton()
         view.backgroundColor = .white
+        setupObservers()
+    }
+    
+    func setupObservers() {
+        store
+            .events
+            .receive(on: DispatchQueue.main)
+            .sink {[weak self] event in
+                switch event {
+                case .done(let person): self?.showUserInfo(person)
+                case .signOut: self?.callback?()
+                }
+            }.store(in: &bag)
     }
     
     func setupAvatarImageView() {
@@ -81,6 +108,9 @@ private extension ProfileViewController {
         config.imagePadding = 16
         config.contentInsets = .init(top: 12, leading: 18, bottom: 12, trailing: 18)
         editButton.configuration = config
+        editButton.addAction(UIAction {[weak self] _ in
+            self?.navigationController?.pushViewController(EditProfileController(), animated: true)
+        }, for: .primaryActionTriggered)
         NSLayoutConstraint.activate([
             editButton.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 15),
             editButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
@@ -124,14 +154,59 @@ private extension ProfileViewController {
         config.imagePadding = 16
         config.contentInsets = .init(top: 12, leading: 18, bottom: 12, trailing: 18)
         logoutButton.configuration = config
-        logoutButton.addAction(UIAction {[weak self] _ in
-            try? Auth.auth().signOut()
-            self?.callback?()
-        }, for: .primaryActionTriggered)
+        logoutButton.addAction(
+            UIAction {[weak self] _ in
+                self?.store.sendAction(.signOut)
+            },
+            for: .primaryActionTriggered)
         NSLayoutConstraint.activate([
             logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoutButton.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -40)
         ])
+    }
+}
+
+struct Person: Identifiable, Hashable, Codable {
+    let id: String
+    var username: String
+    let email: String
+    var about = ""
+    var pushId = ""
+    var avatarLink = ""
+    var fullname = ""
+    var status = Status()
+    var initials: String {
+        String(username.first ?? "?")
+    }
+}
+
+extension Person {
+    static var currentId: String {
+        Auth.auth().currentUser?.uid ?? ""
+    }
+
+    static var currentName: String {
+        "Current Name"
+    }
+
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    static func chatRoomIdFrom(id: String) -> String {
+        let value = id.compare(currentId).rawValue
+        return value < 0 ? id + currentId : currentId + id
+    }
+
+}
+
+extension Person {
+    struct Status: Codable, Hashable {
+        var index = 0
+        var statuses = ["Available", "Busy", "At School"]
+        var text: String {
+            index < statuses.count ? statuses[index] : "No status"
+        }
     }
 }
 
