@@ -8,7 +8,9 @@
 import UIKit
 
 class SignInViewController: UIViewController {
-    
+    public var callback: Callback?
+    private let store = AuthStore()
+    private var bag = Bag()
     
     private let logoImageView: UIImageView = {
         let logo = UIImageView()
@@ -70,7 +72,8 @@ class SignInViewController: UIViewController {
     }
     
     @objc func signInTapped() {
-        print("signInTapped")
+        guard let email = emailTF.text, let password = passwordTF.text else { return }
+        store.sendAction(.signIn(email, password))
     }
     
     @objc func signUpTapped() {
@@ -101,6 +104,23 @@ extension SignInViewController {
         }
         
         configure()
+        setupObservers()
+    }
+    
+    private func setupObservers() {
+        store
+            .events
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] event in
+                guard let self else { return }
+                switch event {
+                case .login:            self.login()
+                }
+            }.store(in: &bag)
+    }
+    
+    private func login() {
+        callback?()
     }
     
     private func configure() {

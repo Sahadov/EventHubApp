@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 final class ProfileViewController: UIViewController {
+    public var callback: Callback?
     private let avatarImageView = UIImageView()
     private let nameLabel = UILabel()
     private let editButton = UIButton()
@@ -122,6 +124,10 @@ private extension ProfileViewController {
         config.imagePadding = 16
         config.contentInsets = .init(top: 12, leading: 18, bottom: 12, trailing: 18)
         logoutButton.configuration = config
+        logoutButton.addAction(UIAction {[weak self] _ in
+            try? Auth.auth().signOut()
+            self?.callback?()
+        }, for: .primaryActionTriggered)
         NSLayoutConstraint.activate([
             logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoutButton.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -40)

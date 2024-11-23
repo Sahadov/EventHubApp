@@ -11,8 +11,17 @@ import UIKit
 
 
 class CustomTabBarController: UITabBarController {
-
+    private var callback: Callback?
     private let customTabBar = CustomTabBar()
+
+    init(callback: Callback? = nil) {
+        self.callback = callback
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +43,7 @@ class CustomTabBarController: UITabBarController {
         mapVC.tabBarItem.image = UIImage(named: "mapTabBar")
 
         let profileVC = ProfileViewController()
+        profileVC.callback = callback
         profileVC.tabBarItem.title = "Profile"
         profileVC.tabBarItem.image = UIImage(named: "profileTabBar")
         

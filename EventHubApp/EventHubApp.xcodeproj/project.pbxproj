@@ -27,6 +27,8 @@
 		45696E662CF1915F0070EAB3 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 45696E652CF1915F0070EAB3 /* FirebaseFirestore */; };
 		45696E682CF1915F0070EAB3 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 45696E672CF1915F0070EAB3 /* FirebaseStorage */; };
 		45696E6A2CF1918E0070EAB3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 45696E692CF1918E0070EAB3 /* GoogleService-Info.plist */; };
+		45696E6C2CF1930A0070EAB3 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45696E6B2CF1930A0070EAB3 /* Store.swift */; };
+		45696E6E2CF194B90070EAB3 /* AuthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45696E6D2CF194B90070EAB3 /* AuthStore.swift */; };
 		45A088112CEEA66A002D8A76 /* APIRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A088102CEEA66A002D8A76 /* APIRoute.swift */; };
 		45A088132CEEA998002D8A76 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A088122CEEA998002D8A76 /* APIError.swift */; };
 		45A088152CEEA9B5002D8A76 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A088142CEEA9B5002D8A76 /* APIClient.swift */; };
@@ -71,6 +73,8 @@
 		45696E562CF190260070EAB3 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		45696E572CF190260070EAB3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		45696E692CF1918E0070EAB3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		45696E6B2CF1930A0070EAB3 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		45696E6D2CF194B90070EAB3 /* AuthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStore.swift; sourceTree = "<group>"; };
 		45A088102CEEA66A002D8A76 /* APIRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRoute.swift; sourceTree = "<group>"; };
 		45A088122CEEA998002D8A76 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		45A088142CEEA9B5002D8A76 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 				45696E552CF190260070EAB3 /* ResetPasswordViewController.swift */,
 				45696E562CF190260070EAB3 /* SignInViewController.swift */,
 				45696E572CF190260070EAB3 /* SignUpViewController.swift */,
+				45696E6D2CF194B90070EAB3 /* AuthStore.swift */,
 			);
 			path = AuthScreens;
 			sourceTree = "<group>";
@@ -213,6 +218,7 @@
 				45A088102CEEA66A002D8A76 /* APIRoute.swift */,
 				45A088122CEEA998002D8A76 /* APIError.swift */,
 				45A088142CEEA9B5002D8A76 /* APIClient.swift */,
+				45696E6B2CF1930A0070EAB3 /* Store.swift */,
 			);
 			path = EventHubApp;
 			sourceTree = "<group>";
@@ -352,6 +358,7 @@
 				45A088152CEEA9B5002D8A76 /* APIClient.swift in Sources */,
 				45696E592CF190260070EAB3 /* ResetPasswordViewController.swift in Sources */,
 				45696E5A2CF190260070EAB3 /* AuthTextField.swift in Sources */,
+				45696E6C2CF1930A0070EAB3 /* Store.swift in Sources */,
 				45696E5B2CF190260070EAB3 /* SignInViewController.swift in Sources */,
 				45696E5C2CF190260070EAB3 /* BackButton.swift in Sources */,
 				45696E5D2CF190260070EAB3 /* ActionButton.swift in Sources */,
@@ -360,6 +367,7 @@
 				45696E602CF190260070EAB3 /* AuthGoogleButton.swift in Sources */,
 				45696E612CF190260070EAB3 /* SignUpViewController.swift in Sources */,
 				D1C97B3A2CEAF292007BB9A9 /* CustomBarBar.swift in Sources */,
+				45696E6E2CF194B90070EAB3 /* AuthStore.swift in Sources */,
 				D1B6D1DA2CE9A7A00078BBA0 /* EventHubApp.xcdatamodeld in Sources */,
 				D1A2467B2CEA7782007DA613 /* UIFont_Extension.swift in Sources */,
 				D1C97B3E2CEAF2EB007BB9A9 /* FavouriteButton.swift in Sources */,

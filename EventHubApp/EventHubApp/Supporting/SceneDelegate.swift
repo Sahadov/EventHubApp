@@ -43,19 +43,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     private func makeAuth() -> UIViewController {
-//        let callback: Callback = { [weak self] in
-//            self?.start()
-//        }
+        let callback: Callback = { [weak self] in
+            self?.start()
+        }
         let controller = SignInViewController()
-//        controller.callback = callback
+        controller.callback = callback
         return UINavigationController(rootViewController: controller)
     }
 
     private func makeTabbar() -> UIViewController {
-//        let callback: Callback = { [weak self] in
-//            self?.start()
-//        }
-        return CustomTabBarController()
+        let callback: Callback = { [weak self] in
+            self?.start()
+        }
+        return CustomTabBarController(callback: callback)
     }
 }
 
