@@ -31,6 +31,12 @@ final class FavouriteButton: UIButton {
     @objc func buttonTapped() {
         onTap?()
     }
+    
+    // MARK: - Update Color
+    func updateBackgroundColor(to color: UIColor) {
+        backgroundColor = color
+        layer.shadowColor = color.cgColor
+    }
 }
 
 //MARK: Configure
