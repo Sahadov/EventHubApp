@@ -18,8 +18,8 @@ class SignUpViewController: UIViewController {
     private let signUpButton = ActionButton(title: "SIGN UP")
     private let orLabel = TextLabel(text: "OR", fontSize: 16, fontWeight: .medium, textColor: AppColors.gray)
     private let googleButton = AuthGoogleButton(title: "Login with Google")
-    private lazy var signUpFirstLabel = TextLabel(text: "Already have an account?", fontSize: 14, fontWeight: .normal)
-    private lazy var signUpSecondLabel = TextLabel(text: "Sign in", fontSize: 14, fontWeight: .normal, textColor: AppColors.blue)
+    private lazy var signUpFirstLabel = TextLabel(text: "Already have an account?", fontSize: 14, fontWeight: .book)
+    private lazy var signUpSecondLabel = TextLabel(text: "Sign in", fontSize: 14, fontWeight: .book, textColor: AppColors.blue)
     private lazy var signUpStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal

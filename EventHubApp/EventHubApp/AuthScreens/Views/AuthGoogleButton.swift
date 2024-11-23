@@ -32,7 +32,7 @@ final class AuthGoogleButton: UIButton {
 // MARK: - Configure
 private extension AuthGoogleButton {
     func configure() {
-        self.titleLabel?.font = .airbnbFont(ofSize: 14, weight: .normal)
+        self.titleLabel?.font = .airbnbFont(ofSize: 14, weight: .book)
         self.setTitleColor(AppColors.black, for: .normal)
         self.backgroundColor = .white
         self.layer.cornerRadius = 16

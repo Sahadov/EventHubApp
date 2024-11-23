@@ -11,7 +11,7 @@ class ResetPasswordViewController: UIViewController {
     
     private let navigationBackButton = BackButton()
     private let titleLabel = TextLabel(text: "Reset Password", fontSize: 24, fontWeight: .medium)
-    private let manualLabel = TextLabel(text: "Please enter your email address to request a password reset", fontSize: 15, fontWeight: .normal)
+    private let manualLabel = TextLabel(text: "Please enter your email address to request a password reset", fontSize: 15, fontWeight: .book)
     private let emailTF = AuthTextField(placeholder: "abc@email.com", keyboardType: .emailAddress, imageString: "emailAuth")
     private let resetPasswordButton = ActionButton(title: "SEND")
 

@@ -36,8 +36,8 @@ class SignInViewController: UIViewController {
         return customSwitch
     }()
     
-    private let rememberMeLabel = TextLabel(text: "Remember me", fontSize: 14, fontWeight: .normal)
-    private let forgotPasswordLabel = TextLabel(text: "Forgot Password?", fontSize: 14, fontWeight: .normal)
+    private let rememberMeLabel = TextLabel(text: "Remember me", fontSize: 14, fontWeight: .book)
+    private let forgotPasswordLabel = TextLabel(text: "Forgot Password?", fontSize: 14, fontWeight: .book)
     
     private let signInButton = ActionButton(title: "SIGN IN")
     
@@ -45,8 +45,8 @@ class SignInViewController: UIViewController {
     
     private let googleButton = AuthGoogleButton(title: "Login with Google")
     
-    private let signUpFirstLabel = TextLabel(text: "Don’t have an account?", fontSize: 14, fontWeight: .normal)
-    private let signUpSecondLabel = TextLabel(text: "Sign up", fontSize: 14, fontWeight: .normal, textColor: AppColors.blue)
+    private let signUpFirstLabel = TextLabel(text: "Don’t have an account?", fontSize: 14, fontWeight: .book)
+    private let signUpSecondLabel = TextLabel(text: "Sign up", fontSize: 14, fontWeight: .book, textColor: AppColors.blue)
     
     private let signUpStackView: UIStackView = {
         let stackView = UIStackView()

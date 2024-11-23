@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -14,18 +15,47 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        let navigationController = UINavigationController(rootViewController: SignInViewController())
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
-        Task {
-            do {
-                let response: EventResponse = try await APIClient.shared.request(.getNews(NewsRequest(location: "spb")))
-                response.results.forEach { print($0.title) }
-            } catch {
-                print(error)
-            }
-        }
+        start()
     }
     
+    func start() {
+        if Auth.auth().currentUser == nil {
+            setRootViewController(makeAuth())
+        } else {
+            setRootViewController(makeTabbar())
+        }
+    }
+
+    func setRootViewController(_ controller: UIViewController, animated: Bool = true) {
+        guard animated, let window = self.window else {
+            self.window?.rootViewController = controller
+            self.window?.makeKeyAndVisible()
+            return
+        }
+
+        window.rootViewController = controller
+        window.makeKeyAndVisible()
+        UIView.transition(with: window,
+                          duration: 0.3,
+                          options: .transitionCrossDissolve,
+                          animations: nil,
+                          completion: nil)
+    }
+
+    private func makeAuth() -> UIViewController {
+//        let callback: Callback = { [weak self] in
+//            self?.start()
+//        }
+        let controller = SignInViewController()
+//        controller.callback = callback
+        return UINavigationController(rootViewController: controller)
+    }
+
+    private func makeTabbar() -> UIViewController {
+//        let callback: Callback = { [weak self] in
+//            self?.start()
+//        }
+        return CustomTabBarController()
+    }
 }
 

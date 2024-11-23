@@ -32,7 +32,7 @@ final class AuthTextField: UITextField {
 private extension AuthTextField {
     func configure() {
         backgroundColor = .white
-        font = .airbnbFont(ofSize: 14, weight: .normal)
+        font = .airbnbFont(ofSize: 14, weight: .book)
         textAlignment = .left
         layer.borderWidth = 1
         layer.cornerRadius = 12
