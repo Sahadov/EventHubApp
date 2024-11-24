@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseFirestore
 import FirebaseAuth
+import FirebaseStorage
 
 enum EditProfileEvent {
     case done(Person)
@@ -16,7 +17,7 @@ enum EditProfileEvent {
 enum EditProfileAction {
     case updateUsername(String)
     case uploadImage(UIImage)
-    case updateAvatarLink(String)
+    case upload(Person)
     case fetch
 }
 
@@ -32,29 +33,53 @@ final class EditProfileStore: Store<EditProfileEvent, EditProfileAction> {
             statefulCall { [weak self] in
                 try await self?.uploadImage(image)
             }
-        case .updateAvatarLink(let link):
-            statefulCall { [weak self] in
-                try self?.updateAvatarLink(link)
-            }
         case .fetch:
             statefulCall { [weak self] in
                 try await self?.fetchPerson()
             }
+        case .upload(let person):
+            statefulCall { [weak self] in
+                try self?.upload(person)
+            }
         }
     }
+    
+    private func upload(_ person: Person) throws {
+        try Firestore
+            .firestore()
+            .collection("persons")
+            .document(person.id)
+            .setData(from: person)
+    }
 
-    private func updateAvatarLink(_ link: String) throws {
-//        try useCase.updateAvatar(link)
+    private func updateAvatarLink(_ link: String, uid: String) {
+        Firestore
+            .firestore()
+            .collection("persons")
+            .document(uid)
+            .updateData(["avatarLink": link])
     }
 
     private func updateUsername(_ username: String) throws {
-//        try useCase.updateUsername(username)
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        Firestore
+            .firestore()
+            .collection("persons")
+            .document(uid)
+            .updateData(["username": username])
     }
 
     private func uploadImage(_ image: UIImage) async throws {
-//        if let url = try await useCase.uploadImage(image) {
-//            try useCase.updateAvatar(url)
-//        }
+        guard let uid = Auth.auth().currentUser?.uid,
+              let data = image.jpegData(compressionQuality: 0.7)
+        else { return }
+        let directory = "/profile/\(uid).jpg"
+        let storageRef = Storage.storage()
+            .reference()
+            .child(directory)
+        let _ = try await storageRef.putDataAsync(data)
+        let url = try await storageRef.downloadURL()
+        updateAvatarLink(url.absoluteString, uid: uid)
     }
 
     private func fetchPerson() async throws {

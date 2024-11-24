@@ -36,7 +36,7 @@ final class ProfileViewController: UIViewController {
             nameLabel.text = person.username
             aboutTextLabel.text = person.about
             let url = URL(string: person.avatarLink)
-            avatarImageView.kf.setImage(with: url)
+            avatarImageView.kf.setImage(with: url, placeholder: UIImage(named: "avatar"))
         }
     }
 }
@@ -84,7 +84,7 @@ private extension ProfileViewController {
     func setupNameLabel() {
         view.addSubview(nameLabel)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.text = "Ashfak Sayem"
+        nameLabel.text = ""
         nameLabel.textAlignment = .center
         nameLabel.font = .airbnbFont(ofSize: 24, weight: .book)
         NSLayoutConstraint.activate([
@@ -135,7 +135,7 @@ private extension ProfileViewController {
         aboutTextLabel.translatesAutoresizingMaskIntoConstraints = false
         aboutTextLabel.numberOfLines = 0
         aboutTextLabel.font = .airbnbFont(ofSize: 16, weight: .book)
-        aboutTextLabel.text = "Enjoy your favorite dishe and a lovely your friends and family and have a great time. Food from local food trucks will be available for purchase. Read More"
+        aboutTextLabel.text = ""
         NSLayoutConstraint.activate([
             aboutTextLabel.topAnchor.constraint(equalTo: aboutTitleLabel.bottomAnchor, constant: 50),
             aboutTextLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
