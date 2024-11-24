@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -16,14 +17,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = CustomTabBarController()
         window?.makeKeyAndVisible()
-        Task {
-            do {
-                let response: EventResponse = try await APIClient.shared.request(.getNews(NewsRequest(location: "spb")))
-                response.results.forEach { print($0.title) }
-            } catch {
-                print(error)
-            }
-        }
+        Auth.auth().createUser(withEmail: "mrsahadov@gmail.com", password: "123456")
+//        Task {
+//            do {
+////                let response: EventResponse = try await APIClient.shared.request(.getNews(NewsRequest(location: "spb")))
+////                response.results.forEach { print($0.title) }
+//            } catch {
+//                print(error)
+//            }
+//        }
     }
     
 }
