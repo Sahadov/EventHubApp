@@ -20,6 +20,10 @@
 		45E43CF12CECDFAD00D6AA00 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E43CF02CECDFAD00D6AA00 /* ProfileViewController.swift */; };
 		D1334A382CED61A900B424A1 /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1334A372CED61A900B424A1 /* FavouritesViewController.swift */; };
 		D1334A3A2CED61C500B424A1 /* FavouritesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1334A392CED61C500B424A1 /* FavouritesPresenter.swift */; };
+		D14EFDB22CF2AD5E00FFAA58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D14EFDB12CF2AD5D00FFAA58 /* GoogleService-Info.plist */; };
+		D14EFDB52CF2B2F900FFAA58 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D14EFDB42CF2B2F900FFAA58 /* FirebaseAnalytics */; };
+		D14EFDB72CF2B2F900FFAA58 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D14EFDB62CF2B2F900FFAA58 /* FirebaseAuth */; };
+		D14EFDB92CF2B2F900FFAA58 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = D14EFDB82CF2B2F900FFAA58 /* FirebaseDatabase */; };
 		D1A246742CEA6D91007DA613 /* AirbnbCereal_W_Bk.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A2466E2CEA6D90007DA613 /* AirbnbCereal_W_Bk.otf */; };
 		D1A246752CEA6D91007DA613 /* AirbnbCereal_W_XBd.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A2466F2CEA6D90007DA613 /* AirbnbCereal_W_XBd.otf */; };
 		D1A246762CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A246702CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf */; };
@@ -55,6 +59,7 @@
 		45E43CF02CECDFAD00D6AA00 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D1334A372CED61A900B424A1 /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
 		D1334A392CED61C500B424A1 /* FavouritesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesPresenter.swift; sourceTree = "<group>"; };
+		D14EFDB12CF2AD5D00FFAA58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D1A2466E2CEA6D90007DA613 /* AirbnbCereal_W_Bk.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Bk.otf; sourceTree = "<group>"; };
 		D1A2466F2CEA6D90007DA613 /* AirbnbCereal_W_XBd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_XBd.otf; sourceTree = "<group>"; };
 		D1A246702CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Lt.otf; sourceTree = "<group>"; };
@@ -83,6 +88,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D14EFDB92CF2B2F900FFAA58 /* FirebaseDatabase in Frameworks */,
+				D14EFDB52CF2B2F900FFAA58 /* FirebaseAnalytics in Frameworks */,
+				D14EFDB72CF2B2F900FFAA58 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +144,7 @@
 		D1B6D1C32CE9A7A00078BBA0 = {
 			isa = PBXGroup;
 			children = (
+				D14EFDB12CF2AD5D00FFAA58 /* GoogleService-Info.plist */,
 				D1B6D1CE2CE9A7A00078BBA0 /* EventHubApp */,
 				D1B6D1CD2CE9A7A00078BBA0 /* Products */,
 			);
@@ -233,6 +242,11 @@
 			dependencies = (
 			);
 			name = EventHubApp;
+			packageProductDependencies = (
+				D14EFDB42CF2B2F900FFAA58 /* FirebaseAnalytics */,
+				D14EFDB62CF2B2F900FFAA58 /* FirebaseAuth */,
+				D14EFDB82CF2B2F900FFAA58 /* FirebaseDatabase */,
+			);
 			productName = EventHubApp;
 			productReference = D1B6D1CC2CE9A7A00078BBA0 /* EventHubApp.app */;
 			productType = "com.apple.product-type.application";
@@ -261,6 +275,9 @@
 				Base,
 			);
 			mainGroup = D1B6D1C32CE9A7A00078BBA0;
+			packageReferences = (
+				D14EFDB32CF2B2F900FFAA58 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = D1B6D1CD2CE9A7A00078BBA0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -277,6 +294,7 @@
 			files = (
 				D1A246742CEA6D91007DA613 /* AirbnbCereal_W_Bk.otf in Resources */,
 				D1A246782CEA6D91007DA613 /* AirbnbCereal_W_Md.otf in Resources */,
+				D14EFDB22CF2AD5E00FFAA58 /* GoogleService-Info.plist in Resources */,
 				D1B6D1DF2CE9A7A30078BBA0 /* LaunchScreen.storyboard in Resources */,
 				D1A246762CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf in Resources */,
 				D1A246772CEA6D91007DA613 /* AirbnbCereal_W_Bd.otf in Resources */,
@@ -455,7 +473,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GNG4B9AY27;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EventHubApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -484,9 +502,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GNG4B9AY27;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EventHubApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -501,6 +519,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Dmitry.eventHubApp.EventHubApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -532,6 +551,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D14EFDB32CF2B2F900FFAA58 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = exactVersion;
+				version = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D14EFDB42CF2B2F900FFAA58 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D14EFDB32CF2B2F900FFAA58 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		D14EFDB62CF2B2F900FFAA58 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D14EFDB32CF2B2F900FFAA58 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		D14EFDB82CF2B2F900FFAA58 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D14EFDB32CF2B2F900FFAA58 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		D1B6D1D82CE9A7A00078BBA0 /* EventHubApp.xcdatamodeld */ = {
