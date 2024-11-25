@@ -6,6 +6,6 @@
 //
 
 struct LocationModel: Decodable {
-    let slug: String
-    let name: String
+    let slug: String?
+    let name: String?
 }
