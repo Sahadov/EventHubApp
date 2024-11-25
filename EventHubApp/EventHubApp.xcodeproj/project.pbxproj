@@ -32,6 +32,7 @@
 		D1A246782CEA6D91007DA613 /* AirbnbCereal_W_Md.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A246722CEA6D91007DA613 /* AirbnbCereal_W_Md.otf */; };
 		D1A246792CEA6D91007DA613 /* AirbnbCereal_W_Blk.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A246732CEA6D91007DA613 /* AirbnbCereal_W_Blk.otf */; };
 		D1A2467B2CEA7782007DA613 /* UIFont_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A2467A2CEA7782007DA613 /* UIFont_Extension.swift */; };
+		D1B692012CEECC91002FD817 /* FavouriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B692002CEECC91002FD817 /* FavouriteCell.swift */; };
 		D1B6D1D02CE9A7A00078BBA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B6D1CF2CE9A7A00078BBA0 /* AppDelegate.swift */; };
 		D1B6D1D22CE9A7A00078BBA0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B6D1D12CE9A7A00078BBA0 /* SceneDelegate.swift */; };
 		D1B6D1D42CE9A7A00078BBA0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B6D1D32CE9A7A00078BBA0 /* ViewController.swift */; };
@@ -71,6 +72,7 @@
 		D1A246722CEA6D91007DA613 /* AirbnbCereal_W_Md.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Md.otf; sourceTree = "<group>"; };
 		D1A246732CEA6D91007DA613 /* AirbnbCereal_W_Blk.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Blk.otf; sourceTree = "<group>"; };
 		D1A2467A2CEA7782007DA613 /* UIFont_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont_Extension.swift; sourceTree = "<group>"; };
+		D1B692002CEECC91002FD817 /* FavouriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCell.swift; sourceTree = "<group>"; };
 		D1B6D1CC2CE9A7A00078BBA0 /* EventHubApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventHubApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1B6D1CF2CE9A7A00078BBA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1B6D1D12CE9A7A00078BBA0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			children = (
 				D1334A372CED61A900B424A1 /* FavouritesViewController.swift */,
 				D1334A392CED61C500B424A1 /* FavouritesPresenter.swift */,
+				D1B692002CEECC91002FD817 /* FavouriteCell.swift */,
 			);
 			path = FavouritesScreen;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				0F25FC872CEFE67700281DFB /* NetworkManager.swift in Sources */,
 				45E43CF12CECDFAD00D6AA00 /* ProfileViewController.swift in Sources */,
 				45A088132CEEA998002D8A76 /* APIError.swift in Sources */,
+				D1B692012CEECC91002FD817 /* FavouriteCell.swift in Sources */,
 				D1B6D1EA2CE9A8710078BBA0 /* AppColors.swift in Sources */,
 				D1B6D1D22CE9A7A00078BBA0 /* SceneDelegate.swift in Sources */,
 				45A088112CEEA66A002D8A76 /* APIRoute.swift in Sources */,

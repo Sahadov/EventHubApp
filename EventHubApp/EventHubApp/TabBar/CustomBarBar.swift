@@ -53,8 +53,13 @@ final class CustomTabBar: UITabBar {
         ])
 
         favouriteButton.onTap = { [weak self] in
-                guard let tabBarController = self?.window?.rootViewController as? UITabBarController else { return }
-                tabBarController.selectedIndex = 2
+            // go to FavouritesViewController
+            guard let tabBarController = self?.window?.rootViewController as? UITabBarController else { return }
+            tabBarController.selectedIndex = 2
+                
+            // change button's color
+            guard let favouriteButton = self?.favouriteButton else { return }
+            favouriteButton.updateBackgroundColor(to: AppColors.red)
         }
         
         
@@ -88,4 +93,3 @@ extension CustomTabBar {
         return path
     }
 }
-
