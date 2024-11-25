@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -87,6 +87,10 @@
 		D1C97B3B2CEAF2C6007BB9A9 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		D1C97B3D2CEAF2EB007BB9A9 /* FavouriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		0BFD0BDD2CEB4B2700921CC2 /* Onboarding */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Onboarding; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		D1B6D1C92CE9A7A00078BBA0 /* Frameworks */ = {
@@ -174,6 +178,7 @@
 		D1B6D1CE2CE9A7A00078BBA0 /* EventHubApp */ = {
 			isa = PBXGroup;
 			children = (
+				0BFD0BDD2CEB4B2700921CC2 /* Onboarding */,
 				D1C97B382CEAF213007BB9A9 /* TabBar */,
 				D1B6D1E62CE9A7E70078BBA0 /* Extensions */,
 				0F25FC842CEFE67700281DFB /* Service */,
@@ -255,6 +260,9 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				0BFD0BDD2CEB4B2700921CC2 /* Onboarding */,
+			);
 			name = EventHubApp;
 			productName = EventHubApp;
 			productReference = D1B6D1CC2CE9A7A00078BBA0 /* EventHubApp.app */;
@@ -268,7 +276,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					D1B6D1CB2CE9A7A00078BBA0 = {
 						CreatedOnToolsVersion = 14.2;
@@ -398,6 +406,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -458,6 +467,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
