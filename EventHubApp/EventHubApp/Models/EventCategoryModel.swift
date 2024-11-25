@@ -7,6 +7,6 @@
 
 struct EventCategoryModel: Decodable {
     let id: Int?
-    let title: String?
+    let name: String?
     let slug: String?
 }
