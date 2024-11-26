@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -14,11 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-//        UINavigationController(rootViewController: tabBarController)
-//        let navigationController:UINavigationController
-//        let tabBarController = CustomTabBarController()
-//        navigationController = UINavigationController(rootViewController: tabBarController)
-        window?.rootViewController = CustomTabBarController()
+        window?.rootViewController = OnboardingViewController(presenter: OnboardingViewPresenterImpl())
         window?.makeKeyAndVisible()
 //        Task {
 //            do {
