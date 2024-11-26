@@ -34,7 +34,7 @@ class OnboardingViewImpl: UIView, OnboardingView {
     
     internal let pageLabel: UILabel = {
         let label = UILabel()
-        label.font = .airbnbFont(ofSize: 24, weight: .normal)
+        label.font = .airbnbFont(ofSize: 24, weight: .book)
         label.textColor = .white
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
