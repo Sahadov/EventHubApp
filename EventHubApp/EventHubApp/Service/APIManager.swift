@@ -24,7 +24,7 @@ class APIManager {
         networkManager.fetch(for: url, completion: completion)
     }
     
-    func getEvents(lang: String, page: Int, location: String, completion: @escaping(Result<EventsModel, NetworkError>) -> Void) {
+    func getEvents(lang: String, page: Int?, location: String?, completion: @escaping(Result<EventsModel, NetworkError>) -> Void) {
         guard let url = networkManager.createURL(for: .getEnvents(lang: lang, location: location, page: page)) else { return }
         print(url)
         networkManager.fetch(for: url, completion: completion)

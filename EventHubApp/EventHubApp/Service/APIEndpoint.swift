@@ -8,7 +8,7 @@
 enum APIEndpoints {
     case getCities(lang: String)
     case getCategories(lang: String)
-    case getEnvents(lang: String, location: String, page: Int)
+    case getEnvents(lang: String, location: String?, page: Int?)
     case doSearch(query: String, location: String, page: Int, lang: String)
     
     var patch: String {
