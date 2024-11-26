@@ -27,6 +27,7 @@
 		0FADA15D2CF62D5F00EE4409 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FADA15C2CF62D5C00EE4409 /* EventCell.swift */; };
 		0FADA15F2CF62D6800EE4409 /* EventHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FADA15E2CF62D6200EE4409 /* EventHeaderCell.swift */; };
 		0FADA1622CF6327A00EE4409 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FADA1612CF6327400EE4409 /* ModuleBuilder.swift */; };
+		0FADA1642CF637AA00EE4409 /* CategoryConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FADA1632CF6379E00EE4409 /* CategoryConfigurator.swift */; };
 		45A088112CEEA66A002D8A76 /* APIRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A088102CEEA66A002D8A76 /* APIRoute.swift */; };
 		45A088132CEEA998002D8A76 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A088122CEEA998002D8A76 /* APIError.swift */; };
 		45A088152CEEA9B5002D8A76 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A088142CEEA9B5002D8A76 /* APIClient.swift */; };
@@ -80,6 +81,7 @@
 		0FADA15C2CF62D5C00EE4409 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		0FADA15E2CF62D6200EE4409 /* EventHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHeaderCell.swift; sourceTree = "<group>"; };
 		0FADA1612CF6327400EE4409 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
+		0FADA1632CF6379E00EE4409 /* CategoryConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryConfigurator.swift; sourceTree = "<group>"; };
 		45A088102CEEA66A002D8A76 /* APIRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRoute.swift; sourceTree = "<group>"; };
 		45A088122CEEA998002D8A76 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		45A088142CEEA9B5002D8A76 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 		0FADA1502CF6290A00EE4409 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				0FADA1632CF6379E00EE4409 /* CategoryConfigurator.swift */,
 				0FADA15A2CF62D5500EE4409 /* CategoryCell.swift */,
 				0FADA15C2CF62D5C00EE4409 /* EventCell.swift */,
 				0FADA15E2CF62D6200EE4409 /* EventHeaderCell.swift */,
@@ -422,6 +425,7 @@
 				57A55F962CF25D8F002915D0 /* ShareCollectionViewCell.swift in Sources */,
 				0F25FCA22CF5F1BB00281DFB /* APIManager.swift in Sources */,
 				0F25FC862CEFE67700281DFB /* APIEndpoint.swift in Sources */,
+				0FADA1642CF637AA00EE4409 /* CategoryConfigurator.swift in Sources */,
 				0F25FC872CEFE67700281DFB /* NetworkManager.swift in Sources */,
 				0FADA1622CF6327A00EE4409 /* ModuleBuilder.swift in Sources */,
 				0FADA1572CF62D4600EE4409 /* CategoryCollectionView.swift in Sources */,

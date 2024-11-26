@@ -17,7 +17,18 @@ final class ExplorePresenter: ExplorePresenterProtocol {
     weak var view: ExploreViewProtocol?
     private let apiManager = APIManager.shared
 
-    func fetchCategories() { }
+    func fetchCategories() {
+        apiManager.getEventCategories(lang: "ru") { [weak self] result in
+            switch result {
+            case .success(let categories):
+                DispatchQueue.main.async {
+                    self?.view?.showCatigories(categories)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 
     func fetchEvents() { }
 }
