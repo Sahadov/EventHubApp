@@ -43,6 +43,16 @@ class NetworkManager {
             parameters["page"] = "\(page)"
             parameters["expand"] = "dates"
             parameters["ctype"] = "event"
+        case .getNearbyEnvents(lang: let lang, location: let location, radius: let radius):
+            parameters["page_size"] = "(10)"
+            parameters["expand"] = "dates,place,location"
+            parameters["order_by"] = "-publication_date"
+            parameters["lang"] = "\(lang)"
+            parameters["fields"] = "id,dates,title,short_title,place,description,body_text,location,categories,images,favorites_count,participants"
+            parameters["text_format"] = "text"
+            parameters["lat"] = "\(55.753676)"
+            parameters["lon"] = "\(37.619899)"
+            parameters["radius"] = "\(radius)"
         }
         return parameters
     }

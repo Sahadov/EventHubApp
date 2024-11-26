@@ -24,7 +24,7 @@ class APIManager {
         networkManager.fetch(for: url, completion: completion)
     }
     
-    func getEvents(lang: String, page: Int?, location: String?, completion: @escaping(Result<EventsModel, NetworkError>) -> Void) {
+    func getEvents(lang: String, page: Int, location: String, completion: @escaping(Result<EventsModel, NetworkError>) -> Void) {
         guard let url = networkManager.createURL(for: .getEnvents(lang: lang, location: location, page: page)) else { return }
         print(url)
         networkManager.fetch(for: url, completion: completion)
@@ -32,6 +32,12 @@ class APIManager {
     
     func doSearch(query: String, location: String, page: Int, lang: String, completion: @escaping(Result<SearchModel, NetworkError>) -> Void) {
         guard let url = networkManager.createURL(for: .doSearch(query: query, location: location, page: page, lang: lang)) else { return }
+        print(url)
+        networkManager.fetch(for: url, completion: completion)
+    }
+
+    func getNearbyEvents(lang: String, location: String, radius: Int, completion: @escaping(Result<EventsModel, NetworkError>) -> Void) {
+        guard let url = networkManager.createURL(for: .getNearbyEnvents(lang: lang, location: location, radius: radius)) else { return }
         print(url)
         networkManager.fetch(for: url, completion: completion)
     }

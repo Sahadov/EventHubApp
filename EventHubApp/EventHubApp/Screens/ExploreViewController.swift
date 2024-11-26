@@ -41,7 +41,10 @@ final class ExploreViewController: UIViewController {
         let arrowImage = UIImage(systemName: "arrowtriangle.down.fill")
         button.setImage(arrowImage, for: .normal)
         button.tintColor = UIColor(red: 0.988, green: 0.988, blue: 0.988, alpha: 1)
-        button.addAction(UIAction { [weak self] _ in self?.handleLocationButton() }, for: .touchUpInside)
+        button.addAction(
+            UIAction { [weak self] _ in self?.handleLocationButton() },
+            for: .touchUpInside
+        )
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -53,7 +56,10 @@ final class ExploreViewController: UIViewController {
         button.backgroundColor = AppColors.indigo
         button.tintColor = .white
         button.layer.cornerRadius = 18
-        button.addAction(UIAction { [weak self] _ in self?.handleNotificationButton() }, for: .touchUpInside)
+        button.addAction(
+            UIAction { [weak self] _ in self?.handleNotificationButton() },
+            for: .touchUpInside
+        )
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -78,7 +84,8 @@ final class ExploreViewController: UIViewController {
         setupHierarchy()
         setupLayout()
         presenter?.fetchCategories()
-        presenter?.fetchEvents()
+        presenter?.fetchUpcomingEvents()
+        presenter?.fetchNearbyEvents()
     }
 
     // MARK: - Setup
@@ -194,8 +201,12 @@ extension ExploreViewController: ExploreViewProtocol {
         categoryCollectionView.configuration(with: categories)
     }
 
-    func showEvents(_ events: [EventModel]) {
-        eventCollectionView.configuration(with: events)
+    func showUpcomingEvents(_ events: [EventModel]) {
+        eventCollectionView.configurationCurrent(with: events)
+    }
+
+    func showNearbyEvents(_ events: [EventModel]) {
+        eventCollectionView.configurationNearby(with: events)
     }
 }
 

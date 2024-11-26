@@ -2,12 +2,14 @@ import Foundation
 
 protocol ExploreViewProtocol: AnyObject {
     func showCatigories(_ categories: [EventCategoryModel])
-    func showEvents(_ events: [EventModel])
+    func showUpcomingEvents(_ events: [EventModel])
+    func showNearbyEvents(_ events: [EventModel])
 }
 
 protocol ExplorePresenterProtocol: AnyObject {
     func fetchCategories()
-    func fetchEvents()
+    func fetchUpcomingEvents()
+    func fetchNearbyEvents()
 }
 
 final class ExplorePresenter: ExplorePresenterProtocol {
@@ -25,10 +27,38 @@ final class ExplorePresenter: ExplorePresenterProtocol {
                     self?.view?.showCatigories(categories)
                 }
             case .failure(let error):
-                print(error.localizedDescription)
+                print("Failed to fetch categories: \(error.localizedDescription)")
             }
         }
     }
 
-    func fetchEvents() { }
+    func fetchUpcomingEvents() {
+        apiManager.getEvents(lang: "ru", page: 1, location: "msk") { [weak self] result in
+            switch result {
+            case .success(let events):
+                print("events \(events)")
+                guard let events = events.results else { return }
+                DispatchQueue.main.async {
+                    self?.view?.showUpcomingEvents(events)
+                }
+            case .failure(let error):
+                print("Failed to fetch upcoming events: \(error.localizedDescription)")
+            }
+        }
+    }
+
+    func fetchNearbyEvents() {
+        apiManager.getNearbyEvents(lang: "ru", location: "msk", radius: 500) { [weak self] result in
+            switch result {
+            case .success(let events):
+                print("events \(events)")
+                guard let events = events.results else { return }
+                DispatchQueue.main.async {
+                    self?.view?.showNearbyEvents(events)
+                }
+            case .failure(let error):
+                print("Failed to fetch nearby events: \(error.localizedDescription)")
+            }
+        }
+    }
 }

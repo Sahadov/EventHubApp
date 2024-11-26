@@ -8,9 +8,11 @@
 enum APIEndpoints {
     case getCities(lang: String)
     case getCategories(lang: String)
-    case getEnvents(lang: String, location: String?, page: Int?)
+    case getEnvents(lang: String, location: String, page: Int)
     case doSearch(query: String, location: String, page: Int, lang: String)
-    
+    case getNearbyEnvents(lang: String, location: String, radius: Int)
+
+
     var patch: String {
         switch self {
             
@@ -18,7 +20,7 @@ enum APIEndpoints {
             return "/public-api/v1.4/locations/"
         case .getCategories:
             return "/public-api/v1.4/event-categories/"
-        case .getEnvents:
+        case .getEnvents, .getNearbyEnvents:
             return "/public-api/v1.4/events/"
         case .doSearch:
             return "/public-api/v1.4/search/"
