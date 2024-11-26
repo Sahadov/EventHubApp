@@ -10,7 +10,7 @@ protocol ExplorePresenterProtocol: AnyObject {
     func fetchEvents()
 }
 
-final class ExlorePresenter: ExplorePresenterProtocol {
+final class ExplorePresenter: ExplorePresenterProtocol {
 
     // MARK: - Properties
 
