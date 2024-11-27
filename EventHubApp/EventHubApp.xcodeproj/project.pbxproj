@@ -171,6 +171,8 @@
 		0FADA14F2CF628FC00EE4409 /* ExploreScreen */ = {
 			isa = PBXGroup;
 			children = (
+				0FADA1542CF6293D00EE4409 /* ExplorePresenter.swift */,
+				0FADA1522CF6291C00EE4409 /* ExploreViewController.swift */,
 				0FADA1502CF6290A00EE4409 /* Cell */,
 				0FADA1512CF6290E00EE4409 /* View */,
 			);
@@ -309,8 +311,6 @@
 			isa = PBXGroup;
 			children = (
 				0FADA14F2CF628FC00EE4409 /* ExploreScreen */,
-				0FADA1522CF6291C00EE4409 /* ExploreViewController.swift */,
-				0FADA1542CF6293D00EE4409 /* ExplorePresenter.swift */,
 				57A55F8B2CF24E6C002915D0 /* ShareScreen */,
 				0F25FCAE2CF5F28100281DFB /* EventDetails */,
 				D1334A362CED611E00B424A1 /* FavouritesScreen */,
