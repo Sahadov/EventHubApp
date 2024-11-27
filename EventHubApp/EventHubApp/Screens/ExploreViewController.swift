@@ -83,6 +83,8 @@ final class ExploreViewController: UIViewController {
     private lazy var cityPickerView: UIPickerView = {
         let picker = UIPickerView()
         picker.backgroundColor = UIColor.white
+        picker.layer.borderWidth = 1
+        picker.layer.borderColor = AppColors.primaryBlue.cgColor
         picker.layer.cornerRadius = 10
         picker.layer.shadowColor = UIColor.black.cgColor
         picker.layer.shadowOpacity = 0.1
@@ -223,7 +225,7 @@ final class ExploreViewController: UIViewController {
                 constant: -17
             ),
             cityPickerView.heightAnchor.constraint(
-                equalToConstant: 200
+                equalToConstant: 100
             )
         ])
     }
@@ -295,7 +297,6 @@ extension ExploreViewController: UIPickerViewDelegate {
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         locationLabel.text = cities[row].name
-        print(cities)
         presenter?.fetchNearbyEvents(
             lat: cities[row].coords?.lat ?? 0,
             lon: cities[row].coords?.lon ?? 0,

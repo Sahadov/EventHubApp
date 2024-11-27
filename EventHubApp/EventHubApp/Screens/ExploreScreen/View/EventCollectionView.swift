@@ -7,12 +7,19 @@ final class EventCollectionView: UIView {
     private var currentEvents = [EventModel]()
     private var nearbyEvents = [EventModel]()
 
+    private var currentEventsLoading: Bool = true
+    private var nearbyEventsLoading: Bool = true
+
     // MARK: - UI
 
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(
             frame: .zero,
             collectionViewLayout: createLayoutCollectionView()
+        )
+        collectionView.register(
+            LoaderCell.self,
+            forCellWithReuseIdentifier: LoaderCell.identifier
         )
         collectionView.register(
             EventCell.self,
@@ -65,11 +72,13 @@ final class EventCollectionView: UIView {
 
     func configurationCurrent(with currentEvents: [EventModel]) {
         self.currentEvents = currentEvents
+        currentEventsLoading = false
         collectionView.reloadSections(IndexSet(integer: 0))
     }
 
     func configurationNearby(with nearbyEvents: [EventModel]) {
         self.nearbyEvents = nearbyEvents
+        nearbyEventsLoading = false
         collectionView.reloadSections(IndexSet(integer: 1))
     }
 }
@@ -85,9 +94,9 @@ extension EventCollectionView: UICollectionViewDataSource {
                         numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return currentEvents.count
+            return currentEventsLoading ? 1 : currentEvents.count
         case 1:
-            return nearbyEvents.count
+            return nearbyEventsLoading ? 1 : nearbyEvents.count
         default:
             return 0
         }
@@ -95,6 +104,17 @@ extension EventCollectionView: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // Показываем ячейку с лоадером пока данные не загружены
+        if (indexPath.section == 0 && currentEventsLoading) ||
+            (indexPath.section == 1 && nearbyEventsLoading) {
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: LoaderCell.identifier,
+                for: indexPath
+            ) as? LoaderCell else {
+                return UICollectionViewCell()
+            }
+            return cell
+        }
 
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: EventCell.identifier,
