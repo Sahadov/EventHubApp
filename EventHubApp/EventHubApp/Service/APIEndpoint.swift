@@ -10,7 +10,8 @@ enum APIEndpoints {
     case getCategories(lang: String)
     case getEnvents(lang: String, location: String, page: Int)
     case doSearch(query: String, location: String, page: Int, lang: String)
-    case getNearbyEnvents(lang: String, location: String, radius: Int)
+    case getUpcomingEnvents(lang: String)
+    case getNearbyEnvents(lang: String, lat: Double, lon: Double, radius: Int)
 
 
     var patch: String {
@@ -20,7 +21,7 @@ enum APIEndpoints {
             return "/public-api/v1.4/locations/"
         case .getCategories:
             return "/public-api/v1.4/event-categories/"
-        case .getEnvents, .getNearbyEnvents:
+        case .getEnvents, .getUpcomingEnvents, .getNearbyEnvents:
             return "/public-api/v1.4/events/"
         case .doSearch:
             return "/public-api/v1.4/search/"

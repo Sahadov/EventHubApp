@@ -1,15 +1,17 @@
 import Foundation
 
 protocol ExploreViewProtocol: AnyObject {
+    func showCities(_ cities: [LocationModel])
     func showCatigories(_ categories: [EventCategoryModel])
     func showUpcomingEvents(_ events: [EventModel])
     func showNearbyEvents(_ events: [EventModel])
 }
 
 protocol ExplorePresenterProtocol: AnyObject {
+    func fetchCities()
     func fetchCategories()
     func fetchUpcomingEvents()
-    func fetchNearbyEvents()
+    func fetchNearbyEvents(lat: Double, lon: Double, radius: Int)
 }
 
 final class ExplorePresenter: ExplorePresenterProtocol {
@@ -19,8 +21,21 @@ final class ExplorePresenter: ExplorePresenterProtocol {
     weak var view: ExploreViewProtocol?
     private let apiManager = APIManager.shared
 
+    func fetchCities() {
+        apiManager.getCities(lang: "en") { [weak self] result in
+            switch result {
+                case .success(let cities):
+                DispatchQueue.main.async {
+                    self?.view?.showCities(cities)
+                }
+            case .failure(let error):
+                print("Failed to fetch cities: \(error.localizedDescription)")
+            }
+        }
+    }
+
     func fetchCategories() {
-        apiManager.getEventCategories(lang: "ru") { [weak self] result in
+        apiManager.getEventCategories(lang: "en") { [weak self] result in
             switch result {
             case .success(let categories):
                 DispatchQueue.main.async {
@@ -33,10 +48,9 @@ final class ExplorePresenter: ExplorePresenterProtocol {
     }
 
     func fetchUpcomingEvents() {
-        apiManager.getEvents(lang: "ru", page: 1, location: "msk") { [weak self] result in
+        apiManager.getUpcomingEnvents(lang: "en") { [weak self] result in
             switch result {
             case .success(let events):
-                print("events \(events)")
                 guard let events = events.results else { return }
                 DispatchQueue.main.async {
                     self?.view?.showUpcomingEvents(events)
@@ -47,11 +61,10 @@ final class ExplorePresenter: ExplorePresenterProtocol {
         }
     }
 
-    func fetchNearbyEvents() {
-        apiManager.getNearbyEvents(lang: "ru", location: "msk", radius: 500) { [weak self] result in
+    func fetchNearbyEvents(lat: Double, lon: Double, radius: Int) {
+        apiManager.getNearbyEvents(lang: "en", lat: lat, lon: lon, radius: radius) { [weak self] result in
             switch result {
             case .success(let events):
-                print("events \(events)")
                 guard let events = events.results else { return }
                 DispatchQueue.main.async {
                     self?.view?.showNearbyEvents(events)

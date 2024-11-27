@@ -60,16 +60,17 @@ final class EventCollectionView: UIView {
         ])
     }
 
+
     // MARK: - Configuration
 
     func configurationCurrent(with currentEvents: [EventModel]) {
         self.currentEvents = currentEvents
-        collectionView.reloadData()
+        collectionView.reloadSections(IndexSet(integer: 0))
     }
 
     func configurationNearby(with nearbyEvents: [EventModel]) {
         self.nearbyEvents = nearbyEvents
-        collectionView.reloadData()
+        collectionView.reloadSections(IndexSet(integer: 1))
     }
 }
 
@@ -94,6 +95,7 @@ extension EventCollectionView: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: EventCell.identifier,
             for: indexPath
@@ -165,7 +167,7 @@ extension EventCollectionView {
 
                 let groupSize = NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(0.7),
-                    heightDimension: .fractionalHeight(0.38)
+                    heightDimension: .estimated(255)
                 )
 
                 let layoutGroup = NSCollectionLayoutGroup.horizontal(

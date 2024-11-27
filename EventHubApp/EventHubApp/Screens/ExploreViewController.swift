@@ -5,6 +5,10 @@ final class ExploreViewController: UIViewController {
     // MARK: - Properties
 
     var presenter: ExplorePresenterProtocol?
+    private var cities = [LocationModel]()
+    private var isCityPickerVisible = false
+    private var isNearbyEventsFetched = false
+    private let radiusEvents = 500
 
     // MARK: - UI
 
@@ -76,6 +80,21 @@ final class ExploreViewController: UIViewController {
         return view
     }()
 
+    private lazy var cityPickerView: UIPickerView = {
+        let picker = UIPickerView()
+        picker.backgroundColor = UIColor.white
+        picker.layer.cornerRadius = 10
+        picker.layer.shadowColor = UIColor.black.cgColor
+        picker.layer.shadowOpacity = 0.1
+        picker.layer.shadowOffset = CGSize(width: 0, height: 5)
+        picker.layer.shadowRadius = 5
+        picker.delegate = self
+        picker.dataSource = self
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        picker.isHidden = true
+        return picker
+    }()
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -83,9 +102,9 @@ final class ExploreViewController: UIViewController {
         setupView()
         setupHierarchy()
         setupLayout()
+        presenter?.fetchCities()
         presenter?.fetchCategories()
         presenter?.fetchUpcomingEvents()
-        presenter?.fetchNearbyEvents()
     }
 
     // MARK: - Setup
@@ -104,6 +123,7 @@ final class ExploreViewController: UIViewController {
             headerBackgroundView,
             categoryCollectionView,
             eventCollectionView,
+            cityPickerView
         ].forEach { view.addSubview($0) }
     }
 
@@ -189,6 +209,21 @@ final class ExploreViewController: UIViewController {
             ),
             eventCollectionView.bottomAnchor.constraint(
                 equalTo: view.bottomAnchor
+            ),
+            cityPickerView.topAnchor.constraint(
+                equalTo: locationLabel.bottomAnchor,
+                constant: 5
+            ),
+            cityPickerView.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor,
+                constant: 17
+            ),
+            cityPickerView.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor,
+                constant: -17
+            ),
+            cityPickerView.heightAnchor.constraint(
+                equalToConstant: 200
             )
         ])
     }
@@ -208,12 +243,68 @@ extension ExploreViewController: ExploreViewProtocol {
     func showNearbyEvents(_ events: [EventModel]) {
         eventCollectionView.configurationNearby(with: events)
     }
+
+    func showCities(_ cities: [LocationModel]) {
+        self.cities = cities
+        cityPickerView.reloadAllComponents()
+
+        if !cities.isEmpty {
+            cityPickerView.selectRow(0, inComponent: 0, animated: true)
+            locationLabel.text = cities[0].name
+
+            if !isNearbyEventsFetched {
+                presenter?.fetchNearbyEvents(
+                    lat: cities[0].coords?.lat ?? 0,
+                    lon: cities[0].coords?.lon ?? 0,
+                    radius: radiusEvents
+                )
+                isNearbyEventsFetched = true
+            }
+        }
+    }
 }
 
 // MARK: - Action
 
 private extension ExploreViewController {
-    func handleLocationButton() { }
+    func handleLocationButton() {
+        isCityPickerVisible.toggle()
+        UIView.animate(withDuration: 0.3) {
+            self.cityPickerView.isHidden = !self.isCityPickerVisible
+            self.cityPickerView.alpha = self.isCityPickerVisible ? 1.0 : 0.0
+        }
+    }
 
     func handleNotificationButton() { }
+}
+
+extension ExploreViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return cities.count
+    }
+}
+
+extension ExploreViewController: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return cities[row].name
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        locationLabel.text = cities[row].name
+        print(cities)
+        presenter?.fetchNearbyEvents(
+            lat: cities[row].coords?.lat ?? 0,
+            lon: cities[row].coords?.lon ?? 0,
+            radius: radiusEvents
+        )
+        handleLocationButton()
+    }
+
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 25
+    }
 }

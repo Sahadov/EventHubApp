@@ -248,10 +248,8 @@ final class EventCell: UICollectionViewCell {
                     DispatchQueue.main.async {
                         self?.eventImageView.image = UIImage(data: data)
                     }
-                case .failure:
-                    DispatchQueue.main.async {
-                        self?.eventImageView.image = UIImage(systemName: "photo")
-                    }
+                case .failure(let error):
+                    print("Failed to fetch image: \(error.localizedDescription)")
                 }
             }
         }
@@ -259,7 +257,7 @@ final class EventCell: UICollectionViewCell {
         dateLabel.text = formatDate(from: events.dates?.first?.start ?? 0).uppercased()
         titleLabel.text = events.shortTitle
         locationLabel.text = events.place?.address
-        participantsLabel.text = "+\(events.favoritesCount ?? 0) Going"
+        participantsLabel.text = "+0 Going" //TODO: Получать кол-во участников
 
         let images = [
             UIImage(named: "goingThree"),
@@ -297,7 +295,7 @@ final class EventCell: UICollectionViewCell {
         let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd\nMMM"
-        dateFormatter.locale = Locale(identifier: "ru_RU")
+        dateFormatter.locale = Locale(identifier: "en_US")
         return dateFormatter.string(from: date)
     }
 

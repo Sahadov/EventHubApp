@@ -24,6 +24,7 @@ class NetworkManager {
         switch endpoint {
         case .getCities(lang: let lang):
             parameters["lang"] = "\(lang)"
+            parameters["fields"] = "slug,name,coords"
         case .getCategories(lang: let lang):
             parameters["lang"] = "\(lang)"
         case .getEnvents(lang: let lang, location: let location, page: let page):
@@ -43,15 +44,21 @@ class NetworkManager {
             parameters["page"] = "\(page)"
             parameters["expand"] = "dates"
             parameters["ctype"] = "event"
-        case .getNearbyEnvents(lang: let lang, location: let location, radius: let radius):
-            parameters["page_size"] = "(10)"
-            parameters["expand"] = "dates,place,location"
+        case .getUpcomingEnvents(lang: let lang):
+            parameters["page_size"] = "10"
             parameters["order_by"] = "-publication_date"
+            parameters["expand"] = "dates,place,location,participants"
             parameters["lang"] = "\(lang)"
-            parameters["fields"] = "id,dates,title,short_title,place,description,body_text,location,categories,images,favorites_count,participants"
-            parameters["text_format"] = "text"
-            parameters["lat"] = "\(55.753676)"
-            parameters["lon"] = "\(37.619899)"
+            parameters["fields"] = "id,dates,title,short_title,place,location,categories,images,favorites_count,participants"
+            parameters["actual_since"] = "\(Int(Date().timeIntervalSince1970))"
+        case .getNearbyEnvents(lang: let lang, lat: let lat, lon: let lon, radius: let radius):
+            parameters["page_size"] = "10"
+            parameters["order_by"] = "-publication_date"
+            parameters["expand"] = "dates,place,location,participants"
+            parameters["lang"] = "\(lang)"
+            parameters["fields"] = "id,dates,title,short_title,place,location,categories,images,favorites_count,participants"
+            parameters["lat"] = "\(lat)"
+            parameters["lon"] = "\(lon)"
             parameters["radius"] = "\(radius)"
         }
         return parameters

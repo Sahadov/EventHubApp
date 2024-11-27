@@ -36,9 +36,13 @@ class APIManager {
         networkManager.fetch(for: url, completion: completion)
     }
 
-    func getNearbyEvents(lang: String, location: String, radius: Int, completion: @escaping(Result<EventsModel, NetworkError>) -> Void) {
-        guard let url = networkManager.createURL(for: .getNearbyEnvents(lang: lang, location: location, radius: radius)) else { return }
-        print(url)
+    func getUpcomingEnvents(lang: String, completion: @escaping(Result<EventsModel, NetworkError>) -> Void) {
+        guard let url = networkManager.createURL(for: .getUpcomingEnvents(lang: lang)) else { return }
+        networkManager.fetch(for: url, completion: completion)
+    }
+
+    func getNearbyEvents(lang: String, lat: Double, lon: Double, radius: Int, completion: @escaping(Result<EventsModel, NetworkError>) -> Void) {
+        guard let url = networkManager.createURL(for: .getNearbyEnvents(lang: lang, lat: lat, lon: lon, radius: radius)) else { return }
         networkManager.fetch(for: url, completion: completion)
     }
 }
