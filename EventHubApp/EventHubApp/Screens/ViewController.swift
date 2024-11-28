@@ -32,7 +32,7 @@ class ViewController: UIViewController {
 //        getEventCategories(typeURL: APIEndpoint.eventsCategoriesUrl(lang: "ru", page: 1))
 //        getCitiesFromManager(lang: "ru")
 //        getEventCategoriesFromManager(lang: "ru")
-//        getEventsFromManager(lang: "ru", location: "msk", page: 1)
+//        вgetEventsFromManager(lang: "ru", location: "msk", page: 1)
 //        doSearchFromManager(query: "выставка", location: "msk", page: 1, lang: "ru")
         setupViews()
         setConstraints()
