@@ -9,7 +9,6 @@ import UIKit
 
 class EventDetailsVC: UIViewController {
     
-    //    var eventDetails:EventModel
     let dataCell = EventDetailsCell(image: "dateIcon", titleUp: "titleUp", titleDown: "titleDown", fontUp: nil, fontDown: nil)
     let locationCell = EventDetailsCell(image: "locationIcon", titleUp: "locationUp", titleDown: "locationDown", fontUp: nil, fontDown: nil)
     let organizerCell = EventDetailsCell(image: "organizerIcon", titleUp: "organizerUp", titleDown: "organizerDown", fontUp: .airbnbFont(ofSize: 15, weight: .book), fontDown: .airbnbFont(ofSize: 12, weight: .book))
@@ -17,35 +16,17 @@ class EventDetailsVC: UIViewController {
     let imageView = UIImageView()
     let scrollView = UIScrollView()
     let labelTitle = UILabel()
-//    let labelDescription = UILabel()
     let titleAboutEvent = UILabel()
     let textViewDescription = UITextView()
     let buttonBack = UIButton()
     var buttonBookmark = UIButton()
     let buttonShared = UIButton()
     
-    
-    
-    //    init(eventDetails: EventModel) {
-    //            self.eventDetails = eventDetails
-    //            super.init(nibName: nil, bundle: nil)
-    //        }
-    
-    //        required init?(coder: NSCoder) {
-    //            fatalError("init(coder:) has not been implemented")
-    //        }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
         tabBarController?.tabBar.isHidden = false
-        
     }
-    //        override func viewWillDisappear(_ animated: Bool) {
-    //            super.viewWillDisappear(animated)
-    //            navigationController?.navigationBar.isHidden = true
-    //            tabBarController?.tabBar.isHidden = false
-    //        }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,17 +44,14 @@ class EventDetailsVC: UIViewController {
         scrollView.addSubview(dataCell)
         scrollView.addSubview(locationCell)
         scrollView.addSubview(organizerCell)
-//        scrollView.addSubview(labelDescription)
         scrollView.addSubview(titleAboutEvent)
         scrollView.addSubview(textViewDescription)
     }
     
     private func setupNavBar() {
         navigationItem.title = "Event Details"
-        
-        //            let spaceTitle: UIOffset = UIOffset(horizontal: -100, vertical: 0)
-        
-        let configTitle: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: .init(24))/*, .baselineOffset: UIOffset(horizontal: -100, vertical: -100)*/]
+                
+        let configTitle: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: .init(24))]
         navigationController?.navigationBar.titleTextAttributes = configTitle
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: buttonBack)
@@ -101,9 +79,8 @@ class EventDetailsVC: UIViewController {
         labelTitle.font = .airbnbFont(ofSize: 35, weight: .book)
         labelTitle.numberOfLines = 0
         labelTitle.sizeToFit()
-        //labelTitle.clipsToBounds = true
         labelTitle.text = "International Band Music Concert"
-        //            labelTitle.text = ("  \(article.source.name)  ")
+        //            labelTitle.text = ("  \()  ")
         labelTitle.translatesAutoresizingMaskIntoConstraints = false
         
         dataCell.translatesAutoresizingMaskIntoConstraints = false
@@ -112,8 +89,6 @@ class EventDetailsVC: UIViewController {
         
         titleAboutEvent.font = .airbnbFont(ofSize: 18, weight: .medium)
         titleAboutEvent.sizeToFit()
-       // titleAboutEvent.textAlignment = .left
-        //titleAboutEvent.clipsToBounds = true
         titleAboutEvent.text = "About Event"
         titleAboutEvent.translatesAutoresizingMaskIntoConstraints = false
         
@@ -121,8 +96,6 @@ class EventDetailsVC: UIViewController {
         textViewDescription.isScrollEnabled = false
         textViewDescription.font = .airbnbFont(ofSize: 16, weight: .book)
         textViewDescription.text = "International Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music Concert"
-       // textViewDescription.textColor = .black
-        //textViewDescription.textContainerInset = UIEdgeInsets( top: 20, left: 20, bottom: 0, right: 20)
         textViewDescription.setContentHuggingPriority(.required, for: .vertical)
         textViewDescription.textAlignment = .justified
 
@@ -178,9 +151,7 @@ class EventDetailsVC: UIViewController {
             organizerCell.heightAnchor.constraint(equalToConstant: 44),
             
             titleAboutEvent.topAnchor.constraint(equalTo: organizerCell.bottomAnchor, constant: 44),
-           // titleAboutEvent.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -16),
             titleAboutEvent.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-           // titleAboutEvent.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
             textViewDescription.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             textViewDescription.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
