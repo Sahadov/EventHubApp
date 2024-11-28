@@ -1,11 +1,6 @@
-////
-////  SearchBarViewController.swift
-////  EventHubApp
-////
-////  Created by Andrew Linkov on 25.11.2024.
-////
 //
-//import UIKit
+//  SearchBarViewController.swift
+//  EventHubApp
 //
 //protocol SearchBarViewPresenter: AnyObject {
 //    

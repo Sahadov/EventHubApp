@@ -5,11 +5,10 @@
 //  Created by Andrew Linkov on 25.11.2024.
 //
 //
-//import UIKit
+//  SearchBarViewPresenterImpl.swift
+//  EventHubApp
 //
-//protocol BookmarkViewDelegate: AnyObject {
-//    
-//}
+//  Created by Andrew Linkov on 25.11.2024.
 //
 //
 //final class SearchBarViewPresenterImpl: SearchBarViewPresenter {
