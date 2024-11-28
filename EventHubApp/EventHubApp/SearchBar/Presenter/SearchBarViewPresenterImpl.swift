@@ -1,34 +1,30 @@
-////
-////  SearchBarViewPresenterImpl.swift
-////  EventHubApp
-////
-////  Created by Andrew Linkov on 25.11.2024.
-////
 //
-//import UIKit
+//  SearchBarViewPresenterImpl.swift
+//  EventHubApp
 //
-//protocol BookmarkViewDelegate: AnyObject {
-//    
-//}
+//  Created by Andrew Linkov on 25.11.2024.
 //
-//
-//final class SearchBarViewPresenterImpl: SearchBarViewPresenter {
-//    weak var view: BookmarkViewDelegate?
-//    
-////    init(networking: NewsRepository, router: AppRouter) {
-////        self.networking = networking
-////        self.router = router
-////    }
-//    
-//    func fetchNews() {
-//        
-//    }
-//
-//    func eventCount() -> Int {
-//        
-//    }
-//
-//    func didTapCell(at index: Int) {
-//  
-//    }
-//}
+
+import UIKit
+
+protocol BookmarkViewDelegate: AnyObject {
+    
+}
+
+
+final class SearchBarViewPresenterImpl: SearchBarViewPresenter {
+       
+    func fetchEvents() {
+        <#code#>
+    }
+    
+    func eventsCount() -> Int {
+        <#code#>
+    }
+    
+    func didTapCell(at indexPath: IndexPath) {
+        <#code#>
+    }
+    
+    weak var view: BookmarkViewDelegate?
+}
