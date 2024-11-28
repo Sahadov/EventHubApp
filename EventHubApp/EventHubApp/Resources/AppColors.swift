@@ -20,4 +20,6 @@ enum AppColors {
     static let gray = UIColor().hex(0xE5E5E5)
     static let primaryBlue = UIColor().hex(0x5669FF)
     static let backgroundBlack = UIColor().hex(0x2D2D3A)
+    static let indigo = UIColor().hex(0x5D56F3)
+    static let lightBlue = UIColor().hex(0x46CDFB)
 }

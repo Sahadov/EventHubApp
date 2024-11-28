@@ -11,6 +11,7 @@ struct EventsModel: Decodable {
 struct EventModel: Decodable {
     let id: Int?
     let title: String?
+    let shortTitle: String?
     let slug: String?
     let dates: [EventDate]?
     let bodyText: String?
