@@ -171,6 +171,6 @@ class EventDetailsVC: UIViewController {
         
     }
 
-    @available(iOS 18.0, *)
-#Preview { (CustomTabBarController())
-}
+//    @available(iOS 18.0, *)
+//#Preview { (CustomTabBarController())
+//}
