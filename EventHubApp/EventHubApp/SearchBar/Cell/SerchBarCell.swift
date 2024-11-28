@@ -6,11 +6,11 @@
 //
 //import UIKit
 //
-//class BookmarkCell: UITableViewCell {
-//    static let reuseID = "BookmarkCell"
+//class SearchBarCell: UITableViewCell {
+//    static let reuseID = "SearchBarCell"
 //    
 //    // MARK: - UI Components
-//    private let bookmarkImage: UIImageView = {
+//    private let eventImage: UIImageView = {
 //        let image = UIImageView()
 //        image.layer.cornerRadius = 12
 //        image.contentMode = .scaleAspectFit
@@ -31,16 +31,16 @@
 //
 //    private let categoryLabel: UILabel = {
 //        let label = UILabel()
-//        label.font = UIFont.InterRegular(ofSize: 14)
-//        label.textColor = UIColor.greyPrimary
+//        label.font = .systemFont(ofSize: 14)
+//        label.textColor = .gray
 //        label.numberOfLines = 1
 //        return label
 //    }()
 //    
 //    private let mainLabel: UILabel = {
 //        let label = UILabel()
-//        label.font = UIFont.InterBold(ofSize: 16)
-//        label.textColor = UIColor.blackPrimary
+//        label.font = .systemFont(ofSize: 14)
+//        label.textColor = .blue
 //        label.numberOfLines = 0
 //        return label
 //    }()
@@ -57,11 +57,11 @@
 //    }
 //
 //    // MARK: - Public Methods
-//    func set(info: Article) {
+//    func set(info: Event) {
 //        if let imageUrl = info.urlToImage, let imageData = try? Data(contentsOf: imageUrl) {
-//            bookmarkImage.image = UIImage(data: imageData)
+//            eventImage.image = UIImage(data: imageData)
 //        } else {
-//            bookmarkImage.image = UIImage(systemName: "onb2")
+//            eventImage.image = UIImage(systemName: "onb2")
 //        }
 //        
 //        categoryLabel.text = info.source.name
@@ -71,12 +71,12 @@
 //    // MARK: - Private Methods
 //    private func configure() {
 //        contentView.addSubview(backView)
-//        backView.addSubview(bookmarkImage)
+//        backView.addSubview(eventImage)
 //        backView.addSubview(categoryLabel)
 //        backView.addSubview(mainLabel)
 //        
 //        backView.translatesAutoresizingMaskIntoConstraints = false
-//        bookmarkImage.translatesAutoresizingMaskIntoConstraints = false
+//        eventImage.translatesAutoresizingMaskIntoConstraints = false
 //        categoryLabel.translatesAutoresizingMaskIntoConstraints = false
 //        mainLabel.translatesAutoresizingMaskIntoConstraints = false
 //    }
@@ -92,22 +92,22 @@
 //        ])
 //        
 //        NSLayoutConstraint.activate([
-//            bookmarkImage.widthAnchor.constraint(equalToConstant: 96),
-//            bookmarkImage.heightAnchor.constraint(equalToConstant: 96),
-//            bookmarkImage.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 8),
-//            bookmarkImage.centerYAnchor.constraint(equalTo: backView.centerYAnchor)
+//            eventImage.widthAnchor.constraint(equalToConstant: 96),
+//            eventImage.heightAnchor.constraint(equalToConstant: 96),
+//            eventImage.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 8),
+//            eventImage.centerYAnchor.constraint(equalTo: backView.centerYAnchor)
 //        ])
 //        
 //
 //        NSLayoutConstraint.activate([
 //            categoryLabel.topAnchor.constraint(equalTo: backView.topAnchor, constant: 8),
-//            categoryLabel.leadingAnchor.constraint(equalTo: bookmarkImage.trailingAnchor, constant: 8),
+//            categoryLabel.leadingAnchor.constraint(equalTo: eventImage.trailingAnchor, constant: 8),
 //            categoryLabel.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -8)
 //        ])
 //        
 //        NSLayoutConstraint.activate([
 //            mainLabel.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 8),
-//            mainLabel.leadingAnchor.constraint(equalTo: bookmarkImage.trailingAnchor, constant: 8),
+//            mainLabel.leadingAnchor.constraint(equalTo: eventImage.trailingAnchor, constant: 8),
 //            mainLabel.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -8),
 //            mainLabel.bottomAnchor.constraint(equalTo: backView.bottomAnchor, constant: -8)
 //        ])

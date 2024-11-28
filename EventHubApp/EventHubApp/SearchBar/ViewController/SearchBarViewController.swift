@@ -10,7 +10,7 @@
 //protocol SearchBarViewPresenter: AnyObject {
 //    
 //    func eventsCount() -> Int
-//    func fetchNews()
+//    func fetchEvents()
 //    func didTapCell(at indexPath: IndexPath)
 //}
 //
@@ -19,7 +19,7 @@
 //    //MARK: - Properties
 //    private let presenter: SearchBarViewPresenter
 //    private var selectedEvent: Event
-//    private var events : [Event] = []
+//    private var events : [Event] = ["onb1"]
 //
 //    
 //    //MARK: - Init
@@ -35,7 +35,7 @@
 //    //MARK: - UI Components
 //    private lazy var tableView: UITableView = {
 //        let table = UITableView()
-//        table.register(BookmarkCell.self, forCellReuseIdentifier: BookmarkCell.reuseID)
+//        table.register(SearchBarCell.self, forCellReuseIdentifier: SearchBarCell.reuseID)
 //        table.delegate = self
 //        table.dataSource = self
 //        table.translatesAutoresizingMaskIntoConstraints = false
@@ -47,7 +47,7 @@
 //    private var titleLabelBig: UILabel = {
 //        let label = UILabel()
 //        label.text = "Bookmarks"
-//        label.font = .InterSemiBold(ofSize: 16)
+//        label.font = .systemFont(ofSize: 16)
 //        label.textColor = .black
 //        label.numberOfLines = 1
 //        label.translatesAutoresizingMaskIntoConstraints = false
@@ -57,8 +57,8 @@
 //    private var titleLabelSmall: UILabel = {
 //        let label = UILabel()
 //        label.text = "Saved articles to the library"
-//        label.font = .InterRegular(ofSize: 16)
-//        label.textColor = .greyPrimary
+//        label.font = .systemFont(ofSize: 16)
+//        label.textColor = .black
 //        label.numberOfLines = 1
 //        label.translatesAutoresizingMaskIntoConstraints = false
 //        return label
@@ -70,7 +70,6 @@
 //        super.viewDidLoad()
 //        setupViews()
 //        setupConstraints()
-//        print("News count: \(news.count)")
 //    }
 //    
 //    override func viewDidDisappear(_ animated: Bool) {
@@ -87,7 +86,7 @@
 //    }
 //    
 //    private func fetchArticles() {
-//        presenter.fetchNews()
+//        presenter.fetchEvents()
 //    }
 //}
 //
@@ -115,41 +114,20 @@
 //
 //extension SearchBarViewController: UITableViewDelegate, UITableViewDataSource {
 //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return news.count
+//        return events.count
 //    }
 //    
 //    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: BookmarkCell.reuseID, for: indexPath) as? BookmarkCell else {
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchBarCell.reuseID, for: indexPath) as? SearchBarCell else {
 //            fatalError("Unable to dequeue BookmarkCell")
 //        }
-//        cell.set(info: news[indexPath.row])
+//        cell.set(info: events[indexPath.row])
 //        return cell
 //    }
 //    
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        tableView.deselectRow(at: indexPath, animated: true)
-//        presenter.didTapCell(at: indexPath.row, with: news)
+//        presenter.didTapCell(at: indexPath.row, with: events)
 //    }
 //}
-//
-//    // MARK: - SwiftUI Preview for UIKit View
-//    struct BookmarksViewController_Preview: PreviewProvider {
-//        static var previews: some View {
-//            BookmarkViewWrapper1()
-//                .previewLayout(.sizeThatFits)
-//                .padding()
-//        }
-//    }
-//    
-//    struct BookmarkViewWrapper1: UIViewRepresentable {
-//        
-//        func makeUIView(context: Context) -> UIView {
-//            let bookmarkViewController = SearchBarViewController(presenter: SearchBarViewPresenterImpl(networking: NewsRepository.shared, router: AppRouterImpl(factory: AppFactoryImpl(), navigation: UINavigationController())))
-//            
-//            return bookmarkViewController.view
-//        }
-//        
-//        func updateUIView(_ uiView: UIView, context: Context) {
-//        }
-//    }
 //

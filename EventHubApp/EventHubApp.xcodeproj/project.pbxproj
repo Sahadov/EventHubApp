@@ -3,10 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0BFD0D9E2CF8A1B500921CC2 /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFD0D972CF8A1B500921CC2 /* OnboardingPresenter.swift */; };
+		0BFD0D9F2CF8A1B500921CC2 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFD0D992CF8A1B500921CC2 /* OnboardingView.swift */; };
+		0BFD0DA02CF8A1B500921CC2 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFD0D9B2CF8A1B500921CC2 /* OnboardingViewController.swift */; };
+		0BFD0DAA2CF8A1BC00921CC2 /* SerchBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFD0DA12CF8A1BC00921CC2 /* SerchBarCell.swift */; };
+		0BFD0DAB2CF8A1BC00921CC2 /* SearchBarViewPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFD0DA32CF8A1BC00921CC2 /* SearchBarViewPresenterImpl.swift */; };
+		0BFD0DAC2CF8A1BC00921CC2 /* SearchBarEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFD0DA52CF8A1BC00921CC2 /* SearchBarEmptyView.swift */; };
+		0BFD0DAD2CF8A1BC00921CC2 /* SearchBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFD0DA72CF8A1BC00921CC2 /* SearchBarViewController.swift */; };
 		D1A246742CEA6D91007DA613 /* AirbnbCereal_W_Bk.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A2466E2CEA6D90007DA613 /* AirbnbCereal_W_Bk.otf */; };
 		D1A246752CEA6D91007DA613 /* AirbnbCereal_W_XBd.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A2466F2CEA6D90007DA613 /* AirbnbCereal_W_XBd.otf */; };
 		D1A246762CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A246702CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf */; };
@@ -28,6 +35,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0BFD0D972CF8A1B500921CC2 /* OnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
+		0BFD0D992CF8A1B500921CC2 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		0BFD0D9B2CF8A1B500921CC2 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		0BFD0DA12CF8A1BC00921CC2 /* SerchBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerchBarCell.swift; sourceTree = "<group>"; };
+		0BFD0DA32CF8A1BC00921CC2 /* SearchBarViewPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarViewPresenterImpl.swift; sourceTree = "<group>"; };
+		0BFD0DA52CF8A1BC00921CC2 /* SearchBarEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarEmptyView.swift; sourceTree = "<group>"; };
+		0BFD0DA72CF8A1BC00921CC2 /* SearchBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarViewController.swift; sourceTree = "<group>"; };
 		D1A2466E2CEA6D90007DA613 /* AirbnbCereal_W_Bk.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Bk.otf; sourceTree = "<group>"; };
 		D1A2466F2CEA6D90007DA613 /* AirbnbCereal_W_XBd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_XBd.otf; sourceTree = "<group>"; };
 		D1A246702CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Lt.otf; sourceTree = "<group>"; };
@@ -50,11 +64,6 @@
 		D1C97B3D2CEAF2EB007BB9A9 /* FavouriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		0BFD0BDD2CEB4B2700921CC2 /* Onboarding */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Onboarding; sourceTree = "<group>"; };
-		0BFD0C5A2CF503DA00921CC2 /* SearchBar */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = SearchBar; sourceTree = "<group>"; };
-/* End PBXFileSystemSynchronizedRootGroup section */
-
 /* Begin PBXFrameworksBuildPhase section */
 		D1B6D1C92CE9A7A00078BBA0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -66,6 +75,83 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0BFD0D982CF8A1B500921CC2 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0BFD0D972CF8A1B500921CC2 /* OnboardingPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		0BFD0D9A2CF8A1B500921CC2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0BFD0D992CF8A1B500921CC2 /* OnboardingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0BFD0D9C2CF8A1B500921CC2 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0BFD0D9B2CF8A1B500921CC2 /* OnboardingViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		0BFD0D9D2CF8A1B500921CC2 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				0BFD0D982CF8A1B500921CC2 /* Presenter */,
+				0BFD0D9A2CF8A1B500921CC2 /* View */,
+				0BFD0D9C2CF8A1B500921CC2 /* ViewController */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		0BFD0DA22CF8A1BC00921CC2 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0BFD0DA12CF8A1BC00921CC2 /* SerchBarCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		0BFD0DA42CF8A1BC00921CC2 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0BFD0DA32CF8A1BC00921CC2 /* SearchBarViewPresenterImpl.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		0BFD0DA62CF8A1BC00921CC2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0BFD0DA52CF8A1BC00921CC2 /* SearchBarEmptyView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0BFD0DA82CF8A1BC00921CC2 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0BFD0DA72CF8A1BC00921CC2 /* SearchBarViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		0BFD0DA92CF8A1BC00921CC2 /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				0BFD0DA22CF8A1BC00921CC2 /* Cell */,
+				0BFD0DA42CF8A1BC00921CC2 /* Presenter */,
+				0BFD0DA62CF8A1BC00921CC2 /* View */,
+				0BFD0DA82CF8A1BC00921CC2 /* ViewController */,
+			);
+			path = SearchBar;
+			sourceTree = "<group>";
+		};
 		D1A2466D2CEA6D7C007DA613 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,8 +184,8 @@
 		D1B6D1CE2CE9A7A00078BBA0 /* EventHubApp */ = {
 			isa = PBXGroup;
 			children = (
-				0BFD0C5A2CF503DA00921CC2 /* SearchBar */,
-				0BFD0BDD2CEB4B2700921CC2 /* Onboarding */,
+				0BFD0D9D2CF8A1B500921CC2 /* Onboarding */,
+				0BFD0DA92CF8A1BC00921CC2 /* SearchBar */,
 				D1C97B382CEAF213007BB9A9 /* TabBar */,
 				D1B6D1E62CE9A7E70078BBA0 /* Extensions */,
 				D1B6D1EB2CE9AE1A0078BBA0 /* Resources */,
@@ -173,10 +259,6 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				0BFD0BDD2CEB4B2700921CC2 /* Onboarding */,
-				0BFD0C5A2CF503DA00921CC2 /* SearchBar */,
-			);
 			name = EventHubApp;
 			productName = EventHubApp;
 			productReference = D1B6D1CC2CE9A7A00078BBA0 /* EventHubApp.app */;
@@ -238,8 +320,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BFD0D9E2CF8A1B500921CC2 /* OnboardingPresenter.swift in Sources */,
+				0BFD0D9F2CF8A1B500921CC2 /* OnboardingView.swift in Sources */,
+				0BFD0DA02CF8A1B500921CC2 /* OnboardingViewController.swift in Sources */,
 				D1B6D1D42CE9A7A00078BBA0 /* ViewController.swift in Sources */,
 				D1B6D1D02CE9A7A00078BBA0 /* AppDelegate.swift in Sources */,
+				0BFD0DAA2CF8A1BC00921CC2 /* SerchBarCell.swift in Sources */,
+				0BFD0DAB2CF8A1BC00921CC2 /* SearchBarViewPresenterImpl.swift in Sources */,
+				0BFD0DAC2CF8A1BC00921CC2 /* SearchBarEmptyView.swift in Sources */,
+				0BFD0DAD2CF8A1BC00921CC2 /* SearchBarViewController.swift in Sources */,
 				D1C97B3A2CEAF292007BB9A9 /* CustomBarBar.swift in Sources */,
 				D1B6D1DA2CE9A7A00078BBA0 /* EventHubApp.xcdatamodeld in Sources */,
 				D1A2467B2CEA7782007DA613 /* UIFont_Extension.swift in Sources */,
