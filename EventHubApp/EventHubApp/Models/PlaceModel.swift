@@ -9,7 +9,7 @@ struct PlacesModel: Decodable {
     let results: [PlaceModel]
 }
 
-struct PlaceModel: Decodable {
+struct PlaceModel: Codable {
     let id: Int?
     let title: String?
     let slug: String?
@@ -33,19 +33,19 @@ struct PlaceModel: Decodable {
 }
 
 // MARK: - Coords
-struct Coords: Decodable {
+struct Coords: Codable {
     let lat: Double?
     let lon: Double?
 }
 
 // MARK: - Image
-struct Image: Decodable {
+struct Image: Codable {
     let image: String?
     let source: PlaceSource?
 }
 
 // MARK: - Source
-struct PlaceSource: Decodable {
+struct PlaceSource: Codable {
     let name: String?
     let link: String?
 } 

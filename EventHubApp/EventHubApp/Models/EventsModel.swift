@@ -8,7 +8,7 @@ struct EventsModel: Decodable {
     let results: [EventModel]?
 }
 
-struct EventModel: Decodable {
+struct EventModel: Codable {
     let id: Int?
     let title: String?
     let shortTitle: String?
@@ -22,17 +22,17 @@ struct EventModel: Decodable {
     let place: PlaceModel?
 }
 
-struct EventDate: Decodable {
+struct EventDate: Codable {
     let start: Int?
     let end: Int?
 }
 
-struct EventImage: Decodable {
+struct EventImage: Codable {
     let image: String?
     let source: Source?
 }
 
-struct Source: Decodable {
+struct Source: Codable {
     let name: String?
     let link: String?
 }

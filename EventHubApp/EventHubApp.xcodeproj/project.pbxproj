@@ -14,6 +14,9 @@
 		0BFD0DAB2CF8A1BC00921CC2 /* SearchBarViewPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFD0DA32CF8A1BC00921CC2 /* SearchBarViewPresenterImpl.swift */; };
 		0BFD0DAC2CF8A1BC00921CC2 /* SearchBarEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFD0DA52CF8A1BC00921CC2 /* SearchBarEmptyView.swift */; };
 		0BFD0DAD2CF8A1BC00921CC2 /* SearchBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFD0DA72CF8A1BC00921CC2 /* SearchBarViewController.swift */; };
+		D1166F5B2CFAA90000933E36 /* Favourites+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1166F592CFAA90000933E36 /* Favourites+CoreDataClass.swift */; };
+		D1166F5C2CFAA90000933E36 /* Favourites+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1166F5A2CFAA90000933E36 /* Favourites+CoreDataProperties.swift */; };
+		D1166F602CFB4E9100933E36 /* EventModelTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1166F5F2CFB4E9100933E36 /* EventModelTransformer.swift */; };
 		D1A246742CEA6D91007DA613 /* AirbnbCereal_W_Bk.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A2466E2CEA6D90007DA613 /* AirbnbCereal_W_Bk.otf */; };
 		D1A246752CEA6D91007DA613 /* AirbnbCereal_W_XBd.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A2466F2CEA6D90007DA613 /* AirbnbCereal_W_XBd.otf */; };
 		D1A246762CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A246702CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf */; };
@@ -76,6 +79,9 @@
 		0BFD0DA32CF8A1BC00921CC2 /* SearchBarViewPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarViewPresenterImpl.swift; sourceTree = "<group>"; };
 		0BFD0DA52CF8A1BC00921CC2 /* SearchBarEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarEmptyView.swift; sourceTree = "<group>"; };
 		0BFD0DA72CF8A1BC00921CC2 /* SearchBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarViewController.swift; sourceTree = "<group>"; };
+		D1166F592CFAA90000933E36 /* Favourites+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Favourites+CoreDataClass.swift"; path = "../Favourites+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D1166F5A2CFAA90000933E36 /* Favourites+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Favourites+CoreDataProperties.swift"; path = "../Favourites+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D1166F5F2CFB4E9100933E36 /* EventModelTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModelTransformer.swift; sourceTree = "<group>"; };
 		D1A2466E2CEA6D90007DA613 /* AirbnbCereal_W_Bk.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Bk.otf; sourceTree = "<group>"; };
 		D1A2466F2CEA6D90007DA613 /* AirbnbCereal_W_XBd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_XBd.otf; sourceTree = "<group>"; };
 		D1A246702CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Lt.otf; sourceTree = "<group>"; };
@@ -252,6 +258,9 @@
 		D1B6D1CE2CE9A7A00078BBA0 /* EventHubApp */ = {
 			isa = PBXGroup;
 			children = (
+				D1166F5A2CFAA90000933E36 /* Favourites+CoreDataProperties.swift */,
+				D1166F592CFAA90000933E36 /* Favourites+CoreDataClass.swift */,
+				D1166F5F2CFB4E9100933E36 /* EventModelTransformer.swift */,
 				D1BAC8E62CF8AE370027E304 /* Models */,
 				D1BAC8AE2CF8AD6E0027E304 /* Service */,
 				0BFD0D9D2CF8A1B500921CC2 /* Onboarding */,
@@ -522,7 +531,9 @@
 				0BFD0DAB2CF8A1BC00921CC2 /* SearchBarViewPresenterImpl.swift in Sources */,
 				D1BAC8DF2CF8ADC80027E304 /* FavouritesPresenter.swift in Sources */,
 				0BFD0DAC2CF8A1BC00921CC2 /* SearchBarEmptyView.swift in Sources */,
+				D1166F5C2CFAA90000933E36 /* Favourites+CoreDataProperties.swift in Sources */,
 				0BFD0DAD2CF8A1BC00921CC2 /* SearchBarViewController.swift in Sources */,
+				D1166F5B2CFAA90000933E36 /* Favourites+CoreDataClass.swift in Sources */,
 				D1C97B3A2CEAF292007BB9A9 /* CustomBarBar.swift in Sources */,
 				D1B6D1DA2CE9A7A00078BBA0 /* EventHubApp.xcdatamodeld in Sources */,
 				D1BAC8B82CF8AD6E0027E304 /* API.swift in Sources */,
@@ -542,6 +553,7 @@
 				D1BAC8E52CF8ADC80027E304 /* ShareCollectionViewCell.swift in Sources */,
 				D1BAC8D82CF8ADC80027E304 /* LoaderCell.swift in Sources */,
 				D1BAC8D42CF8ADC80027E304 /* ExploreViewController.swift in Sources */,
+				D1166F602CFB4E9100933E36 /* EventModelTransformer.swift in Sources */,
 				D1BAC8BB2CF8AD6E0027E304 /* NetworkError.swift in Sources */,
 				D1C97B3C2CEAF2C6007BB9A9 /* CustomTabBarController.swift in Sources */,
 				D1BAC8AB2CF8AD470027E304 /* APIError.swift in Sources */,
