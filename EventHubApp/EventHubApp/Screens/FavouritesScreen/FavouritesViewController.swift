@@ -86,6 +86,7 @@ class FavouritesViewController: UIViewController {
                 MyEvent(date: "12 November", title: "Event Horizon", place: "Saint Petersburg"),
                 MyEvent(date: "13 November", title: "Cosmic Journey", place: "Novosibirsk")
         ]
+                
     }
 }
 
