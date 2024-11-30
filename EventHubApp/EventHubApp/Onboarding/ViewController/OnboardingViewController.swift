@@ -79,6 +79,25 @@ final class OnboardingViewController: UIViewController {
         setupConstraints()
     }
     
+    @objc private func handleNextButtonTap() {
+        let nextPage = pageControl.currentPage + 1
+        if nextPage < slides.count {
+            let offsetX = CGFloat(nextPage) * scrollView.frame.width
+            scrollView.setContentOffset(CGPoint(x: offsetX, y: 0), animated: true)
+            pageControl.currentPage = nextPage
+        } else {
+//MARK: TODO - переход к главной странице
+            presenter?.didTapNext()
+        }
+    }
+    
+    @objc private func handleSkipButtonTap() {
+        let lastPage = slides.count - 1
+        let offsetX = CGFloat(lastPage) * scrollView.frame.width
+        scrollView.setContentOffset(CGPoint(x: offsetX, y: 0), animated: true)
+        pageControl.currentPage = lastPage
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -90,6 +109,8 @@ final class OnboardingViewController: UIViewController {
         
         skipButton.setTitle("Skip", for: .normal)
         skipButton.addTarget(self, action: #selector(handleNextButtonTap), for: .touchUpInside)
+        
+        skipButton.addTarget(self, action: #selector(handleSkipButtonTap), for: .touchUpInside)
     }
     
     // MARK: - Methods
@@ -167,13 +188,7 @@ final class OnboardingViewController: UIViewController {
             scrollView.addSubview(slide)
         }
     }
-    
-    @objc private func handleNextButtonTap() {
-        presenter?.didTapNext()
-    }
 }
-
-
 
 extension OnboardingViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

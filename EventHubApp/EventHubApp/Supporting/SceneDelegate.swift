@@ -15,7 +15,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = OnboardingViewController(presenter: OnboardingViewPresenterImpl())
+//        window?.rootViewController = CustomTabBarController()
+        window?.rootViewController = UINavigationController(rootViewController: ModuleBuilder.createExploreModule())
         window?.makeKeyAndVisible()
 //        Task {
 //            do {

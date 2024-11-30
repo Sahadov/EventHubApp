@@ -9,7 +9,18 @@ import UIKit
 
 class EventDetailsVC: UIViewController {
     
-    let dataCell = EventDetailsCell(image: "dateIcon", titleUp: "titleUp", titleDown: "titleDown", fontUp: nil, fontDown: nil)
+    var event: EventModel
+    var eventImage: EventImage?
+
+    init(event: EventModel) {
+    self.event = event
+    super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    var dataCell = EventDetailsCell(image: "dateIcon", titleUp: "titleUp", titleDown: "titleDown", fontUp: nil, fontDown: nil)
     let locationCell = EventDetailsCell(image: "locationIcon", titleUp: "locationUp", titleDown: "locationDown", fontUp: nil, fontDown: nil)
     let organizerCell = EventDetailsCell(image: "organizerIcon", titleUp: "organizerUp", titleDown: "organizerDown", fontUp: .airbnbFont(ofSize: 15, weight: .book), fontDown: .airbnbFont(ofSize: 12, weight: .book))
     
@@ -30,12 +41,40 @@ class EventDetailsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         setupNavBar()
         setupView()
         setupConstraints()
         configuration()
+        setImage(with: event)
+//        configure(with: event)
+        titleAboutEvent.text = formatDate(from: event.dates?.first?.start ?? 0)
+
     }
-    
+    func setImage(with events: EventModel) {
+        
+        if let imageStringURL = events.images?.first?.image,
+           let imageURL = URL(string: imageStringURL) {
+            NetworkManager.shared.fetchImage(from: imageURL) { [weak self] result in
+                switch result {
+                case .success(let data):
+                    DispatchQueue.main.async {
+                        self?.imageView.image = UIImage(data: data)
+                    }
+                case .failure(let error):
+                    print("Failed to fetch image: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
+         func formatDate(from timestamp: Int) -> String {
+            let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "d MMMM, yyyy"
+            dateFormatter.locale = Locale(identifier: "en_US")
+            return dateFormatter.string(from: date)
+    }
+   
     private func setupView() {
         view.addSubview(imageView)
         view.addSubview(buttonShared)
@@ -58,7 +97,8 @@ class EventDetailsVC: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: buttonBookmark)
     }
     private func configuration() {
-        imageView.image = UIImage(named: "eventDetails")
+        //imageView.image = UIImage(named: "eventDetails")
+//        imageView.image = UIImage(named: (eventImage?.image) ?? "eventDetails")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -79,8 +119,8 @@ class EventDetailsVC: UIViewController {
         labelTitle.font = .airbnbFont(ofSize: 35, weight: .book)
         labelTitle.numberOfLines = 0
         labelTitle.sizeToFit()
-        labelTitle.text = "International Band Music Concert"
-        //            labelTitle.text = ("  \()  ")
+        //labelTitle.text = "International Band Music Concert"
+        labelTitle.text = event.title
         labelTitle.translatesAutoresizingMaskIntoConstraints = false
         
         dataCell.translatesAutoresizingMaskIntoConstraints = false
@@ -89,13 +129,14 @@ class EventDetailsVC: UIViewController {
         
         titleAboutEvent.font = .airbnbFont(ofSize: 18, weight: .medium)
         titleAboutEvent.sizeToFit()
-        titleAboutEvent.text = "About Event"
+        //titleAboutEvent.text = "About Event"
         titleAboutEvent.translatesAutoresizingMaskIntoConstraints = false
         
         textViewDescription.isEditable = false
         textViewDescription.isScrollEnabled = false
         textViewDescription.font = .airbnbFont(ofSize: 16, weight: .book)
-        textViewDescription.text = "International Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music Concert"
+//        textViewDescription.text = "International Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music ConcertInternational Band Music Concert"
+        textViewDescription.text = event.bodyText ?? "not text"
         textViewDescription.setContentHuggingPriority(.required, for: .vertical)
         textViewDescription.textAlignment = .justified
 
