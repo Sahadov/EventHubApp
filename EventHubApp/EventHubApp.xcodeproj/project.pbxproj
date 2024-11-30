@@ -14,6 +14,8 @@
 		0BFD0DAB2CF8A1BC00921CC2 /* SearchBarViewPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFD0DA32CF8A1BC00921CC2 /* SearchBarViewPresenterImpl.swift */; };
 		0BFD0DAC2CF8A1BC00921CC2 /* SearchBarEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFD0DA52CF8A1BC00921CC2 /* SearchBarEmptyView.swift */; };
 		0BFD0DAD2CF8A1BC00921CC2 /* SearchBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFD0DA72CF8A1BC00921CC2 /* SearchBarViewController.swift */; };
+		0F5B5BC42CF9BCFF0080B32C /* EventDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B5BC32CF9BCFF0080B32C /* EventDetailsCell.swift */; };
+		0F5B5BC62CF9BD490080B32C /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B5BC52CF9BD490080B32C /* EventModel.swift */; };
 		D1A246742CEA6D91007DA613 /* AirbnbCereal_W_Bk.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A2466E2CEA6D90007DA613 /* AirbnbCereal_W_Bk.otf */; };
 		D1A246752CEA6D91007DA613 /* AirbnbCereal_W_XBd.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A2466F2CEA6D90007DA613 /* AirbnbCereal_W_XBd.otf */; };
 		D1A246762CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A246702CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf */; };
@@ -58,7 +60,6 @@
 		D1BAC8E52CF8ADC80027E304 /* ShareCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAC8D32CF8ADC80027E304 /* ShareCollectionViewCell.swift */; };
 		D1BAC8ED2CF8AE370027E304 /* EventCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAC8E72CF8AE370027E304 /* EventCategoryModel.swift */; };
 		D1BAC8EE2CF8AE370027E304 /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAC8E82CF8AE370027E304 /* PlaceModel.swift */; };
-		D1BAC8EF2CF8AE370027E304 /* EventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAC8E92CF8AE370027E304 /* EventsModel.swift */; };
 		D1BAC8F02CF8AE370027E304 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAC8EA2CF8AE370027E304 /* SearchModel.swift */; };
 		D1BAC8F12CF8AE370027E304 /* ShareModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAC8EB2CF8AE370027E304 /* ShareModel.swift */; };
 		D1BAC8F22CF8AE370027E304 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAC8EC2CF8AE370027E304 /* LocationModel.swift */; };
@@ -76,6 +77,8 @@
 		0BFD0DA32CF8A1BC00921CC2 /* SearchBarViewPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarViewPresenterImpl.swift; sourceTree = "<group>"; };
 		0BFD0DA52CF8A1BC00921CC2 /* SearchBarEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarEmptyView.swift; sourceTree = "<group>"; };
 		0BFD0DA72CF8A1BC00921CC2 /* SearchBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarViewController.swift; sourceTree = "<group>"; };
+		0F5B5BC32CF9BCFF0080B32C /* EventDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsCell.swift; sourceTree = "<group>"; };
+		0F5B5BC52CF9BD490080B32C /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		D1A2466E2CEA6D90007DA613 /* AirbnbCereal_W_Bk.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Bk.otf; sourceTree = "<group>"; };
 		D1A2466F2CEA6D90007DA613 /* AirbnbCereal_W_XBd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_XBd.otf; sourceTree = "<group>"; };
 		D1A246702CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Lt.otf; sourceTree = "<group>"; };
@@ -122,7 +125,6 @@
 		D1BAC8D32CF8ADC80027E304 /* ShareCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareCollectionViewCell.swift; sourceTree = "<group>"; };
 		D1BAC8E72CF8AE370027E304 /* EventCategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCategoryModel.swift; sourceTree = "<group>"; };
 		D1BAC8E82CF8AE370027E304 /* PlaceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
-		D1BAC8E92CF8AE370027E304 /* EventsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsModel.swift; sourceTree = "<group>"; };
 		D1BAC8EA2CF8AE370027E304 /* SearchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		D1BAC8EB2CF8AE370027E304 /* ShareModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareModel.swift; sourceTree = "<group>"; };
 		D1BAC8EC2CF8AE370027E304 /* LocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 			isa = PBXGroup;
 			children = (
 				D1BAC8C92CF8ADC80027E304 /* EventDetailsVC.swift */,
+				0F5B5BC32CF9BCFF0080B32C /* EventDetailsCell.swift */,
 				D1BAC8CA2CF8ADC80027E304 /* EventDetailsPresenter.swift */,
 			);
 			path = EventDetails;
@@ -400,8 +403,8 @@
 			children = (
 				D1BAC8E72CF8AE370027E304 /* EventCategoryModel.swift */,
 				D1BAC8E82CF8AE370027E304 /* PlaceModel.swift */,
-				D1BAC8E92CF8AE370027E304 /* EventsModel.swift */,
 				D1BAC8EA2CF8AE370027E304 /* SearchModel.swift */,
+				0F5B5BC52CF9BD490080B32C /* EventModel.swift */,
 				D1BAC8EB2CF8AE370027E304 /* ShareModel.swift */,
 				D1BAC8EC2CF8AE370027E304 /* LocationModel.swift */,
 			);
@@ -528,6 +531,7 @@
 				D1BAC8B82CF8AD6E0027E304 /* API.swift in Sources */,
 				D1A2467B2CEA7782007DA613 /* UIFont_Extension.swift in Sources */,
 				D1C97B3E2CEAF2EB007BB9A9 /* FavouriteButton.swift in Sources */,
+				0F5B5BC62CF9BD490080B32C /* EventModel.swift in Sources */,
 				D1BAC8F12CF8AE370027E304 /* ShareModel.swift in Sources */,
 				D1BAC8D72CF8ADC80027E304 /* EventHeaderCell.swift in Sources */,
 				D1B6D1EA2CE9A8710078BBA0 /* AppColors.swift in Sources */,
@@ -535,9 +539,9 @@
 				D1B6D1D22CE9A7A00078BBA0 /* SceneDelegate.swift in Sources */,
 				D1BAC8DD2CF8ADC80027E304 /* EventDetailsVC.swift in Sources */,
 				D1BAC8D62CF8ADC80027E304 /* EventCell.swift in Sources */,
+				0F5B5BC42CF9BCFF0080B32C /* EventDetailsCell.swift in Sources */,
 				D1BAC8ED2CF8AE370027E304 /* EventCategoryModel.swift in Sources */,
 				D1BAC8E22CF8ADC80027E304 /* MainViewController.swift in Sources */,
-				D1BAC8EF2CF8AE370027E304 /* EventsModel.swift in Sources */,
 				D1B6D1E82CE9A8070078BBA0 /* UIColor_Extension.swift in Sources */,
 				D1BAC8E52CF8ADC80027E304 /* ShareCollectionViewCell.swift in Sources */,
 				D1BAC8D82CF8ADC80027E304 /* LoaderCell.swift in Sources */,

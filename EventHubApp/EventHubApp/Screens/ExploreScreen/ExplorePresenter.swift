@@ -5,6 +5,7 @@ protocol ExploreViewProtocol: AnyObject {
     func showCatigories(_ categories: [EventCategoryModel])
     func showUpcomingEvents(_ events: [EventModel])
     func showNearbyEvents(_ events: [EventModel])
+    func showDetail(_ event: EventModel)
 }
 
 protocol ExplorePresenterProtocol: AnyObject {
@@ -12,6 +13,7 @@ protocol ExplorePresenterProtocol: AnyObject {
     func fetchCategories()
     func fetchUpcomingEvents()
     func fetchNearbyEvents(lat: Double, lon: Double, radius: Int)
+    func didTapEvent(event: EventModel)
 }
 
 final class ExplorePresenter: ExplorePresenterProtocol {
@@ -74,4 +76,7 @@ final class ExplorePresenter: ExplorePresenterProtocol {
             }
         }
     }
+    func didTapEvent(event: EventModel) {
+            self.view?.showDetail(event)
+        }
 }

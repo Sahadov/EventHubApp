@@ -4,8 +4,8 @@ final class EventCollectionView: UIView {
 
     // MARK: - Properties
 
-    private var currentEvents = [EventModel]()
-    private var nearbyEvents = [EventModel]()
+    /*private*/ var currentEvents = [EventModel]()
+    /*private*/ var nearbyEvents = [EventModel]()
 
     private var currentEventsLoading: Bool = true
     private var nearbyEventsLoading: Bool = true
@@ -31,7 +31,7 @@ final class EventCollectionView: UIView {
             withReuseIdentifier: EventHeaderCell.identifier
         )
         collectionView.dataSource = self
-        collectionView.delegate = self
+//        collectionView.delegate = self
         collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
@@ -81,6 +81,9 @@ final class EventCollectionView: UIView {
         nearbyEventsLoading = false
         collectionView.reloadSections(IndexSet(integer: 1))
     }
+    public func setDelegate(vc: ExploreViewController) {
+        collectionView.delegate = vc
+        }
 }
 
 // MARK: - DataSource
@@ -169,6 +172,22 @@ extension EventCollectionView: UICollectionViewDelegate, UICollectionViewDelegat
 
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
+                let sectionIndex = indexPath.section
+                
+                switch sectionIndex {
+                case 0:
+                    print("Section 1")
+                    let currentEvent = currentEvents[indexPath.row]
+                    let eventDetailVC = EventDetailsVC(event: currentEvent)
+                    UINavigationController().pushViewController(eventDetailVC, animated: true)
+                case 1:
+                    print("Section 2")
+                    let nearbyEvent = nearbyEvents[indexPath.item]
+                    let eventDetailVC = EventDetailsVC(event: nearbyEvent)
+                    ExploreViewController().navigationController?.pushViewController(eventDetailVC, animated: true)
+                default:
+                    break
+                }
     }
 }
 

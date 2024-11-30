@@ -107,6 +107,7 @@ final class ExploreViewController: UIViewController {
         presenter?.fetchCities()
         presenter?.fetchCategories()
         presenter?.fetchUpcomingEvents()
+        eventCollectionView.setDelegate(vc:self)
     }
 
     // MARK: - Setup
@@ -308,4 +309,26 @@ extension ExploreViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 25
     }
+    func showDetail(_ event: EventModel) {
+            let eventDetailVC = EventDetailsVC(event: event)
+           navigationController?.pushViewController(eventDetailVC, animated: true)
+        }
 }
+extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        let sectionIndex = indexPath.section
+
+        switch sectionIndex {
+        case 0:
+            let currentEvent = eventCollectionView.currentEvents[indexPath.row]
+            presenter?.didTapEvent(event: currentEvent)
+            print(currentEvent)
+        case 1:
+            let nearbyEvent = eventCollectionView.nearbyEvents[indexPath.row]
+            presenter?.didTapEvent(event: nearbyEvent)
+        default:
+            break
+        }
+    }
+} 
