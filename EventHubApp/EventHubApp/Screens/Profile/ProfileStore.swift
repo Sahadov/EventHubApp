@@ -39,7 +39,9 @@ final class ProfileStore: Store<ProfileEvent, ProfileAction> {
     }
 
     private func fetchPerson() async throws {
+        print("Fetching person...")
         guard let uid = Auth.auth().currentUser?.uid else { return }
+        print(uid)
         let querySnapshot = try await Firestore
             .firestore()
             .collection("persons")
@@ -47,6 +49,8 @@ final class ProfileStore: Store<ProfileEvent, ProfileAction> {
             .getDocument()
         if let person = try? querySnapshot.data(as: Person.self) {
             sendEvent(.done(person))
+        } else {
+            print("Error fetching person")
         }
     }
 }

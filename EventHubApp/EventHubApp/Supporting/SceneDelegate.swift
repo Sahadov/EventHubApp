@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        start()
+        startOnboarding()
     }
     
     func start() {
@@ -25,6 +25,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         } else {
             setRootViewController(makeTabbar())
         }
+    }
+    
+    func startOnboarding() {
+        setRootViewController(makeOnboarding())
     }
 
     func setRootViewController(_ controller: UIViewController, animated: Bool = true) {
@@ -53,12 +57,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     private func makeTabbar() -> UIViewController {
-        let callback: Callback = { [weak self] in
-            self?.start()
-            
-        }
+        let callback: Callback = { [weak self] in self?.start() }
         return CustomTabBarController(callback: callback)
     }
-
+    
+    private func makeOnboarding() -> UIViewController {
+        let presenter = OnboardingViewPresenterImpl()
+        let callback: Callback = { [weak self] in self?.start() }
+        presenter.callback = callback
+        let controller = OnboardingViewController(presenter: presenter)
+        return controller
+    }
 }
 

@@ -16,13 +16,14 @@ final class OnboardingViewPresenterImpl {
     
 //MARK: - Properties
     weak var view: OnboardingViewDelegate?
+    var callback: Callback?
 }
 
 //MARK: - OnboardingPresenterImpl + OnboardingViewPresenter
 extension OnboardingViewPresenterImpl: OnboardingViewPresenter {
 
     func didTapNext() {
-        view?.scrollToNextSlide()
+        callback?()
     }
     
 }

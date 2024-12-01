@@ -13,7 +13,6 @@ struct Person: Identifiable, Hashable, Codable {
     var username: String
     let email: String
     var about = ""
-    var pushId = ""
     var avatarLink = ""
-    var fullname = ""
+    var fullName = ""
 }
