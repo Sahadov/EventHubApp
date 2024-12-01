@@ -55,7 +55,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func makeTabbar() -> UIViewController {
         let callback: Callback = { [weak self] in
             self?.start()
+            
         }
+        try? Auth.auth().signOut()
         return CustomTabBarController(callback: callback)
     }
 

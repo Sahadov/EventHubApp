@@ -49,8 +49,9 @@ final class AuthStore: Store<AuthEvent, AuthAction> {
 
     private func signIn(withEmail email: String, password: String) async throws {
         let result = try await Auth.auth().signIn(withEmail: email, password: password)
+        sendEvent(.login)
         if result.user.isEmailVerified {
-            sendEvent(.login)
+            print("User is verified")
         }
     }
 

@@ -18,10 +18,6 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        for family in UIFont.familyNames.sorted() {
-          let names = UIFont.fontNames(forFamilyName: family)
-          print(family, names)
-        }
     }
 }
 // MARK: - Setup Views
