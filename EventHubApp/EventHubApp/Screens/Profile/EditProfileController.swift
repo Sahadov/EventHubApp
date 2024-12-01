@@ -30,15 +30,19 @@ final class EditProfileController: UIViewController {
     private func showUserInfo(_ person: Person?) {
         if let person {
             self.person = person
-            nameLabel.text = person.username
+            nameLabel.text = person.fullName
             aboutTextLabel.text = person.about
             let url = URL(string: person.avatarLink)
             avatarImageView.kf.setImage(with: url, placeholder: UIImage(named: "avatar"))
         }
     }
     
-    @objc private func save() {
-        
+    private func save() {
+        person?.about = aboutTextLabel.text
+        person?.fullName = nameLabel.text ?? ""
+        if let person {
+            store.sendAction(.upload(person))
+        }
     }
 }
 // MARK: - Setup Views
@@ -51,7 +55,9 @@ private extension EditProfileController {
         setupAboutTextView()
         view.backgroundColor = .white
         setupObservers()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .save)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .save, primaryAction: UIAction(handler: {[weak self] _ in
+            self?.save()
+        }))
     }
     
     func setupObservers() {
@@ -61,6 +67,7 @@ private extension EditProfileController {
             .sink {[weak self] event in
                 switch event {
                 case .done(let person): self?.showUserInfo(person)
+                case .back: self?.navigationController?.popViewController(animated: true)
                 }
             }.store(in: &bag)
     }
@@ -117,7 +124,7 @@ private extension EditProfileController {
         aboutTextLabel.text = ""
         aboutTextLabel.delegate = self
         NSLayoutConstraint.activate([
-            aboutTextLabel.topAnchor.constraint(equalTo: aboutTitleLabel.bottomAnchor, constant: 50),
+            aboutTextLabel.topAnchor.constraint(equalTo: aboutTitleLabel.bottomAnchor, constant: 8),
             aboutTextLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
             aboutTextLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
             aboutTextLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50)
@@ -127,7 +134,6 @@ private extension EditProfileController {
 // MARK: -
 extension EditProfileController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print(#function)
         if textField == nameLabel, let name = textField.text, !name.isEmpty {
             store.sendAction(.updateUsername(name))
         }
@@ -138,7 +144,6 @@ extension EditProfileController: UITextFieldDelegate {
 
 extension EditProfileController: UITextViewDelegate {
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-        print(#function)
         return true
     }
 }

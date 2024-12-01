@@ -12,6 +12,7 @@ import FirebaseStorage
 
 enum EditProfileEvent {
     case done(Person)
+    case back
 }
 
 enum EditProfileAction {
@@ -50,6 +51,7 @@ final class EditProfileStore: Store<EditProfileEvent, EditProfileAction> {
             .collection("persons")
             .document(person.id)
             .setData(from: person)
+        sendEvent(.back)
     }
 
     private func updateAvatarLink(_ link: String, uid: String) {
@@ -66,7 +68,7 @@ final class EditProfileStore: Store<EditProfileEvent, EditProfileAction> {
             .firestore()
             .collection("persons")
             .document(uid)
-            .updateData(["username": username])
+            .updateData(["fullName": username])
     }
 
     private func uploadImage(_ image: UIImage) async throws {

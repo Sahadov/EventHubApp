@@ -34,7 +34,7 @@ final class ProfileViewController: UIViewController {
     private func showUserInfo(_ person: Person?) {
         print("showUserInfo")
         if let person {
-            nameLabel.text = person.username
+            nameLabel.text = person.fullName
             aboutTextLabel.text = person.about
             let url = URL(string: person.avatarLink)
             avatarImageView.kf.setImage(with: url, placeholder: UIImage(named: "avatar"))

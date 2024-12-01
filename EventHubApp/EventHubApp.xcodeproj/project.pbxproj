@@ -37,6 +37,7 @@
 		45F8AE992CFC37A10087BF88 /* EditProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8AE952CFC37A10087BF88 /* EditProfileStore.swift */; };
 		45F8AE9A2CFC37A10087BF88 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8AE922CFC37A10087BF88 /* ProfileViewController.swift */; };
 		45F8AE9D2CFC38790087BF88 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 45F8AE9C2CFC38790087BF88 /* Kingfisher */; };
+		45F8AE9F2CFC4CBD0087BF88 /* EventsDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8AE9E2CFC4CBD0087BF88 /* EventsDefaults.swift */; };
 		D1A246742CEA6D91007DA613 /* AirbnbCereal_W_Bk.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A2466E2CEA6D90007DA613 /* AirbnbCereal_W_Bk.otf */; };
 		D1A246752CEA6D91007DA613 /* AirbnbCereal_W_XBd.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A2466F2CEA6D90007DA613 /* AirbnbCereal_W_XBd.otf */; };
 		D1A246762CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A246702CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf */; };
@@ -116,6 +117,7 @@
 		45F8AE932CFC37A10087BF88 /* EditProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileController.swift; sourceTree = "<group>"; };
 		45F8AE942CFC37A10087BF88 /* ProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStore.swift; sourceTree = "<group>"; };
 		45F8AE952CFC37A10087BF88 /* EditProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileStore.swift; sourceTree = "<group>"; };
+		45F8AE9E2CFC4CBD0087BF88 /* EventsDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsDefaults.swift; sourceTree = "<group>"; };
 		D1A2466E2CEA6D90007DA613 /* AirbnbCereal_W_Bk.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Bk.otf; sourceTree = "<group>"; };
 		D1A2466F2CEA6D90007DA613 /* AirbnbCereal_W_XBd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_XBd.otf; sourceTree = "<group>"; };
 		D1A246702CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Lt.otf; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 			isa = PBXGroup;
 			children = (
 				D1B6D1D12CE9A7A00078BBA0 /* SceneDelegate.swift */,
+				45F8AE9E2CFC4CBD0087BF88 /* EventsDefaults.swift */,
 				D1B6D1CF2CE9A7A00078BBA0 /* AppDelegate.swift */,
 				D1B6D1DD2CE9A7A30078BBA0 /* LaunchScreen.storyboard */,
 			);
@@ -626,6 +629,7 @@
 				D1BAC8F22CF8AE370027E304 /* LocationModel.swift in Sources */,
 				45D5AB052CFC25AE004EFD89 /* Person.swift in Sources */,
 				D1BAC8EE2CF8AE370027E304 /* PlaceModel.swift in Sources */,
+				45F8AE9F2CFC4CBD0087BF88 /* EventsDefaults.swift in Sources */,
 				D1BAC8DE2CF8ADC80027E304 /* EventDetailsPresenter.swift in Sources */,
 				D1B6D1D02CE9A7A00078BBA0 /* AppDelegate.swift in Sources */,
 				D1BAC8AC2CF8AD470027E304 /* APIRoute.swift in Sources */,

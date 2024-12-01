@@ -28,7 +28,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func startOnboarding() {
-        setRootViewController(makeOnboarding())
+        if EventsDefaults.isOnboarding {
+            start()
+        } else {
+            setRootViewController(makeOnboarding())
+        }
     }
 
     func setRootViewController(_ controller: UIViewController, animated: Bool = true) {
@@ -62,6 +66,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func makeOnboarding() -> UIViewController {
+        EventsDefaults.isOnboarding = true
         let presenter = OnboardingViewPresenterImpl()
         let callback: Callback = { [weak self] in self?.start() }
         presenter.callback = callback
