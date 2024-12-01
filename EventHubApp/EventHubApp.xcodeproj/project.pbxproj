@@ -26,7 +26,6 @@
 		45696E642CF1915F0070EAB3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 45696E632CF1915F0070EAB3 /* FirebaseAuth */; };
 		45696E662CF1915F0070EAB3 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 45696E652CF1915F0070EAB3 /* FirebaseFirestore */; };
 		45696E682CF1915F0070EAB3 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 45696E672CF1915F0070EAB3 /* FirebaseStorage */; };
-		45696E6A2CF1918E0070EAB3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 45696E692CF1918E0070EAB3 /* GoogleService-Info.plist */; };
 		45696E6C2CF1930A0070EAB3 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45696E6B2CF1930A0070EAB3 /* Store.swift */; };
 		45696E6E2CF194B90070EAB3 /* AuthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45696E6D2CF194B90070EAB3 /* AuthStore.swift */; };
 		45696E712CF1A9530070EAB3 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 45696E702CF1A9530070EAB3 /* Kingfisher */; };
@@ -76,7 +75,6 @@
 		45696E552CF190260070EAB3 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		45696E562CF190260070EAB3 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		45696E572CF190260070EAB3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		45696E692CF1918E0070EAB3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		45696E6B2CF1930A0070EAB3 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		45696E6D2CF194B90070EAB3 /* AuthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStore.swift; sourceTree = "<group>"; };
 		45696E732CF1A97E0070EAB3 /* ProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStore.swift; sourceTree = "<group>"; };
@@ -232,7 +230,6 @@
 				D1B6D1EC2CE9AE370078BBA0 /* Supporting */,
 				D1B6D1ED2CE9AE720078BBA0 /* Screens */,
 				D1B6D1E02CE9A7A30078BBA0 /* Info.plist */,
-				45696E692CF1918E0070EAB3 /* GoogleService-Info.plist */,
 				D1B6D1D82CE9A7A00078BBA0 /* EventHubApp.xcdatamodeld */,
 				45A088102CEEA66A002D8A76 /* APIRoute.swift */,
 				45A088122CEEA998002D8A76 /* APIError.swift */,
@@ -336,8 +333,6 @@
 			);
 			mainGroup = D1B6D1C32CE9A7A00078BBA0;
 			packageReferences = (
-				45696E622CF1915F0070EAB3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				45696E6F2CF1A9530070EAB3 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = D1B6D1CD2CE9A7A00078BBA0 /* Products */;
 			projectDirPath = "";
@@ -355,7 +350,6 @@
 			files = (
 				D1A246742CEA6D91007DA613 /* AirbnbCereal_W_Bk.otf in Resources */,
 				D1A246782CEA6D91007DA613 /* AirbnbCereal_W_Md.otf in Resources */,
-				45696E6A2CF1918E0070EAB3 /* GoogleService-Info.plist in Resources */,
 				D1B6D1DF2CE9A7A30078BBA0 /* LaunchScreen.storyboard in Resources */,
 				D1A246762CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf in Resources */,
 				D1A246772CEA6D91007DA613 /* AirbnbCereal_W_Bd.otf in Resources */,
