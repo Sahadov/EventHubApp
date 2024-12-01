@@ -51,6 +51,7 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
         mapVC.tabBarItem.image = UIImage(named: "mapTabBar")
 
         let profileVC = ProfileViewController()
+        profileVC.callback = callback
         profileVC.tabBarItem.title = "Profile"
         profileVC.tabBarItem.image = UIImage(named: "profileTabBar")
         

@@ -32,6 +32,11 @@
 		45D5AB052CFC25AE004EFD89 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D5AB042CFC25AE004EFD89 /* Person.swift */; };
 		45D5AB082CFC278E004EFD89 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 45D5AB072CFC278E004EFD89 /* FirebaseFirestore */; };
 		45D5AB0A2CFC2794004EFD89 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 45D5AB092CFC2794004EFD89 /* FirebaseStorage */; };
+		45F8AE972CFC37A10087BF88 /* ProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8AE942CFC37A10087BF88 /* ProfileStore.swift */; };
+		45F8AE982CFC37A10087BF88 /* EditProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8AE932CFC37A10087BF88 /* EditProfileController.swift */; };
+		45F8AE992CFC37A10087BF88 /* EditProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8AE952CFC37A10087BF88 /* EditProfileStore.swift */; };
+		45F8AE9A2CFC37A10087BF88 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8AE922CFC37A10087BF88 /* ProfileViewController.swift */; };
+		45F8AE9D2CFC38790087BF88 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 45F8AE9C2CFC38790087BF88 /* Kingfisher */; };
 		D1A246742CEA6D91007DA613 /* AirbnbCereal_W_Bk.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A2466E2CEA6D90007DA613 /* AirbnbCereal_W_Bk.otf */; };
 		D1A246752CEA6D91007DA613 /* AirbnbCereal_W_XBd.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A2466F2CEA6D90007DA613 /* AirbnbCereal_W_XBd.otf */; };
 		D1A246762CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A246702CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf */; };
@@ -79,7 +84,6 @@
 		D1BAC8F02CF8AE370027E304 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAC8EA2CF8AE370027E304 /* SearchModel.swift */; };
 		D1BAC8F12CF8AE370027E304 /* ShareModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAC8EB2CF8AE370027E304 /* ShareModel.swift */; };
 		D1BAC8F22CF8AE370027E304 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAC8EC2CF8AE370027E304 /* LocationModel.swift */; };
-		D1BAC8F42CF8AEE10027E304 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAC8F32CF8AEE00027E304 /* ProfileViewController.swift */; };
 		D1C97B3A2CEAF292007BB9A9 /* CustomBarBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C97B392CEAF292007BB9A9 /* CustomBarBar.swift */; };
 		D1C97B3C2CEAF2C6007BB9A9 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C97B3B2CEAF2C6007BB9A9 /* CustomTabBarController.swift */; };
 		D1C97B3E2CEAF2EB007BB9A9 /* FavouriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C97B3D2CEAF2EB007BB9A9 /* FavouriteButton.swift */; };
@@ -108,6 +112,10 @@
 		45D5AAF72CFC1A18004EFD89 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		45D5AAF82CFC1A18004EFD89 /* AuthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStore.swift; sourceTree = "<group>"; };
 		45D5AB042CFC25AE004EFD89 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		45F8AE922CFC37A10087BF88 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		45F8AE932CFC37A10087BF88 /* EditProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileController.swift; sourceTree = "<group>"; };
+		45F8AE942CFC37A10087BF88 /* ProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStore.swift; sourceTree = "<group>"; };
+		45F8AE952CFC37A10087BF88 /* EditProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileStore.swift; sourceTree = "<group>"; };
 		D1A2466E2CEA6D90007DA613 /* AirbnbCereal_W_Bk.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Bk.otf; sourceTree = "<group>"; };
 		D1A2466F2CEA6D90007DA613 /* AirbnbCereal_W_XBd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_XBd.otf; sourceTree = "<group>"; };
 		D1A246702CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Lt.otf; sourceTree = "<group>"; };
@@ -157,7 +165,6 @@
 		D1BAC8EA2CF8AE370027E304 /* SearchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		D1BAC8EB2CF8AE370027E304 /* ShareModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareModel.swift; sourceTree = "<group>"; };
 		D1BAC8EC2CF8AE370027E304 /* LocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
-		D1BAC8F32CF8AEE00027E304 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D1C97B392CEAF292007BB9A9 /* CustomBarBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBarBar.swift; sourceTree = "<group>"; };
 		D1C97B3B2CEAF2C6007BB9A9 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		D1C97B3D2CEAF2EB007BB9A9 /* FavouriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteButton.swift; sourceTree = "<group>"; };
@@ -168,6 +175,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45F8AE9D2CFC38790087BF88 /* Kingfisher in Frameworks */,
 				45D5AAE92CFC1528004EFD89 /* FirebaseAuth in Frameworks */,
 				45D5AB082CFC278E004EFD89 /* FirebaseFirestore in Frameworks */,
 				45D5AB0A2CFC2794004EFD89 /* FirebaseStorage in Frameworks */,
@@ -286,6 +294,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		45F8AE962CFC37A10087BF88 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				45F8AE922CFC37A10087BF88 /* ProfileViewController.swift */,
+				45F8AE932CFC37A10087BF88 /* EditProfileController.swift */,
+				45F8AE942CFC37A10087BF88 /* ProfileStore.swift */,
+				45F8AE952CFC37A10087BF88 /* EditProfileStore.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		D1A2466D2CEA6D7C007DA613 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -372,7 +391,7 @@
 			isa = PBXGroup;
 			children = (
 				45D5AAF92CFC1A18004EFD89 /* AuthScreens */,
-				D1BAC8F32CF8AEE00027E304 /* ProfileViewController.swift */,
+				45F8AE962CFC37A10087BF88 /* Profile */,
 				D1BAC8CF2CF8ADC80027E304 /* ShareScreen */,
 				D1BAC8CB2CF8ADC80027E304 /* FavouritesScreen */,
 				D1BAC8BC2CF8ADC80027E304 /* ExploreScreen */,
@@ -536,6 +555,7 @@
 			mainGroup = D1B6D1C32CE9A7A00078BBA0;
 			packageReferences = (
 				45D5AAE72CFC1528004EFD89 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				45F8AE9B2CFC38790087BF88 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = D1B6D1CD2CE9A7A00078BBA0 /* Products */;
 			projectDirPath = "";
@@ -586,6 +606,10 @@
 				45D5AAFE2CFC1A18004EFD89 /* RepeatResetPasswordViewController.swift in Sources */,
 				45D5AAFF2CFC1A18004EFD89 /* AuthGoogleButton.swift in Sources */,
 				45D5AB002CFC1A18004EFD89 /* BackButton.swift in Sources */,
+				45F8AE972CFC37A10087BF88 /* ProfileStore.swift in Sources */,
+				45F8AE982CFC37A10087BF88 /* EditProfileController.swift in Sources */,
+				45F8AE992CFC37A10087BF88 /* EditProfileStore.swift in Sources */,
+				45F8AE9A2CFC37A10087BF88 /* ProfileViewController.swift in Sources */,
 				45D5AB012CFC1A18004EFD89 /* AuthStore.swift in Sources */,
 				45D5AB022CFC1A18004EFD89 /* SignUpViewController.swift in Sources */,
 				45D5AB032CFC1A18004EFD89 /* SignInViewController.swift in Sources */,
@@ -606,7 +630,6 @@
 				D1B6D1D02CE9A7A00078BBA0 /* AppDelegate.swift in Sources */,
 				D1BAC8AC2CF8AD470027E304 /* APIRoute.swift in Sources */,
 				0BFD0DAA2CF8A1BC00921CC2 /* SerchBarCell.swift in Sources */,
-				D1BAC8F42CF8AEE10027E304 /* ProfileViewController.swift in Sources */,
 				0BFD0DAB2CF8A1BC00921CC2 /* SearchBarViewPresenterImpl.swift in Sources */,
 				D1BAC8DF2CF8ADC80027E304 /* FavouritesPresenter.swift in Sources */,
 				0BFD0DAC2CF8A1BC00921CC2 /* SearchBarEmptyView.swift in Sources */,
@@ -859,6 +882,14 @@
 				minimumVersion = 11.5.0;
 			};
 		};
+		45F8AE9B2CFC38790087BF88 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -876,6 +907,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 45D5AAE72CFC1528004EFD89 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		45F8AE9C2CFC38790087BF88 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 45F8AE9B2CFC38790087BF88 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -57,7 +57,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self?.start()
             
         }
-        try? Auth.auth().signOut()
         return CustomTabBarController(callback: callback)
     }
 

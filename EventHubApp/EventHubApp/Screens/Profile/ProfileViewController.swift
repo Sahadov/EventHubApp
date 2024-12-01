@@ -6,8 +6,14 @@
 //
 
 import UIKit
+import FirebaseAuth
+import Kingfisher
 
 final class ProfileViewController: UIViewController {
+    public var callback: Callback?
+    private let store = ProfileStore()
+    private var bag = Bag()
+    
     private let avatarImageView = UIImageView()
     private let nameLabel = UILabel()
     private let editButton = UIButton()
@@ -18,6 +24,20 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        store.sendAction(.fetch)
+    }
+    
+    private func showUserInfo(_ person: Person?) {
+        if let person {
+            nameLabel.text = person.username
+            aboutTextLabel.text = person.about
+            let url = URL(string: person.avatarLink)
+            avatarImageView.kf.setImage(with: url, placeholder: UIImage(named: "avatar"))
+        }
     }
 }
 // MARK: - Setup Views
@@ -31,6 +51,19 @@ private extension ProfileViewController {
         setupAboutTextView()
         setupLogoutButton()
         view.backgroundColor = .white
+        setupObservers()
+    }
+    
+    func setupObservers() {
+        store
+            .events
+            .receive(on: DispatchQueue.main)
+            .sink {[weak self] event in
+                switch event {
+                case .done(let person): self?.showUserInfo(person)
+                case .signOut: self?.callback?()
+                }
+            }.store(in: &bag)
     }
     
     func setupAvatarImageView() {
@@ -51,7 +84,7 @@ private extension ProfileViewController {
     func setupNameLabel() {
         view.addSubview(nameLabel)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.text = "Ashfak Sayem"
+        nameLabel.text = ""
         nameLabel.textAlignment = .center
         nameLabel.font = .airbnbFont(ofSize: 24, weight: .book)
         NSLayoutConstraint.activate([
@@ -75,6 +108,9 @@ private extension ProfileViewController {
         config.imagePadding = 16
         config.contentInsets = .init(top: 12, leading: 18, bottom: 12, trailing: 18)
         editButton.configuration = config
+        editButton.addAction(UIAction {[weak self] _ in
+            self?.navigationController?.pushViewController(EditProfileController(), animated: true)
+        }, for: .primaryActionTriggered)
         NSLayoutConstraint.activate([
             editButton.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 15),
             editButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
@@ -99,7 +135,7 @@ private extension ProfileViewController {
         aboutTextLabel.translatesAutoresizingMaskIntoConstraints = false
         aboutTextLabel.numberOfLines = 0
         aboutTextLabel.font = .airbnbFont(ofSize: 16, weight: .book)
-        aboutTextLabel.text = "Enjoy your favorite dishe and a lovely your friends and family and have a great time. Food from local food trucks will be available for purchase. Read More"
+        aboutTextLabel.text = ""
         NSLayoutConstraint.activate([
             aboutTextLabel.topAnchor.constraint(equalTo: aboutTitleLabel.bottomAnchor, constant: 50),
             aboutTextLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
@@ -118,14 +154,14 @@ private extension ProfileViewController {
         config.imagePadding = 16
         config.contentInsets = .init(top: 12, leading: 18, bottom: 12, trailing: 18)
         logoutButton.configuration = config
+        logoutButton.addAction(
+            UIAction {[weak self] _ in
+                self?.store.sendAction(.signOut)
+            },
+            for: .primaryActionTriggered)
         NSLayoutConstraint.activate([
             logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoutButton.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -40)
         ])
     }
 }
-
-//@available(iOS 17.0, *)
-//#Preview {
-//    UINavigationController(rootViewController: ProfileViewController())
-//}
