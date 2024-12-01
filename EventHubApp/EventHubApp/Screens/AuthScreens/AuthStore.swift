@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseFirestore
 
 enum AuthEvent {
     case login
@@ -45,7 +46,21 @@ final class AuthStore: Store<AuthEvent, AuthAction> {
     }
 
     private func register(withEmail email: String, password: String, name: String) async throws {
-        print(name, password, email)
+        let authResult = try await Auth.auth().createUser(withEmail: email, password: password)
+        try await authResult.user.sendEmailVerification()
+        let uid = authResult.user.uid
+        let person = Person(id: uid, username: name, email: email)
+        print("User created: \(person)")
+        try await Firestore.firestore()
+            .collection("persons")
+            .document(uid)
+            .setData(["id": uid,
+                      "username": name,
+                      "email": email,
+                      "about": "",
+                      "avatarLink": "",
+                      "fullName": name])
+        sendEvent(.login)
     }
 
     private func signIn(withEmail email: String, password: String) async throws {

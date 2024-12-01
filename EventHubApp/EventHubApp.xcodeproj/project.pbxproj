@@ -30,6 +30,8 @@
 		45D5AB022CFC1A18004EFD89 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D5AAF72CFC1A18004EFD89 /* SignUpViewController.swift */; };
 		45D5AB032CFC1A18004EFD89 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D5AAF62CFC1A18004EFD89 /* SignInViewController.swift */; };
 		45D5AB052CFC25AE004EFD89 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D5AB042CFC25AE004EFD89 /* Person.swift */; };
+		45D5AB082CFC278E004EFD89 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 45D5AB072CFC278E004EFD89 /* FirebaseFirestore */; };
+		45D5AB0A2CFC2794004EFD89 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 45D5AB092CFC2794004EFD89 /* FirebaseStorage */; };
 		D1A246742CEA6D91007DA613 /* AirbnbCereal_W_Bk.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A2466E2CEA6D90007DA613 /* AirbnbCereal_W_Bk.otf */; };
 		D1A246752CEA6D91007DA613 /* AirbnbCereal_W_XBd.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A2466F2CEA6D90007DA613 /* AirbnbCereal_W_XBd.otf */; };
 		D1A246762CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A246702CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf */; };
@@ -167,6 +169,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				45D5AAE92CFC1528004EFD89 /* FirebaseAuth in Frameworks */,
+				45D5AB082CFC278E004EFD89 /* FirebaseFirestore in Frameworks */,
+				45D5AB0A2CFC2794004EFD89 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +279,13 @@
 			path = AuthScreens;
 			sourceTree = "<group>";
 		};
+		45D5AB062CFC278E004EFD89 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D1A2466D2CEA6D7C007DA613 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				D1B6D1CE2CE9A7A00078BBA0 /* EventHubApp */,
+				45D5AB062CFC278E004EFD89 /* Frameworks */,
 				D1B6D1CD2CE9A7A00078BBA0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -854,6 +866,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 45D5AAE72CFC1528004EFD89 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
+		};
+		45D5AB072CFC278E004EFD89 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 45D5AAE72CFC1528004EFD89 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		45D5AB092CFC2794004EFD89 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 45D5AAE72CFC1528004EFD89 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 
