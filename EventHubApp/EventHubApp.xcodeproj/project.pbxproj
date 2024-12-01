@@ -17,11 +17,11 @@
 		45A088112CEEA66A002D8A76 /* APIRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A088102CEEA66A002D8A76 /* APIRoute.swift */; };
 		45A088132CEEA998002D8A76 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A088122CEEA998002D8A76 /* APIError.swift */; };
 		45A088152CEEA9B5002D8A76 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A088142CEEA9B5002D8A76 /* APIClient.swift */; };
+		45D5AAE22CFC120C004EFD89 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 45D5AAE12CFC120C004EFD89 /* FirebaseAuth */; };
 		45E43CF12CECDFAD00D6AA00 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E43CF02CECDFAD00D6AA00 /* ProfileViewController.swift */; };
 		D1334A382CED61A900B424A1 /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1334A372CED61A900B424A1 /* FavouritesViewController.swift */; };
 		D1334A3A2CED61C500B424A1 /* FavouritesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1334A392CED61C500B424A1 /* FavouritesPresenter.swift */; };
 		D14EFDB22CF2AD5E00FFAA58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D14EFDB12CF2AD5D00FFAA58 /* GoogleService-Info.plist */; };
-		D14EFDB72CF2B2F900FFAA58 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D14EFDB62CF2B2F900FFAA58 /* FirebaseAuth */; };
 		D1A246742CEA6D91007DA613 /* AirbnbCereal_W_Bk.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A2466E2CEA6D90007DA613 /* AirbnbCereal_W_Bk.otf */; };
 		D1A246752CEA6D91007DA613 /* AirbnbCereal_W_XBd.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A2466F2CEA6D90007DA613 /* AirbnbCereal_W_XBd.otf */; };
 		D1A246762CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A246702CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf */; };
@@ -29,8 +29,6 @@
 		D1A246782CEA6D91007DA613 /* AirbnbCereal_W_Md.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A246722CEA6D91007DA613 /* AirbnbCereal_W_Md.otf */; };
 		D1A246792CEA6D91007DA613 /* AirbnbCereal_W_Blk.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A246732CEA6D91007DA613 /* AirbnbCereal_W_Blk.otf */; };
 		D1A2467B2CEA7782007DA613 /* UIFont_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A2467A2CEA7782007DA613 /* UIFont_Extension.swift */; };
-		D1B25A6B2CF3976900D6F0BA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D1B25A6A2CF3976900D6F0BA /* FirebaseFirestore */; };
-		D1B25A6D2CF3977500D6F0BA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D1B25A6C2CF3977500D6F0BA /* FirebaseStorage */; };
 		D1B692012CEECC91002FD817 /* FavouriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B692002CEECC91002FD817 /* FavouriteCell.swift */; };
 		D1B6D1D02CE9A7A00078BBA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B6D1CF2CE9A7A00078BBA0 /* AppDelegate.swift */; };
 		D1B6D1D22CE9A7A00078BBA0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B6D1D12CE9A7A00078BBA0 /* SceneDelegate.swift */; };
@@ -88,9 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D14EFDB72CF2B2F900FFAA58 /* FirebaseAuth in Frameworks */,
-				D1B25A6B2CF3976900D6F0BA /* FirebaseFirestore in Frameworks */,
-				D1B25A6D2CF3977500D6F0BA /* FirebaseStorage in Frameworks */,
+				45D5AAE22CFC120C004EFD89 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,9 +247,7 @@
 			);
 			name = EventHubApp;
 			packageProductDependencies = (
-				D14EFDB62CF2B2F900FFAA58 /* FirebaseAuth */,
-				D1B25A6A2CF3976900D6F0BA /* FirebaseFirestore */,
-				D1B25A6C2CF3977500D6F0BA /* FirebaseStorage */,
+				45D5AAE12CFC120C004EFD89 /* FirebaseAuth */,
 			);
 			productName = EventHubApp;
 			productReference = D1B6D1CC2CE9A7A00078BBA0 /* EventHubApp.app */;
@@ -481,7 +475,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 723HTEFHBA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EventHubApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -572,20 +566,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D14EFDB62CF2B2F900FFAA58 /* FirebaseAuth */ = {
+		45D5AAE12CFC120C004EFD89 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D14EFDB32CF2B2F900FFAA58 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
-		};
-		D1B25A6A2CF3976900D6F0BA /* FirebaseFirestore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D14EFDB32CF2B2F900FFAA58 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestore;
-		};
-		D1B25A6C2CF3977500D6F0BA /* FirebaseStorage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D14EFDB32CF2B2F900FFAA58 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 
