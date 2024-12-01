@@ -49,17 +49,19 @@ class NetworkManager {
             parameters["order_by"] = "-publication_date"
             parameters["expand"] = "dates,place,location,participants"
             parameters["lang"] = "\(lang)"
-            parameters["fields"] = "id,dates,title,short_title,place,location,categories,images,favorites_count,participants"
+            parameters["fields"] = "id,dates,title,short_title,place,location,categories,images,favorites_count,participants,body_text"
             parameters["actual_since"] = "\(Int(Date().timeIntervalSince1970))"
+            parameters["text_format"] = "text"
         case .getNearbyEnvents(lang: let lang, lat: let lat, lon: let lon, radius: let radius):
             parameters["page_size"] = "10"
             parameters["order_by"] = "-publication_date"
             parameters["expand"] = "dates,place,location,participants"
             parameters["lang"] = "\(lang)"
-            parameters["fields"] = "id,dates,title,short_title,place,location,categories,images,favorites_count,participants"
+            parameters["fields"] = "id,dates,title,short_title,place,location,categories,images,favorites_count,participants,body_text"
             parameters["lat"] = "\(lat)"
             parameters["lon"] = "\(lon)"
             parameters["radius"] = "\(radius)"
+            parameters["text_format"] = "text"
         }
         return parameters
     }
