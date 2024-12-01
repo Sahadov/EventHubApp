@@ -16,6 +16,19 @@
 		0BFD0DAD2CF8A1BC00921CC2 /* SearchBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFD0DA72CF8A1BC00921CC2 /* SearchBarViewController.swift */; };
 		0F5B5BC42CF9BCFF0080B32C /* EventDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B5BC32CF9BCFF0080B32C /* EventDetailsCell.swift */; };
 		0F5B5BC62CF9BD490080B32C /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B5BC52CF9BD490080B32C /* EventModel.swift */; };
+		45D5AAE92CFC1528004EFD89 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 45D5AAE82CFC1528004EFD89 /* FirebaseAuth */; };
+		45D5AAEB2CFC1756004EFD89 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 45D5AAEA2CFC1756004EFD89 /* GoogleService-Info.plist */; };
+		45D5AAED2CFC1996004EFD89 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D5AAEC2CFC1996004EFD89 /* Store.swift */; };
+		45D5AAFA2CFC1A18004EFD89 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D5AAEE2CFC1A18004EFD89 /* ActionButton.swift */; };
+		45D5AAFB2CFC1A18004EFD89 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D5AAF52CFC1A18004EFD89 /* ResetPasswordViewController.swift */; };
+		45D5AAFC2CFC1A18004EFD89 /* TextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D5AAF22CFC1A18004EFD89 /* TextLabel.swift */; };
+		45D5AAFD2CFC1A18004EFD89 /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D5AAF02CFC1A18004EFD89 /* AuthTextField.swift */; };
+		45D5AAFE2CFC1A18004EFD89 /* RepeatResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D5AAF42CFC1A18004EFD89 /* RepeatResetPasswordViewController.swift */; };
+		45D5AAFF2CFC1A18004EFD89 /* AuthGoogleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D5AAEF2CFC1A18004EFD89 /* AuthGoogleButton.swift */; };
+		45D5AB002CFC1A18004EFD89 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D5AAF12CFC1A18004EFD89 /* BackButton.swift */; };
+		45D5AB012CFC1A18004EFD89 /* AuthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D5AAF82CFC1A18004EFD89 /* AuthStore.swift */; };
+		45D5AB022CFC1A18004EFD89 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D5AAF72CFC1A18004EFD89 /* SignUpViewController.swift */; };
+		45D5AB032CFC1A18004EFD89 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D5AAF62CFC1A18004EFD89 /* SignInViewController.swift */; };
 		D1A246742CEA6D91007DA613 /* AirbnbCereal_W_Bk.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A2466E2CEA6D90007DA613 /* AirbnbCereal_W_Bk.otf */; };
 		D1A246752CEA6D91007DA613 /* AirbnbCereal_W_XBd.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A2466F2CEA6D90007DA613 /* AirbnbCereal_W_XBd.otf */; };
 		D1A246762CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1A246702CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf */; };
@@ -79,6 +92,18 @@
 		0BFD0DA72CF8A1BC00921CC2 /* SearchBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarViewController.swift; sourceTree = "<group>"; };
 		0F5B5BC32CF9BCFF0080B32C /* EventDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsCell.swift; sourceTree = "<group>"; };
 		0F5B5BC52CF9BD490080B32C /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
+		45D5AAEA2CFC1756004EFD89 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		45D5AAEC2CFC1996004EFD89 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		45D5AAEE2CFC1A18004EFD89 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		45D5AAEF2CFC1A18004EFD89 /* AuthGoogleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthGoogleButton.swift; sourceTree = "<group>"; };
+		45D5AAF02CFC1A18004EFD89 /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
+		45D5AAF12CFC1A18004EFD89 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		45D5AAF22CFC1A18004EFD89 /* TextLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabel.swift; sourceTree = "<group>"; };
+		45D5AAF42CFC1A18004EFD89 /* RepeatResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatResetPasswordViewController.swift; sourceTree = "<group>"; };
+		45D5AAF52CFC1A18004EFD89 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		45D5AAF62CFC1A18004EFD89 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		45D5AAF72CFC1A18004EFD89 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		45D5AAF82CFC1A18004EFD89 /* AuthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStore.swift; sourceTree = "<group>"; };
 		D1A2466E2CEA6D90007DA613 /* AirbnbCereal_W_Bk.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Bk.otf; sourceTree = "<group>"; };
 		D1A2466F2CEA6D90007DA613 /* AirbnbCereal_W_XBd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_XBd.otf; sourceTree = "<group>"; };
 		D1A246702CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Lt.otf; sourceTree = "<group>"; };
@@ -139,6 +164,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45D5AAE92CFC1528004EFD89 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +248,31 @@
 			path = SearchBar;
 			sourceTree = "<group>";
 		};
+		45D5AAF32CFC1A18004EFD89 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				45D5AAEE2CFC1A18004EFD89 /* ActionButton.swift */,
+				45D5AAEF2CFC1A18004EFD89 /* AuthGoogleButton.swift */,
+				45D5AAF02CFC1A18004EFD89 /* AuthTextField.swift */,
+				45D5AAF12CFC1A18004EFD89 /* BackButton.swift */,
+				45D5AAF22CFC1A18004EFD89 /* TextLabel.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		45D5AAF92CFC1A18004EFD89 /* AuthScreens */ = {
+			isa = PBXGroup;
+			children = (
+				45D5AAF32CFC1A18004EFD89 /* Views */,
+				45D5AAF42CFC1A18004EFD89 /* RepeatResetPasswordViewController.swift */,
+				45D5AAF52CFC1A18004EFD89 /* ResetPasswordViewController.swift */,
+				45D5AAF62CFC1A18004EFD89 /* SignInViewController.swift */,
+				45D5AAF72CFC1A18004EFD89 /* SignUpViewController.swift */,
+				45D5AAF82CFC1A18004EFD89 /* AuthStore.swift */,
+			);
+			path = AuthScreens;
+			sourceTree = "<group>";
+		};
 		D1A2466D2CEA6D7C007DA613 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,7 +315,9 @@
 				D1B6D1EC2CE9AE370078BBA0 /* Supporting */,
 				D1B6D1ED2CE9AE720078BBA0 /* Screens */,
 				D1B6D1E02CE9A7A30078BBA0 /* Info.plist */,
+				45D5AAEA2CFC1756004EFD89 /* GoogleService-Info.plist */,
 				D1B6D1D82CE9A7A00078BBA0 /* EventHubApp.xcdatamodeld */,
+				45D5AAEC2CFC1996004EFD89 /* Store.swift */,
 				D1BAC8AA2CF8AD470027E304 /* APIClient.swift */,
 				D1BAC8A82CF8AD470027E304 /* APIError.swift */,
 				D1BAC8A92CF8AD470027E304 /* APIRoute.swift */,
@@ -304,6 +357,7 @@
 		D1B6D1ED2CE9AE720078BBA0 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				45D5AAF92CFC1A18004EFD89 /* AuthScreens */,
 				D1BAC8F32CF8AEE00027E304 /* ProfileViewController.swift */,
 				D1BAC8CF2CF8ADC80027E304 /* ShareScreen */,
 				D1BAC8CB2CF8ADC80027E304 /* FavouritesScreen */,
@@ -465,6 +519,9 @@
 				Base,
 			);
 			mainGroup = D1B6D1C32CE9A7A00078BBA0;
+			packageReferences = (
+				45D5AAE72CFC1528004EFD89 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = D1B6D1CD2CE9A7A00078BBA0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -481,6 +538,7 @@
 			files = (
 				D1A246742CEA6D91007DA613 /* AirbnbCereal_W_Bk.otf in Resources */,
 				D1A246782CEA6D91007DA613 /* AirbnbCereal_W_Md.otf in Resources */,
+				45D5AAEB2CFC1756004EFD89 /* GoogleService-Info.plist in Resources */,
 				D1B6D1DF2CE9A7A30078BBA0 /* LaunchScreen.storyboard in Resources */,
 				D1A246762CEA6D91007DA613 /* AirbnbCereal_W_Lt.otf in Resources */,
 				D1A246772CEA6D91007DA613 /* AirbnbCereal_W_Bd.otf in Resources */,
@@ -501,10 +559,21 @@
 				D1BAC8DB2CF8ADC80027E304 /* CategoryCollectionView.swift in Sources */,
 				0BFD0D9E2CF8A1B500921CC2 /* OnboardingPresenter.swift in Sources */,
 				D1BAC8F02CF8AE370027E304 /* SearchModel.swift in Sources */,
+				45D5AAED2CFC1996004EFD89 /* Store.swift in Sources */,
 				0BFD0D9F2CF8A1B500921CC2 /* OnboardingView.swift in Sources */,
 				0BFD0DA02CF8A1B500921CC2 /* OnboardingViewController.swift in Sources */,
 				D1BAC8D52CF8ADC80027E304 /* CategoryCell.swift in Sources */,
 				D1BAC8E42CF8ADC80027E304 /* ShareCollectionViewController.swift in Sources */,
+				45D5AAFA2CFC1A18004EFD89 /* ActionButton.swift in Sources */,
+				45D5AAFB2CFC1A18004EFD89 /* ResetPasswordViewController.swift in Sources */,
+				45D5AAFC2CFC1A18004EFD89 /* TextLabel.swift in Sources */,
+				45D5AAFD2CFC1A18004EFD89 /* AuthTextField.swift in Sources */,
+				45D5AAFE2CFC1A18004EFD89 /* RepeatResetPasswordViewController.swift in Sources */,
+				45D5AAFF2CFC1A18004EFD89 /* AuthGoogleButton.swift in Sources */,
+				45D5AB002CFC1A18004EFD89 /* BackButton.swift in Sources */,
+				45D5AB012CFC1A18004EFD89 /* AuthStore.swift in Sources */,
+				45D5AB022CFC1A18004EFD89 /* SignUpViewController.swift in Sources */,
+				45D5AB032CFC1A18004EFD89 /* SignInViewController.swift in Sources */,
 				D1BAC8BA2CF8AD6E0027E304 /* ModuleBuilder.swift in Sources */,
 				D1BAC8B62CF8AD6E0027E304 /* NetworkManager.swift in Sources */,
 				D1BAC8D92CF8ADC80027E304 /* CategoryConfigurator.swift in Sources */,
@@ -764,6 +833,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		45D5AAE72CFC1528004EFD89 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		45D5AAE82CFC1528004EFD89 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 45D5AAE72CFC1528004EFD89 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		D1B6D1D82CE9A7A00078BBA0 /* EventHubApp.xcdatamodeld */ = {
