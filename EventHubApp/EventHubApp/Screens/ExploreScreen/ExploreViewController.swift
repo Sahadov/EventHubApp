@@ -327,6 +327,7 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDeleg
         case 1:
             let nearbyEvent = eventCollectionView.nearbyEvents[indexPath.row]
             presenter?.didTapEvent(event: nearbyEvent)
+            print(nearbyEvent)
         default:
             break
         }
