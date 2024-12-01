@@ -73,12 +73,12 @@ class SignInViewController: UIViewController {
     
     @objc func signInTapped() {
         guard let email = emailTF.text, let password = passwordTF.text else { return }
-        print(email, password)
         store.sendAction(.signIn(email, password))
     }
     
     @objc func signUpTapped() {
         let vc = SignUpViewController()
+        vc.callback = callback
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -121,7 +121,6 @@ extension SignInViewController {
     }
     
     private func login() {
-        print(#function)
         callback?()
     }
     

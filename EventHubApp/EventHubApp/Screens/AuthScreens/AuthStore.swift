@@ -13,7 +13,7 @@ enum AuthEvent {
 }
 
 enum AuthAction {
-    case createUser(String, String)
+    case createUser(String, String, String)
     case signIn(String, String)
     case sendPasswordReset(String)
     case sendEmail(String)
@@ -22,9 +22,9 @@ enum AuthAction {
 final class AuthStore: Store<AuthEvent, AuthAction> {
     override func handleActions(action: AuthAction) {
         switch action {
-        case .createUser(let email, let password):
+        case .createUser(let email, let password, let name):
             statefulCall { [weak self] in
-                try await self?.register(withEmail: email, password: password)
+                try await self?.register(withEmail: email, password: password, name: name)
             }
         case .signIn(let email, let password):
             statefulCall { [weak self] in
@@ -44,7 +44,8 @@ final class AuthStore: Store<AuthEvent, AuthAction> {
     private func sendEmail(_ email: String) async throws {
     }
 
-    private func register(withEmail email: String, password: String) async throws {
+    private func register(withEmail email: String, password: String, name: String) async throws {
+        print(name, password, email)
     }
 
     private func signIn(withEmail email: String, password: String) async throws {

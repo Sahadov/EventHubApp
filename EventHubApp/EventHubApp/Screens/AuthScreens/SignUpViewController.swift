@@ -8,7 +8,10 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
-    
+    public var callback: Callback?
+    private let store = AuthStore()
+    private var bag = Bag()
+
     private let navigationBackButton = BackButton()
     private let titleLabel = TextLabel(text: "Sign up", fontSize: 24, fontWeight: .medium)
     private let loginTF = AuthTextField(placeholder: "Full Name", keyboardType: .emailAddress, imageString: "emailAuth")
@@ -43,7 +46,11 @@ class SignUpViewController: UIViewController {
     }
     
     @objc func signUpTapped() {
-        print("signUpTapped")
+        guard let email = emailTF.text,
+                let password = passwordTF.text,
+                let repeatPassord = repeatPasswordTF.text,
+                let name = loginTF.text, repeatPassord == password else { return }
+        store.sendAction(.createUser(email, password, name))
     }
 
     
@@ -69,6 +76,23 @@ extension SignUpViewController {
         }
         
         configure()
+        setupObservers()
+    }
+    
+    private func setupObservers() {
+        store
+            .events
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] event in
+                guard let self else { return }
+                switch event {
+                case .login:            self.login()
+                }
+            }.store(in: &bag)
+    }
+    
+    private func login() {
+        callback?()
     }
     
     private func configure() {
