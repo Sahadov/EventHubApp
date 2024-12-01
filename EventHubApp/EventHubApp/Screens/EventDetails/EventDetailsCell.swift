@@ -5,13 +5,6 @@
 //  Created by Сергей Сухарев on 27.11.2024.
 //
 
-//
-//  SettingRowView.swift
-//  RadioApp
-//
-//  Created by Сергей Сухарев on 29.07.2024.
-//
-
 import UIKit
 
 class EventDetailsCell: UIView {
@@ -34,6 +27,7 @@ class EventDetailsCell: UIView {
         setConstraints()
         
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -46,33 +40,30 @@ class EventDetailsCell: UIView {
     
     private func setConstraints(){
         NSLayoutConstraint.activate([
-//            imageTitle.topAnchor.constraint(equalTo: topAnchor),
             imageTitle.leadingAnchor.constraint(equalTo: leadingAnchor),
             imageTitle.centerYAnchor.constraint(equalTo: centerYAnchor),
             
-//            imageTitle.widthAnchor.constraint(equalToConstant: 48),
-//            imageTitle.heightAnchor.constraint(equalToConstant: 48),
-            
-            titleLabelUp.topAnchor.constraint(equalTo: imageTitle.topAnchor),
+            titleLabelUp.topAnchor.constraint(equalTo: topAnchor),
             titleLabelUp.leadingAnchor.constraint(equalTo: imageTitle.trailingAnchor, constant: 20),
+            titleLabelUp.trailingAnchor.constraint(equalTo: trailingAnchor),
             
-            titleLabelDown.bottomAnchor.constraint(equalTo: imageTitle.bottomAnchor),
+            titleLabelDown.topAnchor.constraint(equalTo: titleLabelUp.bottomAnchor),
             titleLabelDown.leadingAnchor.constraint(equalTo: imageTitle.trailingAnchor, constant: 20),
         ])
     }
+    
     private func configuration() {
-        imageTitle.contentMode = .scaleAspectFill
+        imageTitle.contentMode = .scaleAspectFit
         imageTitle.clipsToBounds = true
-       // imageTitle.isUserInteractionEnabled = true
         imageTitle.translatesAutoresizingMaskIntoConstraints = false
         
         titleLabelUp.textAlignment = .left
-        //titleLabelUp.font = .airbnbFont(ofSize: 16, weight: .medium)
+        titleLabelUp.numberOfLines = 0
         titleLabelUp.translatesAutoresizingMaskIntoConstraints = false
         
         titleLabelDown.textColor = .gray
         titleLabelDown.textAlignment = .left
-        //titleLabelDown.font = .airbnbFont(ofSize: 12, weight: .book)
+        titleLabelDown.numberOfLines = 0
         titleLabelDown.translatesAutoresizingMaskIntoConstraints = false
     }
     

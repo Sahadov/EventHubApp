@@ -20,6 +20,7 @@ struct EventModel: Decodable {
     let images: [EventImage]?
     let favoritesCount: Int?
     let place: PlaceModel?
+    let siteUrl: String?
     let participants: [ParticipantModel]?
 }
 struct ParticipantModel: Decodable {

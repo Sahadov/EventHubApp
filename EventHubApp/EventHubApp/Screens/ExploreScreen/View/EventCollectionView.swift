@@ -168,28 +168,28 @@ extension EventCollectionView: UICollectionViewDataSource {
 
 // MARK: - Delegate
 
-extension EventCollectionView: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-
-    func collectionView(_ collectionView: UICollectionView,
-                        didSelectItemAt indexPath: IndexPath) {
-                let sectionIndex = indexPath.section
-                
-                switch sectionIndex {
-                case 0:
-                    print("Section 1")
-                    let currentEvent = currentEvents[indexPath.row]
-                    let eventDetailVC = EventDetailsVC(event: currentEvent)
-                    UINavigationController().pushViewController(eventDetailVC, animated: true)
-                case 1:
-                    print("Section 2")
-                    let nearbyEvent = nearbyEvents[indexPath.item]
-                    let eventDetailVC = EventDetailsVC(event: nearbyEvent)
-                    ExploreViewController().navigationController?.pushViewController(eventDetailVC, animated: true)
-                default:
-                    break
-                }
-    }
-}
+//extension EventCollectionView: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+//
+//    func collectionView(_ collectionView: UICollectionView,
+//                        didSelectItemAt indexPath: IndexPath) {
+//                let sectionIndex = indexPath.section
+//                
+//                switch sectionIndex {
+//                case 0:
+//                    print("Section 1")
+//                    let currentEvent = currentEvents[indexPath.row]
+//                    let eventDetailVC = ModuleBuilder.createDetailModule(event: currentEvent)
+//                    UINavigationController().pushViewController(eventDetailVC, animated: true)
+//                case 1:
+//                    print("Section 2")
+//                    let nearbyEvent = nearbyEvents[indexPath.item]
+//                    let eventDetailVC = ModuleBuilder.createDetailModule(event: nearbyEvent)
+//                    ExploreViewController().navigationController?.pushViewController(eventDetailVC, animated: true)
+//                default:
+//                    break
+//                }
+//    }
+//}
 
 // MARK: - Layout Collection View
 
