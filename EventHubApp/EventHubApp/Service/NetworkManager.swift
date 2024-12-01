@@ -4,8 +4,65 @@ import Foundation
 class NetworkManager {
     
     static let shared = NetworkManager()
-        
+    
     private init() {}
+    
+    func createURL(for endpoint: APIEndpoints, with query: String? = nil) -> URL? {
+        var components = URLComponents()
+        components.scheme = API.scheme
+        components.host = API.host
+        components.path = endpoint.patch
+        components.queryItems = makeParameters(for: endpoint).compactMap({
+            URLQueryItem(name: $0.key, value: $0.value)
+        })
+        return components.url
+    }
+    
+    private func makeParameters(for endpoint: APIEndpoints) -> [String: String] {
+        var parameters = [String: String]()
+        
+        switch endpoint {
+        case .getCities(lang: let lang):
+            parameters["lang"] = "\(lang)"
+            parameters["fields"] = "slug,name,coords"
+        case .getCategories(lang: let lang):
+            parameters["lang"] = "\(lang)"
+        case .getEnvents(lang: let lang, location: let location, page: let page):
+            parameters["page_size"] = "(10)"
+            parameters["expand"] = "dates,place"
+            parameters["order_by"] = "-publication_date"
+            parameters["lang"] = "\(lang)"
+            parameters["page"] = "\(page)"
+            parameters["location"] = "\(location)"
+            parameters["fields"] = "id,dates,title,short_title,place,description,body_text,location,categories,images,favorites_count,participants"
+            parameters["text_format"] = "text"
+            parameters["actual_since"] = "\(Date().timeIntervalSince1970)"
+        case .doSearch(query: let query, location: let location, page: let page, lang: let lang):
+            parameters["q"] = "\(query)"
+            parameters["location"] = "\(location)"
+            parameters["lang"] = "\(lang)"
+            parameters["page"] = "\(page)"
+            parameters["expand"] = "dates"
+            parameters["ctype"] = "event"
+        case .getUpcomingEnvents(lang: let lang):
+            parameters["page_size"] = "10"
+            parameters["order_by"] = "-publication_date"
+            parameters["expand"] = "dates,place,location,participants"
+            parameters["lang"] = "\(lang)"
+            parameters["fields"] = "id,dates,title,short_title,place,location,categories,images,favorites_count,participants"
+            parameters["actual_since"] = "\(Int(Date().timeIntervalSince1970))"
+        case .getNearbyEnvents(lang: let lang, lat: let lat, lon: let lon, radius: let radius):
+            parameters["page_size"] = "10"
+            parameters["order_by"] = "-publication_date"
+            parameters["expand"] = "dates,place,location,participants"
+            parameters["lang"] = "\(lang)"
+            parameters["fields"] = "id,dates,title,short_title,place,location,categories,images,favorites_count,participants"
+            parameters["lat"] = "\(lat)"
+            parameters["lon"] = "\(lon)"
+            parameters["radius"] = "\(radius)"
+        }
+        return parameters
+    }
     
     func fetchImage(from url: URL, completion: @escaping(Result<Data, NetworkError>) -> Void) {
         DispatchQueue.global().async {
@@ -19,19 +76,23 @@ class NetworkManager {
         }
     }
     
-    func fetch<T: Decodable>(_ type: T.Type, from url: URL, completion: @escaping(Result<T, NetworkError>) -> Void) {
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data else {
-                print(error?.localizedDescription ?? "No error description")
-                completion(.failure(.noData))
-                return
+    func fetch<T: Decodable>(for url: URL, completion: @escaping(Result<T, NetworkError>) -> Void) {
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            
+            guard let data = data, error == nil else {
+                return completion(.failure(.noData))
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                return completion(.failure(.badResponse))
             }
             
             do {
-                let dataModel = try JSONDecoder().decode(T.self, from: data)
-                DispatchQueue.main.async {
-                    completion(.success(dataModel))
-                }
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let dataModel = try decoder.decode(T.self, from: data)
+                completion(.success(dataModel))
             } catch {
                 completion(.failure(.decodingError))
             }

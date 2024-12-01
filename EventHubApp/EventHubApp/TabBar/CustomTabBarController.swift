@@ -32,7 +32,7 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     private func setupTabItems(){
-        let exploreVC = ViewController()
+        let exploreVC = ModuleBuilder.createExploreModule()
         exploreVC.tabBarItem.title = "Explore"
         exploreVC.tabBarItem.image = UIImage(named: "compassTabBar")
 
@@ -52,8 +52,8 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     
         setViewControllers(
             [
-                exploreVC,
-                eventsVC,
+                UINavigationController(rootViewController: exploreVC),
+                UINavigationController(rootViewController: eventsVC),
                 favouritesVC,
                 mapVC,
                 UINavigationController(rootViewController: profileVC)

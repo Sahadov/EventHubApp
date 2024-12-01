@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import FirebaseAuth
+import SwiftUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -15,13 +15,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = CustomTabBarController()
+//        window?.rootViewController = CustomTabBarController()
+        window?.rootViewController = UINavigationController(rootViewController: ModuleBuilder.createExploreModule())
         window?.makeKeyAndVisible()
-        Auth.auth().createUser(withEmail: "mrsahadov@gmail.com", password: "123456")
 //        Task {
 //            do {
-////                let response: EventResponse = try await APIClient.shared.request(.getNews(NewsRequest(location: "spb")))
-////                response.results.forEach { print($0.title) }
+//                let response: EventResponse = try await APIClient.shared.request(.getNews(NewsRequest(location: "spb")))
+//                response.results.forEach { print($0.title) }
 //            } catch {
 //                print(error)
 //            }

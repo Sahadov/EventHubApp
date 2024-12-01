@@ -5,50 +5,26 @@
 //  Created by Сергей Сухарев on 21.11.2024.
 //
 
-import Foundation
+enum APIEndpoints {
+    case getCities(lang: String)
+    case getCategories(lang: String)
+    case getEnvents(lang: String, location: String, page: Int)
+    case doSearch(query: String, location: String, page: Int, lang: String)
+    case getUpcomingEnvents(lang: String)
+    case getNearbyEnvents(lang: String, lat: Double, lon: Double, radius: Int)
 
-enum APIEndpoint {
 
-    enum link {
-        case base
-        case city
-        case events
-        case eventCategories
-        case search
-        
-        
-        var url: String {
-            switch self {
-            case .base:
-                return "https://kudago.com/public-api/v1.4/"
-            case .city:
-                return "locations/"
-            case .events:
-                return "events/"
-            case .eventCategories:
-                return "event-categories/"
-            case .search:
-                return "search/"
-            }
-        }
-    }
-    
-    case citiesUrl(lang: String, page: Int)
-    case eventsUrl(lang: String, page: Int)
-    case eventsCategoriesUrl(lang: String, page: Int)
-    case searchUrl(query: String, lang: String, page: Int)
-    
-    var url: URL {
+    var patch: String {
         switch self {
-        case .citiesUrl(lang: let lang, page: let page):
-            return URL(string: "\(link.base.url)\(link.city.url)?lang=\(lang)&page=\(page)")!
-        case .eventsUrl(lang: let lang, page: let page):
-            return URL(string: "\(link.base.url)\(link.events.url)?lang=\(lang)&page=\(page)")!
-        case .eventsCategoriesUrl(lang: let lang, page: let page):
-            return URL(string: "\(link.base.url)\(link.eventCategories.url)?lang=\(lang)&page=\(page)")!
-        case .searchUrl(query: let query, lang: let lang, page: let page):
-            return URL(string: "\(link.base.url)\(link.search.url)?q=\(query)&lang=\(lang)&page=\(page)")!
+            
+        case .getCities:
+            return "/public-api/v1.4/locations/"
+        case .getCategories:
+            return "/public-api/v1.4/event-categories/"
+        case .getEnvents, .getUpcomingEnvents, .getNearbyEnvents:
+            return "/public-api/v1.4/events/"
+        case .doSearch:
+            return "/public-api/v1.4/search/"
         }
     }
-    
 }
