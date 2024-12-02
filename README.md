@@ -1,4 +1,4 @@
-# EventApp: Находите мероприятия которые можно посетить в любой день!
+# EventHubApp: Находите мероприятия которые можно посетить в любой день!
 ![iOS](https://img.shields.io/badge/iOS-15.0-deeppink)  ![Swift](https://img.shields.io/badge/Swift-orange)  ![UIKit](https://img.shields.io/badge/UIKit-blue) ![MVP](https://img.shields.io/badge/MVP-lightblue)
 
 <p align="center">
@@ -26,7 +26,7 @@
 
 ## О Приложении:
 
-EventApp - Приложение для поиска событий, концертов и выставок.
+EventHubApp - Приложение для поиска событий, концертов и выставок.
 
 Найдите идеальное событие!
 Наше приложение поможет вам легко отыскать концерты, выставки, фестивали и другие мероприятия рядом с вами.
