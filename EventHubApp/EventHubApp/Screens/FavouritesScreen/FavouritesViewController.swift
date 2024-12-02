@@ -17,17 +17,17 @@ struct MyEvent {
 
 // MARK: - Protocol for View Input
 protocol FavouritesViewInput: AnyObject {
-    func updateEvents(_ events: [MyEvent])
+    func updateEvents(_ events: [FavouriteEvent])
     func showNoBookmarksMessage()
     func hideNoBookmarksMessage()
     func onSearchTapped()
 }
 
-class FavouritesViewController: UIViewController {
+class FavouritesViewController: UIViewController, FavouriteCellDelegate {
 
     // MARK: - Properties
     var viewOutput: FavouritesViewOutput!
-    private var eventsArray: [MyEvent] = []
+    private var eventsArray: [FavouriteEvent] = []
 
     // MARK: - Views
     private var collectionView: UICollectionView!
@@ -73,25 +73,35 @@ class FavouritesViewController: UIViewController {
     }
 
     // MARK: - Lifecycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        guard let fetchedData = CoreDataManager.shared.fetchFavouriteEvents() else { return }
+//        eventsArray = fetchedData
+//        collectionView.reloadData()
+        reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setCollectionView()
         setConstraints()
         viewOutput.loadEvents()
-        
-        // Fix data loading
-        eventsArray = [
-                MyEvent(date: "11 November", title: "The Big Bang Theory", place: "Moscow"),
-                MyEvent(date: "12 November", title: "Event Horizon", place: "Saint Petersburg"),
-                MyEvent(date: "13 November", title: "Cosmic Journey", place: "Novosibirsk")
-        ]
     }
+    
+    func didTapBookmarkButton(id: Int64) {
+        // Delete from CoreData
+        guard let updatedEvent = CoreDataManager.shared.fetchFavouriteEvent(withId: id) else { return }
+        CoreDataManager.shared.deleteFavouriteEvent(event: updatedEvent)
+        // Reload data
+        reloadData()
+    }
+    
 }
 
 // MARK: - FavouritesViewInput Implementation
 extension FavouritesViewController: FavouritesViewInput {
-    func updateEvents(_ events: [MyEvent]) {
+    func updateEvents(_ events: [FavouriteEvent]) {
         eventsArray = events
         collectionView.reloadData()
     }
@@ -131,6 +141,12 @@ private extension FavouritesViewController {
         collectionView.backgroundColor = .clear
         view.addSubview(collectionView)
     }
+    
+    func reloadData(){
+        guard let fetchedData = CoreDataManager.shared.fetchFavouriteEvents() else { return }
+        eventsArray = fetchedData
+        collectionView.reloadData()
+    }
 
     func setConstraints() {
         NSLayoutConstraint.activate([
@@ -163,13 +179,14 @@ extension FavouritesViewController: UICollectionViewDataSource, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! FavouriteCell
         cell.configure(with: eventsArray[indexPath.row])
+        cell.delegate = self
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let padding: CGFloat = 40
         let availableWidth = collectionView.frame.width - padding
         let cellWidth = availableWidth
-        return CGSize(width: cellWidth, height: 112)
+        return CGSize(width: cellWidth, height: 120)
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

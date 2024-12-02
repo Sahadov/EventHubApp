@@ -4,6 +4,8 @@ final class EventCell: UICollectionViewCell {
 
     // MARK: - Properties
 
+    // added
+    var event: EventModel?
     static let identifier: String = "EventCell"
     private var isFavorite: Bool = false
 
@@ -258,6 +260,9 @@ final class EventCell: UICollectionViewCell {
         titleLabel.text = events.shortTitle
         locationLabel.text = events.place?.address
         participantsLabel.text = "+0 Going" //TODO: Получать кол-во участников
+        
+        //added
+        event = events
 
         let images = [
             UIImage(named: "goingThree"),
@@ -315,5 +320,15 @@ private extension EventCell {
         isFavorite.toggle()
         let imageView = isFavorite ? "bookmark.fill" : "bookmark"
         favouriteButton.setImage(UIImage(systemName: imageView), for: .normal)
+        
+        let imageURL = (event?.images?.first?.image)!
+        let startDate = formatDate(from: event?.dates?.first?.start ?? 0)
+        let location = event?.place?.title?.capitalized ?? "The place is not specified"
+        
+        //added
+        guard let newEvent = CoreDataManager.shared.createFavouriteEvent(userEmail: "mrsahadov@gmail.com", id: (event?.id!)!, title: (event?.title!)!, location: location, bodyText: (event?.bodyText!)!, image: imageURL, startDate: startDate) else { return }
+         print("Created \(newEvent)")
+    
+        
     }
 }
