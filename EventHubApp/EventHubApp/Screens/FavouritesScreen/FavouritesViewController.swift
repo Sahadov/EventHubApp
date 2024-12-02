@@ -17,17 +17,18 @@ struct MyEvent {
 
 // MARK: - Protocol for View Input
 protocol FavouritesViewInput: AnyObject {
-    func updateEvents(_ events: [MyEvent])
+    func updateEvents(_ events: [FavouriteEvent])
     func showNoBookmarksMessage()
     func hideNoBookmarksMessage()
     func onSearchTapped()
 }
 
-class FavouritesViewController: UIViewController {
+class FavouritesViewController: UIViewController, FavouriteCellDelegate {
 
     // MARK: - Properties
+    var event: FavouriteEvent?
     var viewOutput: FavouritesViewOutput!
-    private var eventsArray: [MyEvent] = []
+    private var eventsArray: [FavouriteEvent] = []
 
     // MARK: - Views
     private var collectionView: UICollectionView!
@@ -50,15 +51,24 @@ class FavouritesViewController: UIViewController {
         return imageView
     }()
 
+    private let noBookmarksImage: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "bookmark-4")
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFill
+        image.isHidden = false
+        return image
+    }()
+    
     private let noBookmarksLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.tintColor = .systemGray6
-        label.text = "You haven't saved any articles yet. Start reading and bookmarking them now."
+        label.textColor = AppColors.red
+        label.text = "Ooopsss... You don't have favourite events"
         label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        label.isHidden = true
+        label.isHidden = false
         return label
     }()
 
@@ -73,37 +83,52 @@ class FavouritesViewController: UIViewController {
     }
 
     // MARK: - Lifecycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        guard let fetchedData = CoreDataManager.shared.fetchFavouriteEvents() else { return }
+//        eventsArray = fetchedData
+//        collectionView.reloadData()
+        reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setCollectionView()
         setConstraints()
         viewOutput.loadEvents()
-        
-        // Fix data loading
-        eventsArray = [
-                MyEvent(date: "11 November", title: "The Big Bang Theory", place: "Moscow"),
-                MyEvent(date: "12 November", title: "Event Horizon", place: "Saint Petersburg"),
-                MyEvent(date: "13 November", title: "Cosmic Journey", place: "Novosibirsk")
-        ]
     }
+    
+    func didTapBookmarkButton(id: Int64) {
+        // Delete from CoreData
+        guard let updatedEvent = CoreDataManager.shared.fetchFavouriteEvent(withId: id) else { return }
+        CoreDataManager.shared.deleteFavouriteEvent(event: updatedEvent)
+
+        NotificationCenter.default.post(name: Notification.Name("isFavoriteChanged"), object: nil)
+
+        // Reload data
+        reloadData()
+    }
+    
 }
 
 // MARK: - FavouritesViewInput Implementation
 extension FavouritesViewController: FavouritesViewInput {
-    func updateEvents(_ events: [MyEvent]) {
+    func updateEvents(_ events: [FavouriteEvent]) {
         eventsArray = events
         collectionView.reloadData()
     }
 
     func showNoBookmarksMessage() {
         noBookmarksLabel.isHidden = false
-        collectionView.isHidden = true
+        noBookmarksImage.isHidden = false
+        
     }
 
     func hideNoBookmarksMessage() {
         noBookmarksLabel.isHidden = true
-        collectionView.isHidden = false
+        noBookmarksImage.isHidden = true
+        
     }
 
     func onSearchTapped() {
@@ -117,6 +142,7 @@ private extension FavouritesViewController {
         view.backgroundColor = .white
         view.addSubview(titleLabel)
         view.addSubview(searchImageView)
+        view.addSubview(noBookmarksImage)
         view.addSubview(noBookmarksLabel)
     }
 
@@ -130,6 +156,18 @@ private extension FavouritesViewController {
         collectionView.register(FavouriteCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.backgroundColor = .clear
         view.addSubview(collectionView)
+    }
+    
+    func reloadData(){
+        guard let fetchedData = CoreDataManager.shared.fetchFavouriteEvents() else { return }
+        eventsArray = fetchedData
+        collectionView.reloadData()
+        
+        if eventsArray.count != 0 {
+            hideNoBookmarksMessage()
+        } else {
+            showNoBookmarksMessage()
+        }
     }
 
     func setConstraints() {
@@ -147,9 +185,14 @@ private extension FavouritesViewController {
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 
-            noBookmarksLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            noBookmarksImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            noBookmarksImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            noBookmarksImage.widthAnchor.constraint(equalToConstant: 150),
+            noBookmarksImage.heightAnchor.constraint(equalToConstant: 150),
+            
             noBookmarksLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            noBookmarksLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30)
+            noBookmarksLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            noBookmarksLabel.bottomAnchor.constraint(equalTo: noBookmarksImage.topAnchor, constant: -30)
         ])
     }
 }
@@ -163,20 +206,21 @@ extension FavouritesViewController: UICollectionViewDataSource, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! FavouriteCell
         cell.configure(with: eventsArray[indexPath.row])
+        cell.delegate = self
+        event = eventsArray[indexPath.row]
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let padding: CGFloat = 40
         let availableWidth = collectionView.frame.width - padding
         let cellWidth = availableWidth
-        return CGSize(width: cellWidth, height: 112)
+        return CGSize(width: cellWidth, height: 120)
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let event = eventsArray[indexPath.row]
-//        let articleViewController = ArticleViewController(with: article)
-//        articleViewController.hidesBottomBarWhenPushed = true
-//        navigationController?.pushViewController(articleViewController, animated: true)
+        let selectedEvent = eventsArray[indexPath.row]
+        let favouritesDetailedScreen = FavouritesDetailedScreen(event: selectedEvent)
+        present(favouritesDetailedScreen, animated: true, completion: nil)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

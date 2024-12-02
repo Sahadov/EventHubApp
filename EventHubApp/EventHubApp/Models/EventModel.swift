@@ -20,6 +20,24 @@ struct EventModel: Decodable {
     let images: [EventImage]?
     let favoritesCount: Int?
     let place: PlaceModel?
+    let siteUrl: String?
+    let participants: [ParticipantModel]?
+}
+struct ParticipantModel: Decodable {
+    let agent: Agent?
+}
+struct Agent: Decodable {
+    let agentId: Int?
+    let id: Int?
+    let title: String?
+    let slug: String?
+    let siteUrl: String?
+    let images: [AgentImages]?
+    let agentType: String?
+}
+
+struct AgentImages: Decodable {
+    let image: String?
 }
 
 struct EventDate: Decodable {
