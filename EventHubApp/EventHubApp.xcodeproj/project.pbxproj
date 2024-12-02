@@ -70,6 +70,8 @@
 		D1C97B3C2CEAF2C6007BB9A9 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C97B3B2CEAF2C6007BB9A9 /* CustomTabBarController.swift */; };
 		D1C97B3E2CEAF2EB007BB9A9 /* FavouriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C97B3D2CEAF2EB007BB9A9 /* FavouriteButton.swift */; };
 		D1CF7A142CFDDB58003CF024 /* FavouritesDetailedScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CF7A132CFDDB58003CF024 /* FavouritesDetailedScreen.swift */; };
+		D1CF7A1C2CFDF69C003CF024 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CF7A1B2CFDF69C003CF024 /* EventsViewController.swift */; };
+		D1CF7A1E2CFDF7D7003CF024 /* UpcomingEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CF7A1D2CFDF7D7003CF024 /* UpcomingEventCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -138,6 +140,8 @@
 		D1C97B3B2CEAF2C6007BB9A9 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		D1C97B3D2CEAF2EB007BB9A9 /* FavouriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteButton.swift; sourceTree = "<group>"; };
 		D1CF7A132CFDDB58003CF024 /* FavouritesDetailedScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesDetailedScreen.swift; sourceTree = "<group>"; };
+		D1CF7A1B2CFDF69C003CF024 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		D1CF7A1D2CFDF7D7003CF024 /* UpcomingEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +328,7 @@
 				D1BAC8CB2CF8ADC80027E304 /* FavouritesScreen */,
 				D1BAC8BC2CF8ADC80027E304 /* ExploreScreen */,
 				0F5B5BCB2CFDACD60080B32C /* MapScreen */,
+				D1CF7A1A2CFDF675003CF024 /* EventsScreen */,
 				D1BAC8C82CF8ADC80027E304 /* EventDetails */,
 				D1B6D1D32CE9A7A00078BBA0 /* ViewController.swift */,
 				D1CF7A132CFDDB58003CF024 /* FavouritesDetailedScreen.swift */,
@@ -446,6 +451,15 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		D1CF7A1A2CFDF675003CF024 /* EventsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				D1CF7A1B2CFDF69C003CF024 /* EventsViewController.swift */,
+				D1CF7A1D2CFDF7D7003CF024 /* UpcomingEventCell.swift */,
+			);
+			path = EventsScreen;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -547,6 +561,7 @@
 				D1BAC8DE2CF8ADC80027E304 /* EventDetailsPresenter.swift in Sources */,
 				D1B6D1D02CE9A7A00078BBA0 /* AppDelegate.swift in Sources */,
 				D1BAC8AC2CF8AD470027E304 /* APIRoute.swift in Sources */,
+				D1CF7A1C2CFDF69C003CF024 /* EventsViewController.swift in Sources */,
 				0BFD0DAA2CF8A1BC00921CC2 /* SerchBarCell.swift in Sources */,
 				D1BAC8F42CF8AEE10027E304 /* ProfileViewController.swift in Sources */,
 				0BFD0DAB2CF8A1BC00921CC2 /* SearchBarViewPresenterImpl.swift in Sources */,
@@ -573,6 +588,7 @@
 				D1BAC8E52CF8ADC80027E304 /* ShareCollectionViewCell.swift in Sources */,
 				D1CF7A142CFDDB58003CF024 /* FavouritesDetailedScreen.swift in Sources */,
 				D1BAC8D82CF8ADC80027E304 /* LoaderCell.swift in Sources */,
+				D1CF7A1E2CFDF7D7003CF024 /* UpcomingEventCell.swift in Sources */,
 				D1BAC8D42CF8ADC80027E304 /* ExploreViewController.swift in Sources */,
 				D1BAC8BB2CF8AD6E0027E304 /* NetworkError.swift in Sources */,
 				D1C97B3C2CEAF2C6007BB9A9 /* CustomTabBarController.swift in Sources */,
