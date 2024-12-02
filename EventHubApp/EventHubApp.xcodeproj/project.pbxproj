@@ -14,6 +14,7 @@
 		0BFD0DAB2CF8A1BC00921CC2 /* SearchBarViewPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFD0DA32CF8A1BC00921CC2 /* SearchBarViewPresenterImpl.swift */; };
 		0BFD0DAC2CF8A1BC00921CC2 /* SearchBarEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFD0DA52CF8A1BC00921CC2 /* SearchBarEmptyView.swift */; };
 		0BFD0DAD2CF8A1BC00921CC2 /* SearchBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFD0DA72CF8A1BC00921CC2 /* SearchBarViewController.swift */; };
+		0F44024F2CFE7549001A47EB /* PastEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F44024E2CFE752F001A47EB /* PastEventCell.swift */; };
 		0F5B5BC42CF9BCFF0080B32C /* EventDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B5BC32CF9BCFF0080B32C /* EventDetailsCell.swift */; };
 		0F5B5BC62CF9BD490080B32C /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B5BC52CF9BD490080B32C /* EventModel.swift */; };
 		0F5B5BCA2CFDACCA0080B32C /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B5BC92CFDACBF0080B32C /* MapVC.swift */; };
@@ -31,9 +32,6 @@
 		D1B6D1DF2CE9A7A30078BBA0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1B6D1DD2CE9A7A30078BBA0 /* LaunchScreen.storyboard */; };
 		D1B6D1E82CE9A8070078BBA0 /* UIColor_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B6D1E72CE9A8070078BBA0 /* UIColor_Extension.swift */; };
 		D1B6D1EA2CE9A8710078BBA0 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B6D1E92CE9A8700078BBA0 /* AppColors.swift */; };
-		D1BAC8AB2CF8AD470027E304 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAC8A82CF8AD470027E304 /* APIError.swift */; };
-		D1BAC8AC2CF8AD470027E304 /* APIRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAC8A92CF8AD470027E304 /* APIRoute.swift */; };
-		D1BAC8AD2CF8AD470027E304 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAC8AA2CF8AD470027E304 /* APIClient.swift */; };
 		D1BAC8B62CF8AD6E0027E304 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAC8AF2CF8AD6E0027E304 /* NetworkManager.swift */; };
 		D1BAC8B72CF8AD6E0027E304 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAC8B02CF8AD6E0027E304 /* APIManager.swift */; };
 		D1BAC8B82CF8AD6E0027E304 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAC8B12CF8AD6E0027E304 /* API.swift */; };
@@ -82,6 +80,7 @@
 		0BFD0DA32CF8A1BC00921CC2 /* SearchBarViewPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarViewPresenterImpl.swift; sourceTree = "<group>"; };
 		0BFD0DA52CF8A1BC00921CC2 /* SearchBarEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarEmptyView.swift; sourceTree = "<group>"; };
 		0BFD0DA72CF8A1BC00921CC2 /* SearchBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarViewController.swift; sourceTree = "<group>"; };
+		0F44024E2CFE752F001A47EB /* PastEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastEventCell.swift; sourceTree = "<group>"; };
 		0F5B5BC32CF9BCFF0080B32C /* EventDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsCell.swift; sourceTree = "<group>"; };
 		0F5B5BC52CF9BD490080B32C /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		0F5B5BC92CFDACBF0080B32C /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
@@ -101,9 +100,6 @@
 		D1B6D1E02CE9A7A30078BBA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1B6D1E72CE9A8070078BBA0 /* UIColor_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor_Extension.swift; sourceTree = "<group>"; };
 		D1B6D1E92CE9A8700078BBA0 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
-		D1BAC8A82CF8AD470027E304 /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
-		D1BAC8A92CF8AD470027E304 /* APIRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRoute.swift; sourceTree = "<group>"; };
-		D1BAC8AA2CF8AD470027E304 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		D1BAC8AF2CF8AD6E0027E304 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		D1BAC8B02CF8AD6E0027E304 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		D1BAC8B12CF8AD6E0027E304 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -284,9 +280,6 @@
 				D1B6D1ED2CE9AE720078BBA0 /* Screens */,
 				D1B6D1E02CE9A7A30078BBA0 /* Info.plist */,
 				D1BEE6FC2CFD2FC100D19F06 /* EventHubApp.xcdatamodeld */,
-				D1BAC8AA2CF8AD470027E304 /* APIClient.swift */,
-				D1BAC8A82CF8AD470027E304 /* APIError.swift */,
-				D1BAC8A92CF8AD470027E304 /* APIRoute.swift */,
 			);
 			path = EventHubApp;
 			sourceTree = "<group>";
@@ -456,6 +449,7 @@
 			children = (
 				D1CF7A1B2CFDF69C003CF024 /* EventsViewController.swift */,
 				D1CF7A1D2CFDF7D7003CF024 /* UpcomingEventCell.swift */,
+				0F44024E2CFE752F001A47EB /* PastEventCell.swift */,
 			);
 			path = EventsScreen;
 			sourceTree = "<group>";
@@ -550,7 +544,6 @@
 				D1BAC8D92CF8ADC80027E304 /* CategoryConfigurator.swift in Sources */,
 				D1BAC8E12CF8ADC80027E304 /* FavouritesViewController.swift in Sources */,
 				D1BAC8B72CF8AD6E0027E304 /* APIManager.swift in Sources */,
-				D1BAC8AD2CF8AD470027E304 /* APIClient.swift in Sources */,
 				D1BAC8E02CF8ADC80027E304 /* FavouriteCell.swift in Sources */,
 				D1B6D1D42CE9A7A00078BBA0 /* ViewController.swift in Sources */,
 				D1BAC8B92CF8AD6E0027E304 /* APIEndpoint.swift in Sources */,
@@ -558,9 +551,9 @@
 				D1BEE6FE2CFD2FC100D19F06 /* EventHubApp.xcdatamodeld in Sources */,
 				D1BAC8F22CF8AE370027E304 /* LocationModel.swift in Sources */,
 				D1BAC8EE2CF8AE370027E304 /* PlaceModel.swift in Sources */,
+				0F44024F2CFE7549001A47EB /* PastEventCell.swift in Sources */,
 				D1BAC8DE2CF8ADC80027E304 /* EventDetailsPresenter.swift in Sources */,
 				D1B6D1D02CE9A7A00078BBA0 /* AppDelegate.swift in Sources */,
-				D1BAC8AC2CF8AD470027E304 /* APIRoute.swift in Sources */,
 				D1CF7A1C2CFDF69C003CF024 /* EventsViewController.swift in Sources */,
 				0BFD0DAA2CF8A1BC00921CC2 /* SerchBarCell.swift in Sources */,
 				D1BAC8F42CF8AEE10027E304 /* ProfileViewController.swift in Sources */,
@@ -592,7 +585,6 @@
 				D1BAC8D42CF8ADC80027E304 /* ExploreViewController.swift in Sources */,
 				D1BAC8BB2CF8AD6E0027E304 /* NetworkError.swift in Sources */,
 				D1C97B3C2CEAF2C6007BB9A9 /* CustomTabBarController.swift in Sources */,
-				D1BAC8AB2CF8AD470027E304 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

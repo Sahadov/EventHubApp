@@ -8,9 +8,9 @@
 import UIKit
 
 
-class UpcomingEventCell: UICollectionViewCell {
+class PastEventCell: UICollectionViewCell {
     
-   static let id = "UpcomingEventCell"
+   static let id = "PastEventCell"
         
     let dateLabel: UILabel = {
         let title = UILabel()
@@ -160,5 +160,7 @@ class UpcomingEventCell: UICollectionViewCell {
         contentView.frame = bounds.insetBy(dx: 5, dy: 5)
         contentView.layer.cornerRadius = 10
     }
+    
 }
+
 
