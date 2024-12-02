@@ -51,10 +51,10 @@ class ShareCollectionViewController: UIViewController {
             idApp: "id686449807"
         ),
         ButtonsShareModel(
-            title: "Skype",
-            imageNamed: "skypeIcon",
-            urlApp: "skype:?chat&topic=&message=",
-            idApp: "id304878510"
+            title: "Safari",
+            imageNamed: "safariIcon",
+            urlApp: "",
+            idApp: nil
         )
     ]
     private var selectedIndexPath: IndexPath?
@@ -150,9 +150,9 @@ extension ShareCollectionViewController: UICollectionViewDelegate {
             guard let urlApp = button.urlApp, let idApp = button.idApp else { return }
             buttonTapped(message: message, urlApp: urlApp, idApp: idApp)
             dismiss(animated: true)
-        case "Skype":
-            guard let urlApp = button.urlApp, let idApp = button.idApp else { return }
-            buttonTapped(message: message, urlApp: urlApp, idApp: idApp)
+        case "Safari":
+            guard let urlApp = button.urlApp else { return }
+            buttonTapped(message: message, urlApp: urlApp)
             dismiss(animated: true)
         default:
             print("Unknown action")
