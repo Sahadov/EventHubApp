@@ -115,7 +115,7 @@ class FavouriteCell: UICollectionViewCell {
     // Configure Method
     func configure(with article: FavouriteEvent) {
         id = article.id
-        dateLabel.text = "Date"
+        dateLabel.text = article.eventDay
         titleLabel.text = article.title?.capitalized
         locationLabel.text = article.location
         
