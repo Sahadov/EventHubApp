@@ -1,23 +1,15 @@
 //
-//  FavouriteCell.swift
+//  UpcomingEventCell.swift
 //  EventHubApp
 //
-//  Created by Дмитрий Волков on 20.11.2024.
+//  Created by Дмитрий Волков on 02.12.2024.
 //
 
 import UIKit
 
 
-protocol FavouriteCellDelegate: AnyObject {
-    func didTapBookmarkButton(id: Int64)
-}
-
-class FavouriteCell: UICollectionViewCell {
-    
-    var id: Int64?
-    
-    weak var delegate: FavouriteCellDelegate?
-    
+class UpcomingEventCell: UICollectionViewCell {
+        
     let dateLabel: UILabel = {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
@@ -85,7 +77,6 @@ class FavouriteCell: UICollectionViewCell {
     
     func setCell(){
         [dateLabel, titleLabel, locationImageView, locationLabel, eventImageView, bookmarkButton].forEach { contentView.addSubview($0) }
-        bookmarkButton.addTarget(self, action: #selector(bookmarkTaped), for: .touchUpInside)
     }
     
     func setConstraints(){
@@ -113,24 +104,23 @@ class FavouriteCell: UICollectionViewCell {
     }
     
     // Configure Method
-    func configure(with article: FavouriteEvent) {
-        id = article.id
-        dateLabel.text = article.eventDay
-        titleLabel.text = article.title?.capitalized
-        locationLabel.text = article.location
+    func configure(with article: EventModel) {
+        dateLabel.text = "Dddd"
+        titleLabel.text = "Dddddd"
+        locationLabel.text = "Ddddd"
         
-        if let imageURL = URL(string: article.image!) {
-            NetworkManager.shared.fetchImage(from: imageURL) { [weak self] result in
-                switch result {
-                case .success(let data):
-                    DispatchQueue.main.async {
-                        self?.eventImageView.image = UIImage(data: data)
-                    }
-                case .failure(let error):
-                    print("Failed to fetch image: \(error.localizedDescription)")
-                }
-            }
-        }
+//        if let imageURL = URL(string: article.image!) {
+//            NetworkManager.shared.fetchImage(from: imageURL) { [weak self] result in
+//                switch result {
+//                case .success(let data):
+//                    DispatchQueue.main.async {
+//                        self?.eventImageView.image = UIImage(data: data)
+//                    }
+//                case .failure(let error):
+//                    print("Failed to fetch image: \(error.localizedDescription)")
+//                }
+//            }
+//        }
     }
     
     private func setupShadow() {
@@ -152,8 +142,5 @@ class FavouriteCell: UICollectionViewCell {
         contentView.layer.cornerRadius = 10
     }
     
-    @objc func bookmarkTaped() {
-        delegate?.didTapBookmarkButton(id: id!)
-    }
-    
 }
+

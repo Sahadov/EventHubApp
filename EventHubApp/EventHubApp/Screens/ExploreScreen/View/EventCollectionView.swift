@@ -84,6 +84,10 @@ final class EventCollectionView: UIView {
     public func setDelegate(vc: ExploreViewController) {
         collectionView.delegate = vc
         }
+
+    public func reloadData() {
+        collectionView.reloadData()
+    }
 }
 
 // MARK: - DataSource

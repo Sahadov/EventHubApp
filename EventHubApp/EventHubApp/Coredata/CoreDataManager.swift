@@ -25,7 +25,7 @@ struct CoreDataManager {
     }()
     
     @discardableResult
-    func createFavouriteEvent(userEmail: String, id: Int, title: String, location: String, bodyText: String, image: String, startDate: String) -> FavouriteEvent? {
+    func createFavouriteEvent(userEmail: String, id: Int, title: String, location: String, bodyText: String, image: String, startDate: String, eventDay: String, place: String, agentName: String, agentType: String) -> FavouriteEvent? {
         let context = persistentContainer.viewContext
         let event = FavouriteEvent(context: context)
 
@@ -36,6 +36,10 @@ struct CoreDataManager {
         event.bodyText = bodyText
         event.image = image
         event.startDate = startDate
+        event.eventDay = eventDay
+        event.place = place
+        event.agentName = agentName
+        event.agentType = agentType
 
         do {
             try context.save()

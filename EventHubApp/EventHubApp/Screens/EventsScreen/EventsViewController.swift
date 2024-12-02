@@ -1,34 +1,19 @@
 //
-//  FavouritesViewController.swift
+//  EventsViewController.swift
 //  EventHubApp
 //
-//  Created by Дмитрий Волков on 19.11.2024.
+//  Created by Дмитрий Волков on 02.12.2024.
 //
 
 import UIKit
 
 
-struct MyEvent {
-    let date: String
-    let title: String
-    let place: String
-}
-
-
-// MARK: - Protocol for View Input
-protocol FavouritesViewInput: AnyObject {
-    func updateEvents(_ events: [FavouriteEvent])
-    func showNoBookmarksMessage()
-    func hideNoBookmarksMessage()
-    func onSearchTapped()
-}
-
-class FavouritesViewController: UIViewController, FavouriteCellDelegate {
+class EventsViewController: UIViewController {
 
     // MARK: - Properties
-    var event: FavouriteEvent?
-    var viewOutput: FavouritesViewOutput!
-    private var eventsArray: [FavouriteEvent] = []
+    private var eventsArray: [EventModel] = []
+    private let apiManager = APIManager.shared
+    private var isUpcomingSelected = true
 
     // MARK: - Views
     private var collectionView: UICollectionView!
@@ -38,22 +23,14 @@ class FavouritesViewController: UIViewController, FavouriteCellDelegate {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.tintColor = AppColors.black
-        label.text = "Favorites"
+        label.text = "Events"
         label.font = .airbnbFont(ofSize: 26, weight: .book)
         return label
     }()
 
-    private let searchImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "magnifying-glass")
-        imageView.contentMode = .scaleAspectFill
-        return imageView
-    }()
-
     private let noBookmarksImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "bookmark-4")
+        image.image = UIImage(named: "calendar")
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFill
         image.isHidden = false
@@ -65,17 +42,28 @@ class FavouritesViewController: UIViewController, FavouriteCellDelegate {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.textColor = AppColors.red
-        label.text = "Ooopsss... You don't have favourite events"
-        label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+        label.textColor = .black
+        label.text = "No upcoming events"
+        label.font = UIFont.systemFont(ofSize: 24, weight: .regular)
         label.isHidden = false
         return label
     }()
+    
+    let toggleSegmentedControl: UISegmentedControl = {
+        let items = ["Upcoming", "Past"]
+        let segmentedControl = UISegmentedControl(items: items)
+        
+        segmentedControl.layer.cornerRadius = 30
+        segmentedControl.layer.masksToBounds = true
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        segmentedControl.selectedSegmentIndex = 0 // Default selection
+        segmentedControl.addTarget(self, action: #selector(toggleOptionChanged(_:)), for: .valueChanged)
+        return segmentedControl
+    }()
 
     // MARK: - Initializer
-    init(viewOutput: FavouritesViewOutput) {
+    init() {
         super.init(nibName: nil, bundle: nil)
-        self.viewOutput = viewOutput
     }
 
     required init?(coder: NSCoder) {
@@ -83,67 +71,36 @@ class FavouritesViewController: UIViewController, FavouriteCellDelegate {
     }
 
     // MARK: - Lifecycle
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        guard let fetchedData = CoreDataManager.shared.fetchFavouriteEvents() else { return }
-//        eventsArray = fetchedData
-//        collectionView.reloadData()
-        reloadData()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setCollectionView()
         setConstraints()
-        viewOutput.loadEvents()
+        print(eventsArray.count)
     }
     
-    func didTapBookmarkButton(id: Int64) {
-        // Delete from CoreData
-        guard let updatedEvent = CoreDataManager.shared.fetchFavouriteEvent(withId: id) else { return }
-        CoreDataManager.shared.deleteFavouriteEvent(event: updatedEvent)
-
-        NotificationCenter.default.post(name: Notification.Name("isFavoriteChanged"), object: nil)
-
-        // Reload data
-        reloadData()
+    @objc private func toggleOptionChanged(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            print("Upcoming selected")
+            noBookmarksLabel.text = "No upcoming events"
+        } else {
+            print("Past selected")
+            noBookmarksLabel.text = "No past events"
+        }
     }
     
-}
-
-// MARK: - FavouritesViewInput Implementation
-extension FavouritesViewController: FavouritesViewInput {
-    func updateEvents(_ events: [FavouriteEvent]) {
-        eventsArray = events
-        collectionView.reloadData()
-    }
-
-    func showNoBookmarksMessage() {
-        noBookmarksLabel.isHidden = false
-        noBookmarksImage.isHidden = false
-        
-    }
-
-    func hideNoBookmarksMessage() {
-        noBookmarksLabel.isHidden = true
-        noBookmarksImage.isHidden = true
-        
-    }
-
-    func onSearchTapped() {
-        print("Search tapped")
-    }
+    
+    
 }
 
 // MARK: - Private Methods
-private extension FavouritesViewController {
+private extension EventsViewController {
     func setupViews() {
         view.backgroundColor = .white
         view.addSubview(titleLabel)
-        view.addSubview(searchImageView)
         view.addSubview(noBookmarksImage)
         view.addSubview(noBookmarksLabel)
+        view.addSubview(toggleSegmentedControl)
     }
 
     func setCollectionView() {
@@ -159,15 +116,8 @@ private extension FavouritesViewController {
     }
     
     func reloadData(){
-        guard let fetchedData = CoreDataManager.shared.fetchFavouriteEvents() else { return }
-        eventsArray = fetchedData
+        eventsArray = []
         collectionView.reloadData()
-        
-        if eventsArray.count != 0 {
-            hideNoBookmarksMessage()
-        } else {
-            showNoBookmarksMessage()
-        }
     }
 
     func setConstraints() {
@@ -175,12 +125,7 @@ private extension FavouritesViewController {
             titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
-            searchImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 52),
-            searchImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
-            searchImageView.widthAnchor.constraint(equalToConstant: 33),
-            searchImageView.heightAnchor.constraint(equalToConstant: 33),
-
-            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
+            collectionView.topAnchor.constraint(equalTo: toggleSegmentedControl.bottomAnchor, constant: 20),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -192,24 +137,29 @@ private extension FavouritesViewController {
             
             noBookmarksLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             noBookmarksLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            noBookmarksLabel.bottomAnchor.constraint(equalTo: noBookmarksImage.topAnchor, constant: -30)
+            noBookmarksLabel.topAnchor.constraint(equalTo: noBookmarksImage.bottomAnchor, constant: 30),
+            
+            toggleSegmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            toggleSegmentedControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            toggleSegmentedControl.widthAnchor.constraint(equalToConstant: 200),
+            toggleSegmentedControl.heightAnchor.constraint(equalToConstant: 30)
         ])
     }
+    
 }
 
 // MARK: - UICollectionViewDataSource & Delegate
-extension FavouritesViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension EventsViewController:UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return eventsArray.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! FavouriteCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! UpcomingEventCell
         cell.configure(with: eventsArray[indexPath.row])
-        cell.delegate = self
-        event = eventsArray[indexPath.row]
         return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let padding: CGFloat = 40
         let availableWidth = collectionView.frame.width - padding
@@ -218,9 +168,9 @@ extension FavouritesViewController: UICollectionViewDataSource, UICollectionView
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedEvent = eventsArray[indexPath.row]
-        let favouritesDetailedScreen = FavouritesDetailedScreen(event: selectedEvent)
-        present(favouritesDetailedScreen, animated: true, completion: nil)
+//        let selectedEvent = eventsArray[indexPath.row]
+//        let favouritesDetailedScreen = FavouritesDetailedScreen(event: selectedEvent)
+//        present(favouritesDetailedScreen, animated: true, completion: nil)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -231,3 +181,5 @@ extension FavouritesViewController: UICollectionViewDataSource, UICollectionView
             return 20
     }
 }
+
+

@@ -1,10 +1,17 @@
 import UIKit
 
+protocol CategoryCollectionViewDelegate: AnyObject {
+    func didSelectCategory(_ category: EventCategoryModel)
+    func didDeselectCategory()
+}
+
 final class CategoryCollectionView: UIView {
 
     // MARK: - Properties
 
-    private var categiries = [EventCategoryModel]()
+    weak var delegate: CategoryCollectionViewDelegate?
+    private var categories = [EventCategoryModel]()
+    private var isCategorySelected = false
 
     // MARK: - UI
 
@@ -59,7 +66,7 @@ final class CategoryCollectionView: UIView {
     // MARK: - Configuration
 
     func configuration(with categories: [EventCategoryModel]) {
-        self.categiries = categories
+        self.categories = categories
         collectionView.reloadData()
     }
 }
@@ -73,7 +80,7 @@ extension CategoryCollectionView: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return categiries.count
+        return categories.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -85,7 +92,8 @@ extension CategoryCollectionView: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
 
-        cell.configuration(with: categiries[indexPath.item])
+        let category = categories[indexPath.item]
+        cell.configuration(with: category, isSelected: isCategorySelected)
         return cell
     }
 }
@@ -103,11 +111,19 @@ extension CategoryCollectionView: UICollectionViewDelegate, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width / 3 - 25, height: 40)
+        return CGSize(width: UIScreen.main.bounds.width / 2.2 - 22, height: 40)
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
+        if isCategorySelected {
+            isCategorySelected = false
+            delegate?.didDeselectCategory()  // Уведомляем о деселекте
+        } else {
+            isCategorySelected = true
+            delegate?.didSelectCategory(categories[indexPath.item])  // Уведомляем о выборе
+        }
 
+        collectionView.reloadItems(at: [indexPath])
     }
 }
