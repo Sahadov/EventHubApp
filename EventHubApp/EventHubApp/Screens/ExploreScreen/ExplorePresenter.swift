@@ -11,8 +11,8 @@ protocol ExploreViewProtocol: AnyObject {
 protocol ExplorePresenterProtocol: AnyObject {
     func fetchCities()
     func fetchCategories()
-    func fetchUpcomingEvents()
-    func fetchNearbyEvents(lat: Double, lon: Double, radius: Int)
+    func fetchUpcomingEvents(category: String?)
+    func fetchNearbyEvents(lat: Double, lon: Double, radius: Int, category: String?)
     func didTapEvent(event: EventModel)
 }
 
@@ -49,8 +49,8 @@ final class ExplorePresenter: ExplorePresenterProtocol {
         }
     }
 
-    func fetchUpcomingEvents() {
-        apiManager.getUpcomingEnvents(lang: "en") { [weak self] result in
+    func fetchUpcomingEvents(category: String?) {
+        apiManager.getUpcomingEnvents(lang: "en", category: category) { [weak self] result in
             switch result {
             case .success(let events):
                 guard let events = events.results else { return }
@@ -63,8 +63,8 @@ final class ExplorePresenter: ExplorePresenterProtocol {
         }
     }
 
-    func fetchNearbyEvents(lat: Double, lon: Double, radius: Int) {
-        apiManager.getNearbyEvents(lang: "en", lat: lat, lon: lon, radius: radius) { [weak self] result in
+    func fetchNearbyEvents(lat: Double, lon: Double, radius: Int, category: String?) {
+        apiManager.getNearbyEvents(lang: "en", lat: lat, lon: lon, radius: radius, category: category) { [weak self] result in
             switch result {
             case .success(let events):
                 guard let events = events.results else { return }
