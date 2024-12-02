@@ -8,18 +8,9 @@
 import UIKit
 
 class EventDetailsVC: UIViewController {
-    
-    var event: EventModel
+    var presenter: PresenterOutput!
     var eventImage: EventImage?
     
-    init(event: EventModel) {
-        self.event = event
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     var dateCell = EventDetailsCell(image: "dateIcon", titleUp: "titleUp", titleDown: "titleDown", fontUp: nil, fontDown: nil)
     let locationCell = EventDetailsCell(image: "locationIcon", titleUp: "locationUp", titleDown: "locationDown", fontUp: nil, fontDown: nil)
     let organizerCell = EventDetailsCell(image: "organizerIcon", titleUp: "organizerUp", titleDown: "organizerDown", fontUp: .airbnbFont(ofSize: 15, weight: .book), fontDown: .airbnbFont(ofSize: 12, weight: .book))
@@ -42,12 +33,13 @@ class EventDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        presenter.getEvent()
         setupNavBar()
         setupView()
         setupConstraints()
         configuration()
-        setConfigureNetwork(with: event)
     }
+    
     func setConfigureNetwork(with event: EventModel) {
         if let imageStringURL = event.images?.first?.image,
            let imageURL = URL(string: imageStringURL) {
@@ -65,6 +57,7 @@ class EventDetailsVC: UIViewController {
                 }
             }
         }
+        
         if let imageOrganizerStringURL = event.participants?.first?.agent?.images?.first?.image,
            let imageURL = URL(string: imageOrganizerStringURL) {
             NetworkManager.shared.fetchImage(from: imageURL) { [weak self] result in
@@ -81,31 +74,31 @@ class EventDetailsVC: UIViewController {
                 }
             }
         }
-        if let firstDate = event.dates?.first {
+        
+        if let firstDate = event.dates?.last {
             if firstDate.start == firstDate.end {
-                dateCell.titleLabelUp.text = formatDate(from: event.dates?.first?.start ?? 0)
+                dateCell.titleLabelUp.text = formatDate(from: event.dates?.last?.start ?? 0)
             } else {
                 dateCell.titleLabelUp.text =  formatDate(from: firstDate.start ?? 0) + " - " +  formatDate(from: firstDate.end ?? 0)
             }
         }
-        if let timeDate = event.dates?.first {
+        
+        if let timeDate = event.dates?.last {
             if timeDate.start == timeDate.end {
                 dateCell.titleLabelDown.text = formatDayOfWeek(from: timeDate.start ?? 0) + formatTime(from: timeDate.start ?? 0)
             } else {
                 dateCell.titleLabelDown.text = formatDayOfWeek(from: timeDate.start ?? 0) + formatTime(from: timeDate.start ?? 0) + " - " + formatDayOfWeek(from: timeDate.end ?? 0) + formatTime(from: timeDate.end ?? 0)
             }
         }
+        
         locationCell.titleLabelUp.text = event.place?.title?.capitalized ?? "The place is not specified"
         locationCell.titleLabelDown.text = event.place?.address?.capitalized ?? "The address is not specified"
         
-            organizerCell.titleLabelUp.text = event.participants?.first?.agent?.title ?? "Unknown Name"
+        organizerCell.titleLabelUp.text = event.participants?.first?.agent?.title ?? "Unknown Name"
         organizerCell.titleLabelDown.text = event.participants?.first?.agent?.agentType?.capitalized ?? "Unknow Agent Type"
-//                } /*else {*/
-//                    organizerCell.titleLabelUp.text = "Unknown"
-//                    organizerCell.titleLabelDown.text = "Unknown"
-//                }
+        labelTitle.text = event.title?.capitalized ?? "Unknown Event Title"
+        textViewDescription.text = event.bodyText
     }
-    
     
     func formatDate(from timestamp: Int) -> String {
         let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
@@ -116,21 +109,20 @@ class EventDetailsVC: UIViewController {
     }
     
     func formatDayOfWeek(from timestamp: Int) -> String {
-                let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "EEEE, "
-                dateFormatter.locale = Locale(identifier: "en_US")
-                return dateFormatter.string(from: date)
-            }
-            
-            func formatTime(from timestamp: Int) -> String {
-                let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
-                let dateFormatter = DateFormatter()
-//                dateFormatter.timeZone = TimeZone(abbreviation: "MSK")
-                dateFormatter.dateFormat = "h:mm a"
-                dateFormatter.locale = Locale(identifier: "ru_RU")
-                return dateFormatter.string(from: date)
-            }
+        let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE, "
+        dateFormatter.locale = Locale(identifier: "en_US")
+        return dateFormatter.string(from: date)
+    }
+    
+    func formatTime(from timestamp: Int) -> String {
+        let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        return dateFormatter.string(from: date)
+    }
     
     private func setupView() {
         view.addSubview(imageView)
@@ -153,6 +145,7 @@ class EventDetailsVC: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: buttonBack)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: buttonBookmark)
     }
+    
     private func configuration() {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -174,7 +167,6 @@ class EventDetailsVC: UIViewController {
         labelTitle.font = .airbnbFont(ofSize: 35, weight: .book)
         labelTitle.numberOfLines = 0
         labelTitle.sizeToFit()
-        labelTitle.text = event.title?.capitalized ?? "Unknown Event Title"
         labelTitle.translatesAutoresizingMaskIntoConstraints = false
         
         dateCell.translatesAutoresizingMaskIntoConstraints = false
@@ -189,7 +181,7 @@ class EventDetailsVC: UIViewController {
         textViewDescription.isEditable = false
         textViewDescription.isScrollEnabled = false
         textViewDescription.font = .airbnbFont(ofSize: 16, weight: .book)
-        textViewDescription.text = event.bodyText ?? "Not text"
+        
         textViewDescription.setContentHuggingPriority(.required, for: .vertical)
         textViewDescription.textAlignment = .natural
         textViewDescription.translatesAutoresizingMaskIntoConstraints = false
@@ -199,12 +191,13 @@ class EventDetailsVC: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     @objc private func bookmarkTapped() {
+        presenter.bookmarkButtonTapped()
         print("bookmarkTapped")
     }
     @objc private func sharedTapped() {
+        presenter.sharedButtonTapped()
         print("sharedTapped")
     }
-    
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
@@ -254,6 +247,32 @@ class EventDetailsVC: UIViewController {
     }
 }
 
-//@available(iOS 18.0, *)
-//#Preview { (CustomTabBarController())
-//}
+extension EventDetailsVC: PresenterInput {
+    
+    func showShareScreen() {
+        let shareViewController = ShareViewController()
+        navigationController?.present(shareViewController, animated: true)
+    }
+    func saveEvent(event: EventModel) {
+        if CoreDataManager.shared.fetchFavouriteEvent(withId: Int64((event.id)!)) != nil {
+            // Deleting from CoreData
+            guard let updatedEvent = CoreDataManager.shared.fetchFavouriteEvent(withId: Int64((event.id)!)) else { return }
+            CoreDataManager.shared.deleteFavouriteEvent(event: updatedEvent)
+            buttonBookmark.setImage(UIImage(named: "bookmarkIcon"), for: .normal)
+        } else {
+            // Saving to CoreData
+            let imageURL = (event.images?.first?.image)!
+            let startDate = formatDate(from: event.dates?.first?.start ?? 0)
+            let location = event.place?.title?.capitalized ?? "The place is not specified"
+            _ = CoreDataManager.shared.createFavouriteEvent(userEmail: "mrsahadov@gmail.com", id: (event.id!), title: (event.title!), location: location, bodyText: (event.bodyText!), image: imageURL, startDate: startDate)
+            buttonBookmark.setImage(UIImage(named: "bookmarkIconRed"), for: .normal)
+        }
+    }
+    func setEvent(event: EventModel) {
+        setConfigureNetwork(with: event)
+    }
+}
+
+@available(iOS 18.0, *)
+#Preview { (CustomTabBarController())
+}

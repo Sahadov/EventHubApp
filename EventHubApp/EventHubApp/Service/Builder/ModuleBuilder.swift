@@ -8,4 +8,12 @@ final class ModuleBuilder {
         presenter.view = view
         return view
     }
+    static func createDetailModule(event: EventModel) -> UIViewController {
+        let view = EventDetailsVC()
+        let presenter = EventDetailsPresenter()
+        view.presenter = presenter
+        presenter.eventModel = event
+        presenter.view = view
+        return view
+    }
 }

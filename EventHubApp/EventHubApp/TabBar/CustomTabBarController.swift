@@ -40,7 +40,7 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
         eventsVC.tabBarItem.title = "Events"
         eventsVC.tabBarItem.image = UIImage(named: "calendarTabBar")
 
-        let mapVC = ViewController()
+        let mapVC = MapVC()
         mapVC.tabBarItem.title = "Map"
         mapVC.tabBarItem.image = UIImage(named: "mapTabBar")
 

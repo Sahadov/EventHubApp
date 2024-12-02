@@ -310,7 +310,7 @@ extension ExploreViewController: UIPickerViewDelegate {
         return 25
     }
     func showDetail(_ event: EventModel) {
-            let eventDetailVC = EventDetailsVC(event: event)
+            let eventDetailVC = ModuleBuilder.createDetailModule(event: event)
            navigationController?.pushViewController(eventDetailVC, animated: true)
         }
 }
