@@ -348,18 +348,26 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDeleg
     }
 } 
 
+// MARK: - CategoryCollectionViewDelegate
 
 extension ExploreViewController: CategoryCollectionViewDelegate {
-    func didSelectCategory(_ category: EventCategoryModel) {
-
-        presenter?.fetchUpcomingEvents(category: category.slug)
-
+    func handleCategorySelection(_ category: String?) {
+        presenter?.fetchUpcomingEvents(category: category)
         if let selectedCity = cities.first(where: { $0.name == locationLabel.text }) {
             presenter?.fetchNearbyEvents(
                 lat: selectedCity.coords?.lat ?? 0,
                 lon: selectedCity.coords?.lon ?? 0,
                 radius: radiusEvents,
-                category: category.slug)
+                category: category
+            )
         }
+    }
+
+    func didDeselectCategory() {
+        handleCategorySelection(nil)
+    }
+
+    func didSelectCategory(_ category: EventCategoryModel) {
+        handleCategorySelection(category.slug)
     }
 }

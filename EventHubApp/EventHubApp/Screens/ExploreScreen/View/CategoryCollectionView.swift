@@ -2,6 +2,7 @@ import UIKit
 
 protocol CategoryCollectionViewDelegate: AnyObject {
     func didSelectCategory(_ category: EventCategoryModel)
+    func didDeselectCategory()
 }
 
 final class CategoryCollectionView: UIView {
@@ -10,6 +11,7 @@ final class CategoryCollectionView: UIView {
 
     weak var delegate: CategoryCollectionViewDelegate?
     private var categories = [EventCategoryModel]()
+    private var isCategorySelected = false
 
     // MARK: - UI
 
@@ -90,7 +92,8 @@ extension CategoryCollectionView: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
 
-        cell.configuration(with: categories[indexPath.item])
+        let category = categories[indexPath.item]
+        cell.configuration(with: category, isSelected: isCategorySelected)
         return cell
     }
 }
@@ -113,8 +116,14 @@ extension CategoryCollectionView: UICollectionViewDelegate, UICollectionViewDele
 
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        let selectedCategory = categories[indexPath.item]
+        if isCategorySelected {
+            isCategorySelected = false
+            delegate?.didDeselectCategory()  // Уведомляем о деселекте
+        } else {
+            isCategorySelected = true
+            delegate?.didSelectCategory(categories[indexPath.item])  // Уведомляем о выборе
+        }
 
-        delegate?.didSelectCategory(selectedCategory)
+        collectionView.reloadItems(at: [indexPath])
     }
 }
