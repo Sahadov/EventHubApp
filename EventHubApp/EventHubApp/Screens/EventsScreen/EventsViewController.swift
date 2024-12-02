@@ -13,6 +13,7 @@ class EventsViewController: UIViewController {
     // MARK: - Properties
     private var eventsArray: [EventModel] = []
     private let apiManager = APIManager.shared
+    private var isUpcomingSelected = true
 
     // MARK: - Views
     private var collectionView: UICollectionView!
@@ -38,6 +39,18 @@ class EventsViewController: UIViewController {
         label.isHidden = true
         return label
     }()
+    
+    let toggleSegmentedControl: UISegmentedControl = {
+        let items = ["Upcoming", "Past"]
+        let segmentedControl = UISegmentedControl(items: items)
+        
+        segmentedControl.layer.cornerRadius = 30
+        segmentedControl.layer.masksToBounds = true
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        segmentedControl.selectedSegmentIndex = 0 // Default selection
+        segmentedControl.addTarget(self, action: #selector(toggleOptionChanged(_:)), for: .valueChanged)
+        return segmentedControl
+    }()
 
     // MARK: - Initializer
     init() {
@@ -54,24 +67,20 @@ class EventsViewController: UIViewController {
         setupViews()
         setCollectionView()
         setConstraints()
-        fetchUpcomingEvents()
         print(eventsArray.count)
     }
     
-    func fetchUpcomingEvents() {
-        apiManager.getUpcomingEnvents(lang: "en") { [weak self] result in
-            switch result {
-            case .success(let events):
-                DispatchQueue.main.async {
-                    guard let results = events.results else { return }
-                    self?.eventsArray = results
-                    //self?.updateUI()
-                }
-            case .failure(let error):
-                print("Failed to fetch upcoming events: \(error.localizedDescription)")
-            }
+    @objc private func toggleOptionChanged(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            print("Upcoming selected")
+            // Handle "Upcoming" logic
+        } else {
+            print("Past selected")
+            // Handle "Past" logic
         }
     }
+    
+    
     
 }
 
@@ -81,6 +90,7 @@ private extension EventsViewController {
         view.backgroundColor = .white
         view.addSubview(titleLabel)
         view.addSubview(noBookmarksLabel)
+        view.addSubview(toggleSegmentedControl)
     }
 
     func setCollectionView() {
@@ -105,16 +115,22 @@ private extension EventsViewController {
             titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
-            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
+            collectionView.topAnchor.constraint(equalTo: toggleSegmentedControl.bottomAnchor, constant: 20),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 
             noBookmarksLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             noBookmarksLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            noBookmarksLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30)
+            noBookmarksLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            
+            toggleSegmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            toggleSegmentedControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            toggleSegmentedControl.widthAnchor.constraint(equalToConstant: 200),
+            toggleSegmentedControl.heightAnchor.constraint(equalToConstant: 30)
         ])
     }
+    
 }
 
 // MARK: - UICollectionViewDataSource & Delegate
