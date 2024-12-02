@@ -7,7 +7,16 @@
 
 import UIKit
 
+
+protocol FavouriteCellDelegate: AnyObject {
+    func didTapBookmarkButton(id: Int64)
+}
+
 class FavouriteCell: UICollectionViewCell {
+    
+    var id: Int64?
+    
+    weak var delegate: FavouriteCellDelegate?
     
     let dateLabel: UILabel = {
         let title = UILabel()
@@ -23,6 +32,7 @@ class FavouriteCell: UICollectionViewCell {
         title.translatesAutoresizingMaskIntoConstraints = false
         title.textAlignment = .left
         title.tintColor = .black
+        title.numberOfLines = 2
         title.font = .airbnbFont(ofSize: 18, weight: .medium)
         return title
     }()
@@ -53,12 +63,13 @@ class FavouriteCell: UICollectionViewCell {
         return image
     }()
     
-    let bookmarkImageView: UIImageView = {
-        let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(named: "bookmark")
-        image.contentMode = .scaleAspectFill
-        return image
+    let bookmarkButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "bookmark"), for: .normal)
+        button.tintColor = AppColors.red
+        button.contentMode = .scaleAspectFill
+        return button
     }()
     
     override init(frame: CGRect){
@@ -73,7 +84,8 @@ class FavouriteCell: UICollectionViewCell {
     }
     
     func setCell(){
-        [dateLabel, titleLabel, locationImageView, locationLabel, eventImageView, bookmarkImageView].forEach { contentView.addSubview($0) }
+        [dateLabel, titleLabel, locationImageView, locationLabel, eventImageView, bookmarkButton].forEach { contentView.addSubview($0) }
+        bookmarkButton.addTarget(self, action: #selector(bookmarkTaped), for: .touchUpInside)
     }
     
     func setConstraints(){
@@ -82,10 +94,10 @@ class FavouriteCell: UICollectionViewCell {
             eventImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
             eventImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
             eventImageView.widthAnchor.constraint(equalToConstant: 80),
-            titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -3),
             titleLabel.leadingAnchor.constraint(equalTo: eventImageView.trailingAnchor, constant: 15),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
-            dateLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 13),
+            dateLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             dateLabel.leadingAnchor.constraint(equalTo: eventImageView.trailingAnchor, constant: 15),
             locationImageView.leadingAnchor.constraint(equalTo: eventImageView.trailingAnchor, constant: 15),
             locationImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -13),
@@ -93,19 +105,32 @@ class FavouriteCell: UICollectionViewCell {
             locationImageView.widthAnchor.constraint(equalToConstant: 18),
             locationLabel.leadingAnchor.constraint(equalTo: locationImageView.trailingAnchor, constant: 3),
             locationLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
-            bookmarkImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            bookmarkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            bookmarkImageView.heightAnchor.constraint(equalToConstant: 20),
-            bookmarkImageView.widthAnchor.constraint(equalToConstant: 22),
+            bookmarkButton.topAnchor.constraint(equalTo: contentView.topAnchor),
+            bookmarkButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            bookmarkButton.heightAnchor.constraint(equalToConstant: 20),
+            bookmarkButton.widthAnchor.constraint(equalToConstant: 22),
         ])
     }
     
     // Configure Method
-    func configure(with article: MyEvent) {
-        dateLabel.text = article.date
-        titleLabel.text = article.title
-        locationLabel.text = article.place
-        eventImageView.image = UIImage(named: "EventExample")
+    func configure(with article: FavouriteEvent) {
+        id = article.id
+        dateLabel.text = "Date"
+        titleLabel.text = article.title?.capitalized
+        locationLabel.text = article.location
+        
+        if let imageURL = URL(string: article.image!) {
+            NetworkManager.shared.fetchImage(from: imageURL) { [weak self] result in
+                switch result {
+                case .success(let data):
+                    DispatchQueue.main.async {
+                        self?.eventImageView.image = UIImage(data: data)
+                    }
+                case .failure(let error):
+                    print("Failed to fetch image: \(error.localizedDescription)")
+                }
+            }
+        }
     }
     
     private func setupShadow() {
@@ -126,4 +151,9 @@ class FavouriteCell: UICollectionViewCell {
         contentView.frame = bounds.insetBy(dx: 5, dy: 5)
         contentView.layer.cornerRadius = 10
     }
+    
+    @objc func bookmarkTaped() {
+        delegate?.didTapBookmarkButton(id: id!)
+    }
+    
 }
