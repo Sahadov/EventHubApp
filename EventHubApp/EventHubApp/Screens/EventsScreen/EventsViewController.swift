@@ -28,15 +28,24 @@ class EventsViewController: UIViewController {
         return label
     }()
 
+    private let noBookmarksImage: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "calendar")
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFill
+        image.isHidden = false
+        return image
+    }()
+    
     private let noBookmarksLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.tintColor = .systemGray6
-        label.text = "You haven't saved any articles yet. Start reading and bookmarking them now."
-        label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        label.isHidden = true
+        label.textColor = .black
+        label.text = "No upcoming events"
+        label.font = UIFont.systemFont(ofSize: 24, weight: .regular)
+        label.isHidden = false
         return label
     }()
     
@@ -73,10 +82,10 @@ class EventsViewController: UIViewController {
     @objc private func toggleOptionChanged(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             print("Upcoming selected")
-            // Handle "Upcoming" logic
+            noBookmarksLabel.text = "No upcoming events"
         } else {
             print("Past selected")
-            // Handle "Past" logic
+            noBookmarksLabel.text = "No past events"
         }
     }
     
@@ -89,6 +98,7 @@ private extension EventsViewController {
     func setupViews() {
         view.backgroundColor = .white
         view.addSubview(titleLabel)
+        view.addSubview(noBookmarksImage)
         view.addSubview(noBookmarksLabel)
         view.addSubview(toggleSegmentedControl)
     }
@@ -120,9 +130,14 @@ private extension EventsViewController {
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 
-            noBookmarksLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            noBookmarksImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            noBookmarksImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            noBookmarksImage.widthAnchor.constraint(equalToConstant: 150),
+            noBookmarksImage.heightAnchor.constraint(equalToConstant: 150),
+            
             noBookmarksLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             noBookmarksLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            noBookmarksLabel.topAnchor.constraint(equalTo: noBookmarksImage.bottomAnchor, constant: 30),
             
             toggleSegmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             toggleSegmentedControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
