@@ -270,6 +270,11 @@ final class EventCell: UICollectionViewCell {
             UIImage(named: "goingOne"),
         ]
         configurationParticipants(avatars: images)
+        
+        // Checking if the event is in favourites
+        guard let favouriteEvent = CoreDataManager.shared.fetchFavouriteEvent(withId: Int64((event?.id)!)) else {return}
+        favouriteButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+        
     }
 
     private func createAvatarImageView(image: UIImage?) -> UIImageView {
@@ -317,18 +322,19 @@ final class EventCell: UICollectionViewCell {
 
 private extension EventCell {
     func handleFavoriteButton() {
-        isFavorite.toggle()
-        let imageView = isFavorite ? "bookmark.fill" : "bookmark"
-        favouriteButton.setImage(UIImage(systemName: imageView), for: .normal)
         
-        let imageURL = (event?.images?.first?.image)!
-        let startDate = formatDate(from: event?.dates?.first?.start ?? 0)
-        let location = event?.place?.title?.capitalized ?? "The place is not specified"
-        
-        //added
-        guard let newEvent = CoreDataManager.shared.createFavouriteEvent(userEmail: "mrsahadov@gmail.com", id: (event?.id!)!, title: (event?.title!)!, location: location, bodyText: (event?.bodyText!)!, image: imageURL, startDate: startDate) else { return }
-         print("Created \(newEvent)")
-    
-        
+        if CoreDataManager.shared.fetchFavouriteEvent(withId: Int64((event?.id)!)) != nil {
+           // Deleting from CoreData
+            guard let updatedEvent = CoreDataManager.shared.fetchFavouriteEvent(withId: Int64((event?.id)!)) else { return }
+            CoreDataManager.shared.deleteFavouriteEvent(event: updatedEvent)
+            favouriteButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
+        } else {
+            // Saving to CoreData
+            let imageURL = (event?.images?.first?.image)!
+            let startDate = formatDate(from: event?.dates?.first?.start ?? 0)
+            let location = event?.place?.title?.capitalized ?? "The place is not specified"
+            _ = CoreDataManager.shared.createFavouriteEvent(userEmail: "mrsahadov@gmail.com", id: (event?.id!)!, title: (event?.title!)!, location: location, bodyText: (event?.bodyText!)!, image: imageURL, startDate: startDate)
+            favouriteButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+        }
     }
 }
