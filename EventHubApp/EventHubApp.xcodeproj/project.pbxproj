@@ -355,10 +355,10 @@
 		D1BAC8BC2CF8ADC80027E304 /* ExploreScreen */ = {
 			isa = PBXGroup;
 			children = (
-				D1BAC8BD2CF8ADC80027E304 /* ExploreViewController.swift */,
 				D1BAC8BE2CF8ADC80027E304 /* Cell */,
 				D1BAC8C42CF8ADC80027E304 /* View */,
 				D1BAC8C72CF8ADC80027E304 /* ExplorePresenter.swift */,
+				D1BAC8BD2CF8ADC80027E304 /* ExploreViewController.swift */,
 			);
 			path = ExploreScreen;
 			sourceTree = "<group>";

@@ -258,7 +258,7 @@ final class EventCell: UICollectionViewCell {
 
         dateLabel.text = formatDate(from: events.dates?.first?.start ?? 0).uppercased()
         titleLabel.text = events.shortTitle
-        locationLabel.text = events.place?.address
+        locationLabel.text = events.place?.address ??  "The place is not specified"
         participantsLabel.text = "+0 Going" //TODO: Получать кол-во участников
         
         //added
@@ -274,7 +274,6 @@ final class EventCell: UICollectionViewCell {
         // Checking if the event is in favourites
         guard let favouriteEvent = CoreDataManager.shared.fetchFavouriteEvent(withId: Int64((event?.id)!)) else {return}
         favouriteButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
-        
     }
 
     private func createAvatarImageView(image: UIImage?) -> UIImageView {
@@ -331,6 +330,7 @@ final class EventCell: UICollectionViewCell {
         titleLabel.text = nil
         locationLabel.text = nil
         participantsLabel.text = nil
+        favouriteButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
     }
 }
 

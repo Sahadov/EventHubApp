@@ -108,6 +108,13 @@ final class ExploreViewController: UIViewController {
         presenter?.fetchCategories()
         presenter?.fetchUpcomingEvents()
         eventCollectionView.setDelegate(vc:self)
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleFavouriteUpdate),
+            name: Notification.Name("isFavoriteChanged"),
+            object: nil
+        )
     }
 
     // MARK: - Setup
@@ -276,6 +283,10 @@ private extension ExploreViewController {
             self.cityPickerView.isHidden = !self.isCityPickerVisible
             self.cityPickerView.alpha = self.isCityPickerVisible ? 1.0 : 0.0
         }
+    }
+
+    @objc func handleFavouriteUpdate() {
+        eventCollectionView.reloadData()
     }
 
     func handleNotificationButton() { }

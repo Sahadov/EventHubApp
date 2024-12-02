@@ -103,6 +103,9 @@ class FavouritesViewController: UIViewController, FavouriteCellDelegate {
         // Delete from CoreData
         guard let updatedEvent = CoreDataManager.shared.fetchFavouriteEvent(withId: id) else { return }
         CoreDataManager.shared.deleteFavouriteEvent(event: updatedEvent)
+
+        NotificationCenter.default.post(name: Notification.Name("isFavoriteChanged"), object: nil)
+
         // Reload data
         reloadData()
     }
