@@ -69,6 +69,7 @@
 		D1C97B3A2CEAF292007BB9A9 /* CustomBarBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C97B392CEAF292007BB9A9 /* CustomBarBar.swift */; };
 		D1C97B3C2CEAF2C6007BB9A9 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C97B3B2CEAF2C6007BB9A9 /* CustomTabBarController.swift */; };
 		D1C97B3E2CEAF2EB007BB9A9 /* FavouriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C97B3D2CEAF2EB007BB9A9 /* FavouriteButton.swift */; };
+		D1CF7A142CFDDB58003CF024 /* FavouritesDetailedScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CF7A132CFDDB58003CF024 /* FavouritesDetailedScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -136,6 +137,7 @@
 		D1C97B392CEAF292007BB9A9 /* CustomBarBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBarBar.swift; sourceTree = "<group>"; };
 		D1C97B3B2CEAF2C6007BB9A9 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		D1C97B3D2CEAF2EB007BB9A9 /* FavouriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteButton.swift; sourceTree = "<group>"; };
+		D1CF7A132CFDDB58003CF024 /* FavouritesDetailedScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesDetailedScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +326,7 @@
 				0F5B5BCB2CFDACD60080B32C /* MapScreen */,
 				D1BAC8C82CF8ADC80027E304 /* EventDetails */,
 				D1B6D1D32CE9A7A00078BBA0 /* ViewController.swift */,
+				D1CF7A132CFDDB58003CF024 /* FavouritesDetailedScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -568,6 +571,7 @@
 				D1BAC8E22CF8ADC80027E304 /* MainViewController.swift in Sources */,
 				D1B6D1E82CE9A8070078BBA0 /* UIColor_Extension.swift in Sources */,
 				D1BAC8E52CF8ADC80027E304 /* ShareCollectionViewCell.swift in Sources */,
+				D1CF7A142CFDDB58003CF024 /* FavouritesDetailedScreen.swift in Sources */,
 				D1BAC8D82CF8ADC80027E304 /* LoaderCell.swift in Sources */,
 				D1BAC8D42CF8ADC80027E304 /* ExploreViewController.swift in Sources */,
 				D1BAC8BB2CF8AD6E0027E304 /* NetworkError.swift in Sources */,

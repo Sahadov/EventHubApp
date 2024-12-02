@@ -45,4 +45,9 @@ class APIManager {
         guard let url = networkManager.createURL(for: .getNearbyEnvents(lang: lang, lat: lat, lon: lon, radius: radius)) else { return }
         networkManager.fetch(for: url, completion: completion)
     }
+    func getWeekEvents(lang: String, page: Int, location: String, completion: @escaping(Result<EventsModel, NetworkError>) -> Void) {
+        guard let url = networkManager.createURL(for: .getWeekEvents(lang: lang, location: location, page: page)) else { return }
+        print(url)
+        networkManager.fetch(for: url, completion: completion)
+    }
 }

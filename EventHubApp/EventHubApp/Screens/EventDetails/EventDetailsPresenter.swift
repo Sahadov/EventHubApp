@@ -8,12 +8,14 @@ protocol PresenterInput: AnyObject {
     func showShareScreen()
     func saveEvent(event: EventModel)
     func setEvent(event: EventModel)
+    func checkEvent(event: EventModel)
 }
 
 protocol PresenterOutput: AnyObject {
     func bookmarkButtonTapped()
     func sharedButtonTapped()
     func getEvent()
+    func getCheckEvent()
 }
 
 class EventDetailsPresenter: PresenterOutput {
@@ -29,5 +31,8 @@ class EventDetailsPresenter: PresenterOutput {
     
     func getEvent() {
         view.setEvent(event: eventModel)
+    }
+    func getCheckEvent() {
+        view.checkEvent(event: eventModel)
     }
 }
