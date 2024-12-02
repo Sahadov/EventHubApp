@@ -26,6 +26,7 @@ protocol FavouritesViewInput: AnyObject {
 class FavouritesViewController: UIViewController, FavouriteCellDelegate {
 
     // MARK: - Properties
+    var event: FavouriteEvent?
     var viewOutput: FavouritesViewOutput!
     private var eventsArray: [FavouriteEvent] = []
 
@@ -180,6 +181,7 @@ extension FavouritesViewController: UICollectionViewDataSource, UICollectionView
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! FavouriteCell
         cell.configure(with: eventsArray[indexPath.row])
         cell.delegate = self
+        event = eventsArray[indexPath.row]
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -190,10 +192,9 @@ extension FavouritesViewController: UICollectionViewDataSource, UICollectionView
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let event = eventsArray[indexPath.row]
-//        let articleViewController = ArticleViewController(with: article)
-//        articleViewController.hidesBottomBarWhenPushed = true
-//        navigationController?.pushViewController(articleViewController, animated: true)
+        let selectedEvent = eventsArray[indexPath.row]
+        let favouritesDetailedScreen = FavouritesDetailedScreen(event: selectedEvent)
+        present(favouritesDetailedScreen, animated: true, completion: nil)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
