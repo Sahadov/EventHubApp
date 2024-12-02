@@ -9,6 +9,8 @@ import UIKit
 
 class ShareViewController: UIViewController {
 
+    var url: String = "example.com"
+    
     private let line: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(red: 178/255, green: 178/255, blue: 178/255, alpha: 0.5)
@@ -48,7 +50,7 @@ class ShareViewController: UIViewController {
         super.viewDidLoad()
 //        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         shareCollectionView.view.backgroundColor = .white
-        
+        shareCollectionView.message = url
         setupViews()
         setConstraints()
     }
