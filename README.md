@@ -1,6 +1,14 @@
 # EventApp: Находите мероприятия которые можно посетить в любой день!
 ![iOS](https://img.shields.io/badge/iOS-15.0-deeppink)  ![Swift](https://img.shields.io/badge/Swift-orange)  ![UIKit](https://img.shields.io/badge/UIKit-blue) ![MVP](https://img.shields.io/badge/MVP-lightblue)
 
+<p align="center">
+<img src="https://github.com/Sahadov/EventHubApp/blob/develop/EventHubApp/EventHubApp/Resources/image1.jpeg" width="140" /> 
+<img src="https://github.com/Sahadov/EventHubApp/blob/develop/EventHubApp/EventHubApp/Resources/image2.jpeg" width="140" />  
+<img src="https://github.com/Sahadov/EventHubApp/blob/develop/EventHubApp/EventHubApp/Resources/image3.jpeg" width="140" /> 
+<img src="https://github.com/Sahadov/EventHubApp/blob/develop/EventHubApp/EventHubApp/Resources/image4.jpeg" width="140" /> 
+<img src="https://github.com/Sahadov/EventHubApp/blob/develop/EventHubApp/EventHubApp/Resources/image5.jpeg" width="140" /> 
+</p>
+
  ### В разработке участвовали:
 <p align="left"> 
 <a href="https://github.com/Sahadov">
