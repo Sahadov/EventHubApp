@@ -8,9 +8,18 @@
 import UIKit
 
 class ShareViewController: UIViewController {
-
-    var url: String = "example.com"
     
+    var url: String?
+    
+    init (url: String) {
+        self.url = url
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+        
     private let line: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(red: 178/255, green: 178/255, blue: 178/255, alpha: 0.5)
@@ -50,7 +59,7 @@ class ShareViewController: UIViewController {
         super.viewDidLoad()
 //        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         shareCollectionView.view.backgroundColor = .white
-        shareCollectionView.message = url
+        shareCollectionView.message = url ?? "non site url"
         setupViews()
         setConstraints()
     }

@@ -11,7 +11,9 @@ import UIKit
 class EventsViewController: UIViewController {
 
     // MARK: - Properties
-    private var eventsArray: [EventModel] = []
+    private var pastEventsArray: [EventModel] = []
+    private var upcomingEventsArray: [EventModel] = []
+
     private let apiManager = APIManager.shared
     private var isUpcomingSelected = true
 
@@ -71,12 +73,45 @@ class EventsViewController: UIViewController {
     }
 
     // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchUpcomingEvents(category: "dance")
         setupViews()
         setCollectionView()
         setConstraints()
-        print(eventsArray.count)
+        print(pastEventsArray.count)
+        getWeekEventsFromService(lang: "en", page: 1, location: "msk")
+    }
+    
+    private func getWeekEventsFromService(lang: String, page: Int, location: String) {
+            apiManager.getWeekEvents(lang: lang, page: page, location: location) { [weak self] result in
+                switch result {
+                case .success(let events):
+                    guard let events = events.results else { return }
+                    self?.pastEventsArray = events
+                    DispatchQueue.main.async {
+                        self?.collectionView.reloadData()
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    
+    func fetchUpcomingEvents(category: String?) {
+        apiManager.getUpcomingEnvents(lang: "en", category: category) { [weak self] result in
+            switch result {
+            case .success(let events):
+                guard let events = events.results else { return }
+                self?.upcomingEventsArray = events
+                DispatchQueue.main.async {
+                    self?.collectionView.reloadData()
+                }
+            case .failure(let error):
+                print("Failed to fetch upcoming events: \(error.localizedDescription)")
+            }
+        }
     }
     
     @objc private func toggleOptionChanged(_ sender: UISegmentedControl) {
@@ -88,9 +123,6 @@ class EventsViewController: UIViewController {
             noBookmarksLabel.text = "No past events"
         }
     }
-    
-    
-    
 }
 
 // MARK: - Private Methods
@@ -110,13 +142,14 @@ private extension EventsViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(FavouriteCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(UpcomingEventCell.self, forCellWithReuseIdentifier: UpcomingEventCell.id)
+        collectionView.register(PastEventCell.self, forCellWithReuseIdentifier: PastEventCell.id)
         collectionView.backgroundColor = .clear
         view.addSubview(collectionView)
     }
     
     func reloadData(){
-        eventsArray = []
+        pastEventsArray = []
         collectionView.reloadData()
     }
 
@@ -151,12 +184,12 @@ private extension EventsViewController {
 // MARK: - UICollectionViewDataSource & Delegate
 extension EventsViewController:UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return eventsArray.count
+        return pastEventsArray.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! UpcomingEventCell
-        cell.configure(with: eventsArray[indexPath.row])
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingEventCell.id, for: indexPath) as? UpcomingEventCell else { return UICollectionViewCell() }
+        cell.configure(with: pastEventsArray[indexPath.row])
         return cell
     }
     

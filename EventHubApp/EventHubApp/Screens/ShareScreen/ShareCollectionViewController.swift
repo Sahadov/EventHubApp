@@ -9,7 +9,7 @@ import UIKit
 
 class ShareCollectionViewController: UIViewController {
     
-    var message = "https://example.com"
+    var message = ""
     
     private let reuseIdentifier = "ShareCollectionViewCell"
     let buttonsArray: [ButtonsShareModel] = [

@@ -8,7 +8,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
+    
     private let shareButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Share", for: .normal)
@@ -17,20 +17,15 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupViews()
         setConstraints()
     }
     
     @objc func shareButtonTapped() {
-//        let vc = ShareViewController()
-//        vc.modalPresentationStyle = .pageSheet
-//        present(vc, animated: true, completion: nil)
-        
-        let vc = ShareViewController()
+        let vc = ShareViewController(url: "")
         vc.modalPresentationStyle = .popover
-//        vc.modalTransitionStyle = .crossDissolve
-            present(vc, animated: true)
+        present(vc, animated: true)
     }
 }
 

@@ -27,18 +27,9 @@ class EventDetailsVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
-        tabBarController?.tabBar.isHidden = false
-        presenter?.getCheckEvent()
-        //        proverkaEvent(event: event)
+        presenter?.getCheckBookmarkEvent()
     }
-    //    func proverkaEvent(event: EventModel){
-    //        if CoreDataManager.shared.fetchFavouriteEvent(withId: Int64((event.id)!)) != nil {
-    //            buttonBookmark.setImage(UIImage(named: "bookmarkIconRed"), for: .normal)
-    //
-    //                    }else{
-    //                        buttonBookmark.setImage(UIImage(named: "bookmarkIcon"), for: .normal)
-    //            }
-    //    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -264,8 +255,8 @@ extension EventDetailsVC: PresenterInput {
             buttonBookmark.setImage(UIImage(named: "bookmarkIcon"), for: .normal)
         }
     }
-    func showShareScreen() {
-        let shareViewController = ShareViewController()
+    func showShareScreen(url: String) {
+        let shareViewController = ShareViewController(url: url)
         navigationController?.present(shareViewController, animated: true)
     }
     func saveEvent(event: EventModel) {
