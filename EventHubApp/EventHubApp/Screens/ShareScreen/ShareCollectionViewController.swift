@@ -27,40 +27,34 @@ class ShareCollectionViewController: UIViewController {
             idApp: "id310633997"
         ),
         ButtonsShareModel(
+            title: "Viber",
+            imageNamed: "viberIcon",
+            urlApp: "viber://forward?text=",
+            idApp: "id382617920"
+        ),
+        ButtonsShareModel(
             title: "Mail",
-            imageNamed: "facebookIcon",
-            urlApp: "mailto:?subject=Check%20this%20out&body=",
+            imageNamed: "mailAppleIcon",
+            urlApp: "mailto:?subject=Check%20this%20out&body=", // !!!!
             idApp: nil
         ),
         ButtonsShareModel(
-            title: "Messenger",
-            imageNamed: "messengerIcon",
-            urlApp: "fb-messenger://share?link=",
-            idApp: "id454638411"
+            title: "Mail.ru",
+            imageNamed: "mailruIcon",
+            urlApp: "mailto:?subject=&body=",
+            idApp: "id784107353"
         ),
         ButtonsShareModel(
-            title: "Twitter",
-            imageNamed: "twitterIcon",
-            urlApp: "twitter://post?message=",
-            idApp: "id333903271"
-        ),
-        ButtonsShareModel(
-            title: "Instagram",
-            imageNamed: "instagramIcon",
-            urlApp: "instagram://share",
-            idApp: "id389801252"
+            title: "Telegram",
+            imageNamed: "telegramIcon",
+            urlApp: "tg://msg?text=",
+            idApp: "id686449807"
         ),
         ButtonsShareModel(
             title: "Skype",
             imageNamed: "skypeIcon",
-            urlApp: "skype://chat?message=",
+            urlApp: "skype:?chat&topic=&message=",
             idApp: "id304878510"
-        ),
-        ButtonsShareModel(
-            title: "Instagram",
-            imageNamed: "instagramIcon",
-            urlApp: "instagram://share",
-            idApp: "id389801252"
         )
     ]
     private var selectedIndexPath: IndexPath?
@@ -68,8 +62,8 @@ class ShareCollectionViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         //        layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: 75, height: 70)
-        layout.minimumInteritemSpacing = 20
-        layout.minimumLineSpacing = 20
+        layout.minimumInteritemSpacing = 15
+        layout.minimumLineSpacing = 15
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.layer.cornerRadius = 16
@@ -140,25 +134,25 @@ extension ShareCollectionViewController: UICollectionViewDelegate {
             guard let urlApp = button.urlApp else { return }
             buttonTapped(message: message, urlApp: urlApp)
             dismiss(animated: true)
-        case "Messenger":
+        case "Message":
+            guard let urlApp = button.urlApp else { return }
+            buttonTapped(message: message, urlApp: urlApp)
+            dismiss(animated: true)
+        case "Viber":
             guard let urlApp = button.urlApp, let idApp = button.idApp else { return }
             buttonTapped(message: message, urlApp: urlApp, idApp: idApp)
             dismiss(animated: true)
-        case "Twitter":
+        case "Mail.ru":
             guard let urlApp = button.urlApp, let idApp = button.idApp else { return }
             buttonTapped(message: message, urlApp: urlApp, idApp: idApp)
             dismiss(animated: true)
-        case "Instagram":
+        case "Telegram":
             guard let urlApp = button.urlApp, let idApp = button.idApp else { return }
             buttonTapped(message: message, urlApp: urlApp, idApp: idApp)
             dismiss(animated: true)
         case "Skype":
             guard let urlApp = button.urlApp, let idApp = button.idApp else { return }
             buttonTapped(message: message, urlApp: urlApp, idApp: idApp)
-            dismiss(animated: true)
-        case "Message":
-            guard let urlApp = button.urlApp else { return }
-            buttonTapped(message: message, urlApp: urlApp)
             dismiss(animated: true)
         default:
             print("Unknown action")
@@ -185,6 +179,8 @@ extension ShareCollectionViewController: UICollectionViewDelegate {
     private func openAppStore(for idApp: String) {
         if let appStoreURL = URL(string: "https://apps.apple.com/app/id\(idApp)") {
             UIApplication.shared.open(appStoreURL)
+        } else {
+            print("Приложение не установлено")
         }
     }
     
