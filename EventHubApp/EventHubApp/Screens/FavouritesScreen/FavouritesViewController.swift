@@ -51,15 +51,24 @@ class FavouritesViewController: UIViewController, FavouriteCellDelegate {
         return imageView
     }()
 
+    private let noBookmarksImage: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "bookmark-4")
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFill
+        image.isHidden = false
+        return image
+    }()
+    
     private let noBookmarksLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.tintColor = .systemGray6
-        label.text = "You haven't saved any articles yet. Start reading and bookmarking them now."
+        label.textColor = AppColors.red
+        label.text = "Ooopsss... You don't have favourite events"
         label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        label.isHidden = true
+        label.isHidden = false
         return label
     }()
 
@@ -109,12 +118,14 @@ extension FavouritesViewController: FavouritesViewInput {
 
     func showNoBookmarksMessage() {
         noBookmarksLabel.isHidden = false
-        collectionView.isHidden = true
+        noBookmarksImage.isHidden = false
+        
     }
 
     func hideNoBookmarksMessage() {
         noBookmarksLabel.isHidden = true
-        collectionView.isHidden = false
+        noBookmarksImage.isHidden = true
+        
     }
 
     func onSearchTapped() {
@@ -128,6 +139,7 @@ private extension FavouritesViewController {
         view.backgroundColor = .white
         view.addSubview(titleLabel)
         view.addSubview(searchImageView)
+        view.addSubview(noBookmarksImage)
         view.addSubview(noBookmarksLabel)
     }
 
@@ -147,6 +159,12 @@ private extension FavouritesViewController {
         guard let fetchedData = CoreDataManager.shared.fetchFavouriteEvents() else { return }
         eventsArray = fetchedData
         collectionView.reloadData()
+        
+        if eventsArray.count != 0 {
+            hideNoBookmarksMessage()
+        } else {
+            showNoBookmarksMessage()
+        }
     }
 
     func setConstraints() {
@@ -164,9 +182,14 @@ private extension FavouritesViewController {
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 
-            noBookmarksLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            noBookmarksImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            noBookmarksImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            noBookmarksImage.widthAnchor.constraint(equalToConstant: 150),
+            noBookmarksImage.heightAnchor.constraint(equalToConstant: 150),
+            
             noBookmarksLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            noBookmarksLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30)
+            noBookmarksLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            noBookmarksLabel.bottomAnchor.constraint(equalTo: noBookmarksImage.topAnchor, constant: -30)
         ])
     }
 }
