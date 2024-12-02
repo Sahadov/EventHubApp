@@ -34,6 +34,7 @@ class ViewController: UIViewController {
 //        getEventCategoriesFromManager(lang: "ru")
 //        вgetEventsFromManager(lang: "ru", location: "msk", page: 1)
 //        doSearchFromManager(query: "выставка", location: "msk", page: 1, lang: "ru")
+//        getWeekEventsFromService(lang: "ru", page: 1, location: "msk")
         setupViews()
         setConstraints()
     }
@@ -84,6 +85,17 @@ class ViewController: UIViewController {
             }
         }
     }
+    private func getWeekEventsFromService(lang: String, page: Int, location: String) {
+            apiManager.getWeekEvents(lang: lang, page: page, location: location) { [weak self] result in
+                switch result {
+                case .success(let events):
+    //                self.weekEvents = events
+                    print(events)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        }
 //    private func getEventCategories(typeURL: APIEndpoint) {
 //        let url = typeURL.url
 //        self.networkManager.fetch([EventCategoryModel].self, from: url) { [weak self] result in

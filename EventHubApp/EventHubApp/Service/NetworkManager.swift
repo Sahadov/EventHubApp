@@ -62,7 +62,17 @@ class NetworkManager {
             parameters["lon"] = "\(lon)"
             parameters["radius"] = "\(radius)"
             parameters["text_format"] = "text"
-        }
+        case .getWeekEvents(lang: let lang, location: let location, page: let page):
+                    parameters["lang"] = "\(lang)"
+                    parameters["page"] = "\(page)"
+                    parameters["page_size"] = "10"
+                    parameters["location"] = "\(location)"
+                    parameters["fields"] = "id,dates,title,short_title,place,description,body_text,location,categories,images,favorites_count,participants"
+                    parameters["text_format"] = "text"
+                    parameters["expand"] = "dates,place"
+                    parameters["order_by"] = "-publication_date"
+                    parameters["actual_until"] = "\(Int(Date().timeIntervalSince1970))"
+                } 
         return parameters
     }
     

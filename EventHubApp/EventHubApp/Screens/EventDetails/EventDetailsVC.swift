@@ -10,7 +10,7 @@ import UIKit
 class EventDetailsVC: UIViewController {
     var presenter: PresenterOutput!
     var eventImage: EventImage?
-    
+
     var dateCell = EventDetailsCell(image: "dateIcon", titleUp: "titleUp", titleDown: "titleDown", fontUp: nil, fontDown: nil)
     let locationCell = EventDetailsCell(image: "locationIcon", titleUp: "locationUp", titleDown: "locationDown", fontUp: nil, fontDown: nil)
     let organizerCell = EventDetailsCell(image: "organizerIcon", titleUp: "organizerUp", titleDown: "organizerDown", fontUp: .airbnbFont(ofSize: 15, weight: .book), fontDown: .airbnbFont(ofSize: 12, weight: .book))
@@ -28,8 +28,17 @@ class EventDetailsVC: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
         tabBarController?.tabBar.isHidden = false
+        presenter?.getCheckEvent()
+        //        proverkaEvent(event: event)
     }
-    
+    //    func proverkaEvent(event: EventModel){
+    //        if CoreDataManager.shared.fetchFavouriteEvent(withId: Int64((event.id)!)) != nil {
+    //            buttonBookmark.setImage(UIImage(named: "bookmarkIconRed"), for: .normal)
+    //
+    //                    }else{
+    //                        buttonBookmark.setImage(UIImage(named: "bookmarkIcon"), for: .normal)
+    //            }
+    //    }
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -248,7 +257,13 @@ class EventDetailsVC: UIViewController {
 }
 
 extension EventDetailsVC: PresenterInput {
-    
+    func checkEvent(event: EventModel) {
+        if CoreDataManager.shared.fetchFavouriteEvent(withId: Int64((event.id)!)) != nil {
+            buttonBookmark.setImage(UIImage(named: "bookmarkIconRed"), for: .normal)
+        }else{
+            buttonBookmark.setImage(UIImage(named: "bookmarkIcon"), for: .normal)
+        }
+    }
     func showShareScreen() {
         let shareViewController = ShareViewController()
         navigationController?.present(shareViewController, animated: true)
