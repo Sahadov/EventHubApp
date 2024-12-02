@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import GoogleSignIn
+import GoogleSignInSwift
+import FirebaseCore
 
 class SignInViewController: UIViewController {
     public var callback: Callback?
@@ -65,6 +68,27 @@ class SignInViewController: UIViewController {
         setConstraints()
     }
     
+    @objc private func googleTapped() {
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+        print("clientID: \(clientID)")
+        let config = GIDConfiguration(clientID: clientID)
+        GIDSignIn.sharedInstance.configuration = config
+        GIDSignIn.sharedInstance.signIn(withPresenting: self) {
+            [weak self] userAuth,
+            error in
+            guard let idToken = userAuth?.user.idToken,
+                  let accessToken = userAuth?.user.accessToken,
+                  error == nil
+            else { return }
+            self?.store.sendAction(
+                .googleSignIn(
+                    idToken.tokenString,
+                    accessToken.tokenString
+                )
+            )
+        }
+        
+    }
     
     @objc func forgotPasswordTapped() {
         let vc = ResetPasswordViewController()
@@ -136,7 +160,16 @@ extension SignInViewController {
         let tapGesture3 = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture3)
         
-        signInButton.addTarget(self, action: #selector(signInTapped), for: .touchUpInside)
+        signInButton.addTarget(
+            self,
+            action: #selector(signInTapped),
+            for: .primaryActionTriggered
+        )
+        googleButton.addTarget(
+            self,
+            action: #selector(googleTapped),
+            for: .primaryActionTriggered
+        )
     }
     
     private func setConstraints() {

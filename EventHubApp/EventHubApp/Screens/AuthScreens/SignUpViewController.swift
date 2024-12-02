@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import GoogleSignIn
+import GoogleSignInSwift
+import FirebaseCore
 
 class SignUpViewController: UIViewController {
     public var callback: Callback?
@@ -40,6 +43,27 @@ class SignUpViewController: UIViewController {
         setConstraints()
     }
     
+    @objc private func googleTapped() {
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+        print("clientID: \(clientID)")
+        let config = GIDConfiguration(clientID: clientID)
+        GIDSignIn.sharedInstance.configuration = config
+        GIDSignIn.sharedInstance.signIn(withPresenting: self) {
+            [weak self] userAuth,
+            error in
+            guard let idToken = userAuth?.user.idToken,
+                  let accessToken = userAuth?.user.accessToken,
+                  error == nil
+            else { return }
+            self?.store.sendAction(
+                .googleSignIn(
+                    idToken.tokenString,
+                    accessToken.tokenString
+                )
+            )
+        }
+        
+    }
     
     @objc func forgotPasswordTapped() {
         print("forgotPasswordTapped")
@@ -103,7 +127,16 @@ extension SignUpViewController {
         let tapGesture2 = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture2)
         
-        signUpButton.addTarget(self, action: #selector(signUpTapped), for: .touchUpInside)
+        signUpButton.addTarget(
+            self,
+            action: #selector(signUpTapped),
+            for: .primaryActionTriggered
+        )
+        googleButton.addTarget(
+            self,
+            action: #selector(googleTapped),
+            for: .primaryActionTriggered
+        )
         navigationBackButton.addTarget(self, action: #selector(navigationBackButtonTapped), for: .touchUpInside)
     }
     

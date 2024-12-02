@@ -32,7 +32,6 @@ final class ProfileViewController: UIViewController {
     }
     
     private func showUserInfo(_ person: Person?) {
-        print("showUserInfo")
         if let person {
             nameLabel.text = person.fullName
             aboutTextLabel.text = person.about
