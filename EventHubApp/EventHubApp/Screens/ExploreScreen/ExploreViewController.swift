@@ -106,7 +106,8 @@ final class ExploreViewController: UIViewController {
         setupLayout()
         presenter?.fetchCities()
         presenter?.fetchCategories()
-        presenter?.fetchUpcomingEvents()
+        presenter?.fetchUpcomingEvents(category: nil)
+        categoryCollectionView.delegate = self
         eventCollectionView.setDelegate(vc:self)
 
         NotificationCenter.default.addObserver(
@@ -266,7 +267,8 @@ extension ExploreViewController: ExploreViewProtocol {
                 presenter?.fetchNearbyEvents(
                     lat: cities[0].coords?.lat ?? 0,
                     lon: cities[0].coords?.lon ?? 0,
-                    radius: radiusEvents
+                    radius: radiusEvents,
+                    category: nil
                 )
                 isNearbyEventsFetched = true
             }
@@ -312,7 +314,8 @@ extension ExploreViewController: UIPickerViewDelegate {
         presenter?.fetchNearbyEvents(
             lat: cities[row].coords?.lat ?? 0,
             lon: cities[row].coords?.lon ?? 0,
-            radius: radiusEvents
+            radius: radiusEvents,
+            category: nil
         )
         handleLocationButton()
     }
@@ -344,3 +347,19 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDeleg
         }
     }
 } 
+
+
+extension ExploreViewController: CategoryCollectionViewDelegate {
+    func didSelectCategory(_ category: EventCategoryModel) {
+
+        presenter?.fetchUpcomingEvents(category: category.slug)
+
+        if let selectedCity = cities.first(where: { $0.name == locationLabel.text }) {
+            presenter?.fetchNearbyEvents(
+                lat: selectedCity.coords?.lat ?? 0,
+                lon: selectedCity.coords?.lon ?? 0,
+                radius: radiusEvents,
+                category: category.slug)
+        }
+    }
+}

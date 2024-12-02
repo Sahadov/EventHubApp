@@ -44,7 +44,7 @@ class NetworkManager {
             parameters["page"] = "\(page)"
             parameters["expand"] = "dates"
             parameters["ctype"] = "event"
-        case .getUpcomingEnvents(lang: let lang):
+        case .getUpcomingEnvents(lang: let lang, category: let category):
             parameters["page_size"] = "10"
             parameters["order_by"] = "-publication_date"
             parameters["expand"] = "dates,place,location,participants"
@@ -52,7 +52,10 @@ class NetworkManager {
             parameters["fields"] = "id,dates,title,short_title,place,location,categories,images,favorites_count,participants,body_text"
             parameters["actual_since"] = "\(Int(Date().timeIntervalSince1970))"
             parameters["text_format"] = "text"
-        case .getNearbyEnvents(lang: let lang, lat: let lat, lon: let lon, radius: let radius):
+            if let category = category {
+                parameters["categories"] = category
+            }
+        case .getNearbyEnvents(lang: let lang, lat: let lat, lon: let lon, radius: let radius, category: let category):
             parameters["page_size"] = "10"
             parameters["order_by"] = "-publication_date"
             parameters["expand"] = "dates,place,location,participants"
@@ -62,17 +65,21 @@ class NetworkManager {
             parameters["lon"] = "\(lon)"
             parameters["radius"] = "\(radius)"
             parameters["text_format"] = "text"
+            if let category = category {
+                parameters["categories"] = category
+            }
         case .getWeekEvents(lang: let lang, location: let location, page: let page):
-                    parameters["lang"] = "\(lang)"
-                    parameters["page"] = "\(page)"
-                    parameters["page_size"] = "10"
-                    parameters["location"] = "\(location)"
-                    parameters["fields"] = "id,dates,title,short_title,place,description,body_text,location,categories,images,favorites_count,participants"
-                    parameters["text_format"] = "text"
-                    parameters["expand"] = "dates,place"
-                    parameters["order_by"] = "-publication_date"
-                    parameters["actual_until"] = "\(Int(Date().timeIntervalSince1970))"
-                } 
+            parameters["lang"] = "\(lang)"
+            parameters["page"] = "\(page)"
+            parameters["page_size"] = "10"
+            parameters["location"] = "\(location)"
+            parameters["fields"] = "id,dates,title,short_title,place,description,body_text,location,categories,images,favorites_count,participants"
+            parameters["text_format"] = "text"
+            parameters["expand"] = "dates,place"
+            parameters["order_by"] = "-publication_date"
+            parameters["actual_until"] = "\(Int(Date().timeIntervalSince1970))"
+        }
+
         return parameters
     }
     

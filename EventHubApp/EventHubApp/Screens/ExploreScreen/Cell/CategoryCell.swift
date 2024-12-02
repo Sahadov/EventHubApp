@@ -80,7 +80,7 @@ final class CategoryCell: UICollectionViewCell {
     // MARK: - Configuration
 
     func configuration(with category: EventCategoryModel) {
-        titleLabel.text = category.name
+        titleLabel.text = category.name?.components(separatedBy: " ").first
         let image = CategoryConfigurator.iconName(forSlug: category.slug)
         imageView.image = UIImage(systemName: image)
         backgroundColor = CategoryConfigurator.color(forSlug: category.slug)
