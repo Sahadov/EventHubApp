@@ -272,7 +272,7 @@ final class EventCell: UICollectionViewCell {
         configurationParticipants(avatars: images)
         
         // Checking if the event is in favourites
-        guard let favouriteEvent = CoreDataManager.shared.fetchFavouriteEvent(withId: Int64((event?.id)!)) else {return}
+        guard let _ = CoreDataManager.shared.fetchFavouriteEvent(withId: Int64((event?.id)!)) else {return}
         favouriteButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
     }
 

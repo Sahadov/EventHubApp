@@ -49,7 +49,7 @@ class EventsViewController: UIViewController {
         return label
     }()
     
-    let toggleSegmentedControl: UISegmentedControl = {
+    private lazy var toggleSegmentedControl: UISegmentedControl = {
         let items = ["Upcoming", "Past"]
         let segmentedControl = UISegmentedControl(items: items)
         

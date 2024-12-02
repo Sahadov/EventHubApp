@@ -11,8 +11,8 @@ class EventDetailsVC: UIViewController {
     var presenter: PresenterOutput!
     var eventImage: EventImage?
 
-    var dateCell = EventDetailsCell(image: "dateIcon", titleUp: "titleUp", titleDown: "titleDown", fontUp: nil, fontDown: nil)
-    let locationCell = EventDetailsCell(image: "locationIcon", titleUp: "locationUp", titleDown: "locationDown", fontUp: nil, fontDown: nil)
+    var dateCell = EventDetailsCell(image: "DateIcon", titleUp: "titleUp", titleDown: "titleDown", fontUp: nil, fontDown: nil)
+    let locationCell = EventDetailsCell(image: "LocationIcon", titleUp: "locationUp", titleDown: "locationDown", fontUp: nil, fontDown: nil)
     let organizerCell = EventDetailsCell(image: "organizerIcon", titleUp: "organizerUp", titleDown: "organizerDown", fontUp: .airbnbFont(ofSize: 15, weight: .book), fontDown: .airbnbFont(ofSize: 12, weight: .book))
     
     let imageView = UIImageView()
@@ -160,7 +160,7 @@ class EventDetailsVC: UIViewController {
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
-        buttonBack.setImage(UIImage(named: "backArrow"), for: .normal)
+        buttonBack.setImage(UIImage(named: "BackArrow"), for: .normal)
         buttonBack.addTarget(self, action: #selector (backButtonTapped), for: .touchUpInside)
         
         buttonBookmark.setImage(UIImage(named: "bookmarkIcon"), for: .normal)

@@ -86,34 +86,16 @@ class ViewController: UIViewController {
         }
     }
     private func getWeekEventsFromService(lang: String, page: Int, location: String) {
-            apiManager.getWeekEvents(lang: lang, page: page, location: location) { [weak self] result in
+            apiManager.getWeekEvents(lang: lang, page: page, location: location) { result in
                 switch result {
                 case .success(let events):
-    //                self.weekEvents = events
                     print(events)
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
             }
         }
-//    private func getEventCategories(typeURL: APIEndpoint) {
-//        let url = typeURL.url
-//        self.networkManager.fetch([EventCategoryModel].self, from: url) { [weak self] result in
-//            guard let self = self else { return}
-//            switch result {
-//            case .success(let categories):
-//                self.categories = categories
-//                print(categories)
-////                self.result = event.results
-////                print(result)
-//                DispatchQueue.main.async {
-//                    //self.tableView.reloadData()
-//                }
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
-//    }
+
     func setupViews(){
         view.backgroundColor = AppColors.blue
         view.addSubview(label)
