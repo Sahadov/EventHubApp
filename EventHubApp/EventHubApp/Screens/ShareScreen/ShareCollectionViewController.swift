@@ -125,6 +125,7 @@ extension ShareCollectionViewController: UICollectionViewDelegate {
         case "Copy Link":
             UIPasteboard.general.string = message
             print("Link copied!")
+            print(message)
             dismiss(animated: true)
         case "WhatsApp":
             guard let urlApp = button.urlApp, let idApp = button.idApp else { return }
@@ -180,7 +181,7 @@ extension ShareCollectionViewController: UICollectionViewDelegate {
         if let appStoreURL = URL(string: "https://apps.apple.com/app/id\(idApp)") {
             UIApplication.shared.open(appStoreURL)
         } else {
-            print("Приложение не установлено")
+            print("Приложение не найдено")
         }
     }
     
