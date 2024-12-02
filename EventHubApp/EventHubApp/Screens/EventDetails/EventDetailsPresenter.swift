@@ -6,7 +6,7 @@
 //
 protocol PresenterInput: AnyObject {
     func showShareScreen()
-    func saveEvent()
+    func saveEvent(event: EventModel)
     func setEvent(event: EventModel)
 }
 
@@ -20,7 +20,7 @@ class EventDetailsPresenter: PresenterOutput {
     weak var view: PresenterInput!
     var eventModel: EventModel!
     func bookmarkButtonTapped() {
-        view.saveEvent()
+        view.saveEvent(event: eventModel)
     }
     
     func sharedButtonTapped() {

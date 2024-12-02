@@ -248,15 +248,26 @@ class EventDetailsVC: UIViewController {
 }
 
 extension EventDetailsVC: PresenterInput {
+    
     func showShareScreen() {
         let shareViewController = ShareViewController()
         navigationController?.present(shareViewController, animated: true)
     }
-    
-    func saveEvent() {
-        print("save event")
+    func saveEvent(event: EventModel) {
+        if CoreDataManager.shared.fetchFavouriteEvent(withId: Int64((event.id)!)) != nil {
+            // Deleting from CoreData
+            guard let updatedEvent = CoreDataManager.shared.fetchFavouriteEvent(withId: Int64((event.id)!)) else { return }
+            CoreDataManager.shared.deleteFavouriteEvent(event: updatedEvent)
+            buttonBookmark.setImage(UIImage(named: "bookmarkIcon"), for: .normal)
+        } else {
+            // Saving to CoreData
+            let imageURL = (event.images?.first?.image)!
+            let startDate = formatDate(from: event.dates?.first?.start ?? 0)
+            let location = event.place?.title?.capitalized ?? "The place is not specified"
+            _ = CoreDataManager.shared.createFavouriteEvent(userEmail: "mrsahadov@gmail.com", id: (event.id!), title: (event.title!), location: location, bodyText: (event.bodyText!), image: imageURL, startDate: startDate)
+            buttonBookmark.setImage(UIImage(named: "bookmarkIconRed"), for: .normal)
+        }
     }
-    
     func setEvent(event: EventModel) {
         setConfigureNetwork(with: event)
     }
