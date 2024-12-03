@@ -106,8 +106,16 @@ final class ExploreViewController: UIViewController {
         setupLayout()
         presenter?.fetchCities()
         presenter?.fetchCategories()
-        presenter?.fetchUpcomingEvents()
+        presenter?.fetchUpcomingEvents(category: nil)
+        categoryCollectionView.delegate = self
         eventCollectionView.setDelegate(vc:self)
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleFavouriteUpdate),
+            name: Notification.Name("isFavoriteChanged"),
+            object: nil
+        )
     }
 
     // MARK: - Setup
@@ -259,7 +267,8 @@ extension ExploreViewController: ExploreViewProtocol {
                 presenter?.fetchNearbyEvents(
                     lat: cities[0].coords?.lat ?? 0,
                     lon: cities[0].coords?.lon ?? 0,
-                    radius: radiusEvents
+                    radius: radiusEvents,
+                    category: nil
                 )
                 isNearbyEventsFetched = true
             }
@@ -276,6 +285,10 @@ private extension ExploreViewController {
             self.cityPickerView.isHidden = !self.isCityPickerVisible
             self.cityPickerView.alpha = self.isCityPickerVisible ? 1.0 : 0.0
         }
+    }
+
+    @objc func handleFavouriteUpdate() {
+        eventCollectionView.reloadData()
     }
 
     func handleNotificationButton() { }
@@ -301,7 +314,8 @@ extension ExploreViewController: UIPickerViewDelegate {
         presenter?.fetchNearbyEvents(
             lat: cities[row].coords?.lat ?? 0,
             lon: cities[row].coords?.lon ?? 0,
-            radius: radiusEvents
+            radius: radiusEvents,
+            category: nil
         )
         handleLocationButton()
     }
@@ -310,7 +324,7 @@ extension ExploreViewController: UIPickerViewDelegate {
         return 25
     }
     func showDetail(_ event: EventModel) {
-            let eventDetailVC = EventDetailsVC(event: event)
+            let eventDetailVC = ModuleBuilder.createDetailModule(event: event)
            navigationController?.pushViewController(eventDetailVC, animated: true)
         }
 }
@@ -333,3 +347,27 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDeleg
         }
     }
 } 
+
+// MARK: - CategoryCollectionViewDelegate
+
+extension ExploreViewController: CategoryCollectionViewDelegate {
+    func handleCategorySelection(_ category: String?) {
+        presenter?.fetchUpcomingEvents(category: category)
+        if let selectedCity = cities.first(where: { $0.name == locationLabel.text }) {
+            presenter?.fetchNearbyEvents(
+                lat: selectedCity.coords?.lat ?? 0,
+                lon: selectedCity.coords?.lon ?? 0,
+                radius: radiusEvents,
+                category: category
+            )
+        }
+    }
+
+    func didDeselectCategory() {
+        handleCategorySelection(nil)
+    }
+
+    func didSelectCategory(_ category: EventCategoryModel) {
+        handleCategorySelection(category.slug)
+    }
+}

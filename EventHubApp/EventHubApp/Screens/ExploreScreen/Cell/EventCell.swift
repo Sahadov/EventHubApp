@@ -258,7 +258,7 @@ final class EventCell: UICollectionViewCell {
 
         dateLabel.text = formatDate(from: events.dates?.first?.start ?? 0).uppercased()
         titleLabel.text = events.shortTitle
-        locationLabel.text = events.place?.address
+        locationLabel.text = events.place?.address ??  "The place is not specified"
         participantsLabel.text = "+0 Going" //TODO: Получать кол-во участников
         
         //added
@@ -274,7 +274,6 @@ final class EventCell: UICollectionViewCell {
         // Checking if the event is in favourites
         guard let favouriteEvent = CoreDataManager.shared.fetchFavouriteEvent(withId: Int64((event?.id)!)) else {return}
         favouriteButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
-        
     }
 
     private func createAvatarImageView(image: UIImage?) -> UIImageView {
@@ -308,6 +307,22 @@ final class EventCell: UICollectionViewCell {
         dateFormatter.locale = Locale(identifier: "en_US")
         return dateFormatter.string(from: date)
     }
+    
+    func formatDayOfWeek(from timestamp: Int) -> String {
+            let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "EEEE, "
+            dateFormatter.locale = Locale(identifier: "en_US")
+            return dateFormatter.string(from: date)
+    }
+    
+    func formatTime(from timestamp: Int) -> String {
+        let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        return dateFormatter.string(from: date)
+    }
 
     override func prepareForReuse() {
         eventImageView.image = nil
@@ -315,6 +330,7 @@ final class EventCell: UICollectionViewCell {
         titleLabel.text = nil
         locationLabel.text = nil
         participantsLabel.text = nil
+        favouriteButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
     }
 }
 
@@ -329,11 +345,21 @@ private extension EventCell {
             CoreDataManager.shared.deleteFavouriteEvent(event: updatedEvent)
             favouriteButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
         } else {
+            
             // Saving to CoreData
             let imageURL = (event?.images?.first?.image)!
-            let startDate = formatDate(from: event?.dates?.first?.start ?? 0)
-            let location = event?.place?.title?.capitalized ?? "The place is not specified"
-            _ = CoreDataManager.shared.createFavouriteEvent(userEmail: "mrsahadov@gmail.com", id: (event?.id!)!, title: (event?.title!)!, location: location, bodyText: (event?.bodyText!)!, image: imageURL, startDate: startDate)
+            let startDate = formatDate(from: event?.dates?.first?.start ?? 0) + " - " +  formatDate(from: event?.dates?.first?.end ?? 0)
+            
+            // День недели и число
+            let eventDay = formatDayOfWeek(from: event?.dates?.first?.start ?? 0) + formatTime(from: event?.dates?.first?.start ?? 0)
+            
+            let place = event?.place?.address?.capitalized ?? "The place is not specified"
+            let location = event?.place?.title?.capitalized ?? "The location is not specified"
+            
+            let agentName = event?.participants?.first?.agent?.title ?? "Unknown Name"
+            let agentType = event?.participants?.first?.agent?.agentType?.capitalized ?? "Unknow Agent Type"
+            
+            _ = CoreDataManager.shared.createFavouriteEvent(userEmail: "mrsahadov@gmail.com", id: (event?.id!)!, title: (event?.title!)!, location: location, bodyText: (event?.bodyText!)!, image: imageURL, startDate: startDate, eventDay: eventDay, place: place, agentName: agentName, agentType: agentType)
             favouriteButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
         }
     }
