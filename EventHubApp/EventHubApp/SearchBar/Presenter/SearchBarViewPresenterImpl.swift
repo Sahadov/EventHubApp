@@ -5,26 +5,22 @@
 //  Created by Andrew Linkov on 25.11.2024.
 //
 
-//import UIKit
-//
-//protocol BookmarkViewDelegate: AnyObject {
-//    
-//}
-//
-//
-//final class SearchBarViewPresenterImpl: SearchBarViewPresenter {
-//       
-//    func fetchEvents() {
-//        <#code#>
-//    }
-//    
-//    func eventsCount() -> Int {
-//        <#code#>
-//    }
-//    
-//    func didTapCell(at indexPath: IndexPath) {
-//        <#code#>
-//    }
-//    
-//    weak var view: BookmarkViewDelegate?
-//}
+import Foundation
+
+protocol SearchViewDelegate: AnyObject {
+    
+}
+
+final class SearchBarViewPresenterImpl {
+    
+    //MARK: - Properties
+    weak var view: SearchViewDelegate?
+    private let apiManager = APIManager.shared
+
+ 
+}
+
+extension SearchBarViewPresenterImpl: SearchBarViewPresenter {
+    
+}
+
