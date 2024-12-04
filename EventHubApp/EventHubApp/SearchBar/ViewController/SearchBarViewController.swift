@@ -12,9 +12,12 @@ protocol SearchBarViewPresenter: AnyObject {
 
 final class SearchBarViewController: UIViewController {
     
+    private let apiManager = APIManager.shared
+    
     //MARK: - Properties
     private let presenter: SearchBarViewPresenter
-    private var events = [SearchModel]()
+    private var eventsSearchResult = [SearchResult]()
+
     
     //MARK: - UI Components
     private lazy var searchBar: UISearchBar = {
@@ -51,6 +54,8 @@ final class SearchBarViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
+        doSearchFromManager(query: "концерт", location: "msk", page: 1, lang: "ru")
+
     }
     
     //MARK: - Setup Methods
@@ -71,19 +76,33 @@ final class SearchBarViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
+    func doSearchFromManager(query: String, location: String, page: Int, lang: String) {
+            self.apiManager.doSearch(query: query, location: location, page: page, lang: lang) { [weak self] result in
+                switch result {
+                case .success(let searchModel):
+                    self?.eventsSearchResult = searchModel.results
+                    DispatchQueue.main.async {
+                        self?.tableView.reloadData()
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        }
 }
 
 //MARK: - SearchBarViewController + UITableViewDataSource
 extension SearchBarViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return events.count
+        return eventsSearchResult.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchBarCell.reuseID, for: indexPath) as? SearchBarCell else {
             fatalError("Unable to dequeue SearchBarCell")
         }
-        cell.set(info: events[indexPath.row])
+        let searchEvents = eventsSearchResult[indexPath.row]
+        cell.setConfigureSearchBarNetwork(with: searchEvents)
         return cell
     }
 }

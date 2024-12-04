@@ -28,7 +28,7 @@ class SearchBarCell: UITableViewCell {
         view.layer.shadowRadius = 4
         return view
     }()
-
+    
     private let categoryLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
@@ -51,30 +51,42 @@ class SearchBarCell: UITableViewCell {
         configure()
         setupConstraints()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     // MARK: - Public Methods
-    func configuration(with events: EventModel) {
-        if let imageStringURL = events.images?.first?.image,
+    func setConfigureSearchBarNetwork(with event: SearchResult) {
+        categoryLabel.text = formatDate(from: event.daterange?.start ?? 0)
+        mainLabel.text = event.title?.capitalized
+        
+        if let imageStringURL = event.firstImage?.image,
            let imageURL = URL(string: imageStringURL) {
             NetworkManager.shared.fetchImage(from: imageURL) { [weak self] result in
                 switch result {
                 case .success(let data):
                     DispatchQueue.main.async {
-                        self?.eventImageView.image = UIImage(data: data)
+                        self?.eventImage.image = UIImage(data: data)
                     }
                 case .failure(let error):
+                    DispatchQueue.main.async {
+                        self?.eventImage.image = UIImage(named: "eventDetails")
+                    }
                     print("Failed to fetch image: \(error.localizedDescription)")
                 }
             }
         }
-        
-        dateLabel.text = formatDate(from: events.dates?.first?.start ?? 0).uppercased()
-        titleLabel.text = events.shortTitle
     }
+    
+    func formatDate(from timestamp: Int) -> String {
+        let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E, MMM d, yyyy h:mm a"
+        dateFormatter.locale = Locale(identifier: "en_US")
+        return dateFormatter.string(from: date)
+    }
+    
     // MARK: - Private Methods
     private func configure() {
         contentView.addSubview(backView)
@@ -106,7 +118,7 @@ class SearchBarCell: UITableViewCell {
             eventImage.centerYAnchor.constraint(equalTo: backView.centerYAnchor)
         ])
         
-
+        
         NSLayoutConstraint.activate([
             categoryLabel.topAnchor.constraint(equalTo: backView.topAnchor, constant: 8),
             categoryLabel.leadingAnchor.constraint(equalTo: eventImage.trailingAnchor, constant: 8),

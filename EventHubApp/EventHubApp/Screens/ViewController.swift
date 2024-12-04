@@ -74,17 +74,17 @@ class ViewController: UIViewController {
             }
         }
         
-    func doSearchFromManager(query: String, location: String, page: Int, lang: String) {
-        self.apiManager.doSearch(query: query, location: location, page: page, lang: lang) { [weak self] result in
-            switch result {
-            case .success(let searchResult):
-                self?.searchResult = searchResult
-                print(searchResult)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
+//    func doSearchFromManager(query: String, location: String, page: Int, lang: String) {
+//        self.apiManager.doSearch(query: query, location: location, page: page, lang: lang) { [weak self] result in
+//            switch result {
+//            case .success(let searchResult):
+//                self?.searchResult = searchResult
+//                print(searchResult)
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
+//    }
     private func getWeekEventsFromService(lang: String, page: Int, location: String) {
             apiManager.getWeekEvents(lang: lang, page: page, location: location) { [weak self] result in
                 switch result {

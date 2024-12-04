@@ -42,7 +42,7 @@ class NetworkManager {
             parameters["location"] = "\(location)"
             parameters["lang"] = "\(lang)"
             parameters["page"] = "\(page)"
-            parameters["expand"] = "dates"
+            parameters["expand"] = "dates,place,images"
             parameters["ctype"] = "event"
         case .getUpcomingEnvents(lang: let lang, category: let category):
             parameters["page_size"] = "10"

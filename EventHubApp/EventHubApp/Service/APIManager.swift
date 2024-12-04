@@ -35,7 +35,7 @@ class APIManager {
         print(url)
         networkManager.fetch(for: url, completion: completion)
     }
-
+    
     func getUpcomingEnvents(lang: String, category: String?, completion: @escaping(Result<EventsModel, NetworkError>) -> Void) {
         guard let url = networkManager.createURL(for: .getUpcomingEnvents(lang: lang, category: category)) else { return }
         networkManager.fetch(for: url, completion: completion)

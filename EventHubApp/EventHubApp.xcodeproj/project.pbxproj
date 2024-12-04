@@ -324,9 +324,9 @@
 				D1BAC8AF2CF8AD6E0027E304 /* NetworkManager.swift */,
 				D1BAC8B02CF8AD6E0027E304 /* APIManager.swift */,
 				D1BAC8B12CF8AD6E0027E304 /* API.swift */,
+				D1BAC8B52CF8AD6E0027E304 /* NetworkError.swift */,
 				D1BAC8B22CF8AD6E0027E304 /* APIEndpoint.swift */,
 				D1BAC8B32CF8AD6E0027E304 /* Builder */,
-				D1BAC8B52CF8AD6E0027E304 /* NetworkError.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
