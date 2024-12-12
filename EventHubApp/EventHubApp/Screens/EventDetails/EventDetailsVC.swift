@@ -221,19 +221,16 @@ class EventDetailsVC: UIViewController {
             dateCell.topAnchor.constraint(equalTo: labelTitle.bottomAnchor, constant: 20),
             dateCell.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             dateCell.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            dateCell.widthAnchor.constraint(equalToConstant: 205),
             dateCell.heightAnchor.constraint(equalToConstant: 53),
             
             locationCell.topAnchor.constraint(equalTo: dateCell.bottomAnchor, constant: 20),
             locationCell.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             locationCell.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            locationCell.widthAnchor.constraint(equalToConstant: 205),
             locationCell.heightAnchor.constraint(equalToConstant: 53),
             
             organizerCell.topAnchor.constraint(equalTo: locationCell.bottomAnchor, constant: 20),
             organizerCell.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             organizerCell.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            organizerCell.widthAnchor.constraint(equalToConstant: 154),
             organizerCell.heightAnchor.constraint(equalToConstant: 44),
             
             titleAboutEvent.topAnchor.constraint(equalTo: organizerCell.bottomAnchor, constant: 44),
