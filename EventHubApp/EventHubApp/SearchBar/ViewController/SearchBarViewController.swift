@@ -14,7 +14,7 @@ final class SearchBarViewController: UIViewController {
     
     //MARK: - Properties
     private let presenter: SearchBarViewPresenter
-    private var events = [SearchModel]()
+    private var events = [SearchResult]()
     
     //MARK: - UI Components
     private lazy var searchBar: UISearchBar = {
@@ -52,6 +52,10 @@ final class SearchBarViewController: UIViewController {
         setupViews()
         setupConstraints()
     }
+    
+    func doSearchFromManager(query: "выставка", location: "msk", page: 1, lang: "ru")
+        
+    
     
     //MARK: - Setup Methods
     private func setupViews() {
